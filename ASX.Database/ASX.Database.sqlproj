@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{a5c10271-6f68-4620-9e82-5aaaea44e93a}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -63,5 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Ticker.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ASX.Test.Database.publish.xml" />
   </ItemGroup>
 </Project>
