@@ -1,4 +1,5 @@
-﻿MERGE INTO Ticker AS Target USING
+﻿-- Reference Data for Ticker
+MERGE INTO Ticker AS Target USING
 (VALUES
   (N'CPU', N'COMPUTERSHARE LTD FPO'),
   (N'CSR', N'CSR LIMITED FPO'),
@@ -8,10 +9,12 @@
 AS SOURCE ([Code], CompanyName)
 ON Target.Code = Source.Code
 
+-- Update matched rows
 WHEN MATCHED THEN
 UPDATE SET [Code] = Source.[Code],
            CompanyName = Source.CompanyName
 
+-- Insert new rows
 WHEN NOT MATCHED BY TARGET THEN
 INSERT ([Code], CompanyName)
 VALUES (Source.[Code], Source.CompanyName);
