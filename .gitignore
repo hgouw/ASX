@@ -15,6 +15,7 @@ ASX.Database/obj/Debug/ASX.Database.dll
 ASX.Database/obj/Debug/ASX.Database.pdb
 ASX.Database/obj/Debug/ASX.Database.sqlproj.FileListAbsolute.txt
 ASX.Database/obj/Debug/Model.xml
+ASX.Database/obj/Debug/postdeploy.sql
 ASX.Online/bin/ASX.Online.dll.config
 ASX.Online/bin/DotNetOpenAuth.AspNet.xml
 ASX.Online/bin/DotNetOpenAuth.Core.xml

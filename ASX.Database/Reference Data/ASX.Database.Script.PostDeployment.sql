@@ -10,5 +10,6 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
+--:r ".\Ticker.insert.data.sql"
 :r ".\Ticker.merge.data.sql"
 GO
