@@ -57,13 +57,19 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Reference Data" />
     <Folder Include="Stored Procedures" />
     <Folder Include="Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Ticker.sql" />
+    <Build Include="Tables\History.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ASX.Test.Database.publish.xml" />
+    <None Include="ASX.Database.test.publish.xml" />
+    <None Include="Reference Data\Ticker.data.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Reference Data\ASX.Database.Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>

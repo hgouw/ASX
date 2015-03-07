@@ -9,13 +9,8 @@ ASX.Database/bin/Debug/ASX.Database.dll
 ASX.Database/bin/Debug/ASX.Database.pdb
 ASX.Database/bin/Debug/ASX.Database.publish.sql
 ASX.Database/bin/Debug/ASX.Database.sql
-ASX.Database/bin/Debug/ASX.Test.Database.publish.sql
-ASX.Database/bin/Debug/ASX_1.Test.Database.publish.sql
-ASX.Database/bin/Debug/ASX_2.Test.Database.publish.sql
-ASX.Database/bin/Debug/DeploymentReport.txt
-ASX.Database/bin/Debug/DeploymentReport_1.txt
-ASX.Database/bin/Debug/DeploymentReport_2.txt
-ASX.Database/bin/Debug/DeploymentReport_3.txt
+ASX.Database/bin/Debug/ASX*.Test.Database.publish.sql
+ASX.Database/bin/Debug/DeploymentReport*.txt
 ASX.Database/obj/Debug/ASX.Database.dll
 ASX.Database/obj/Debug/ASX.Database.pdb
 ASX.Database/obj/Debug/ASX.Database.sqlproj.FileListAbsolute.txt
