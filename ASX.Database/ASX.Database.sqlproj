@@ -67,7 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ASX.Database.test.publish.xml" />
-    <None Include="Reference Data\Ticker.data.sql" />
+    <None Include="Reference Data\Ticker.insert.data.sql" />
+    <None Include="Reference Data\Ticker.merge.data.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Reference Data\ASX.Database.Script.PostDeployment.sql" />
