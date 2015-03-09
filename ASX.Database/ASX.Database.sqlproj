@@ -62,13 +62,13 @@
     <Folder Include="Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\Ticker.sql" />
+    <Build Include="Tables\Company.sql" />
     <Build Include="Tables\History.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ASX.Database.test.publish.xml" />
-    <None Include="Reference Data\Ticker.insert.data.sql" />
-    <None Include="Reference Data\Ticker.merge.data.sql" />
+    <None Include="Reference Data\Company.insert.data.sql" />
+    <None Include="Reference Data\Company.merge.data.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Reference Data\ASX.Database.Script.PostDeployment.sql" />
