@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ASX.BusinessLayer.Tests
+namespace ASX.BusinessLayer.Test
 {
     [TestClass]
     public class CompanyTest

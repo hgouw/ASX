@@ -6,8 +6,8 @@
     <ProjectGuid>{54905AA5-E504-4B97-963D-9B6022D49734}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ASX.BusinessLayer.Tests</RootNamespace>
-    <AssemblyName>ASX.BusinessLayer.Tests</AssemblyName>
+    <RootNamespace>ASX.BusinessLayer.Test</RootNamespace>
+    <AssemblyName>ASX.BusinessLayer.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
