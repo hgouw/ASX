@@ -1,11 +1,11 @@
 ﻿CREATE TABLE [dbo].[History]
 (
-    [Code] NVARCHAR(10) NOT NULL, 
     [Date] DATETIME NOT NULL, 
+    [Code] NVARCHAR(10) NOT NULL, 
     [Open] DECIMAL(6, 3) NOT NULL, 
     [High] DECIMAL(6, 3) NOT NULL, 
     [Low] DECIMAL(6, 3) NOT NULL, 
     [Last] DECIMAL(6, 3) NOT NULL, 
-    CONSTRAINT [FK_History_Ticker] FOREIGN KEY ([Code]) REFERENCES [Ticker]([Code]), 
-    PRIMARY KEY ([Code], [Date])
+    CONSTRAINT [FK_History_Company] FOREIGN KEY ([Code]) REFERENCES [Company]([Code]), 
+    PRIMARY KEY ([Date], [Code])
 )
