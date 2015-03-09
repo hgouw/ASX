@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASX.DataAccess", "ASX.DataA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASX.Common", "ASX.Common\ASX.Common.csproj", "{42F24C19-A7C4-4C5B-BB02-2E39E2FD25AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASX.BusinessLayer.Tests", "ASX.BusinessLayer.Tests\ASX.BusinessLayer.Tests.csproj", "{54905AA5-E504-4B97-963D-9B6022D49734}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{42F24C19-A7C4-4C5B-BB02-2E39E2FD25AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42F24C19-A7C4-4C5B-BB02-2E39E2FD25AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42F24C19-A7C4-4C5B-BB02-2E39E2FD25AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54905AA5-E504-4B97-963D-9B6022D49734}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54905AA5-E504-4B97-963D-9B6022D49734}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54905AA5-E504-4B97-963D-9B6022D49734}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54905AA5-E504-4B97-963D-9B6022D49734}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
