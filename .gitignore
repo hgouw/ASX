@@ -6,8 +6,8 @@
 *.user
 ASX.BusinessLayer/bin/Debug/*
 ASX.BusinessLayer/obj/Debug/*
-ASX.BusinessLayer.Test/bin/Debug/*
-ASX.BusinessLayer.Test/obj/Debug/*
+ASX.BusinessLayer.Tests/bin/Debug/*
+ASX.BusinessLayer.Tests/obj/Debug/*
 ASX.Common/bin/Debug/*
 ASX.Common/obj/Debug/*
 ASX.DataAccess/bin/Debug/*

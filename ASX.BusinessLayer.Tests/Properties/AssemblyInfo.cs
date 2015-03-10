@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ASX.BusinessLayer.Test")]
+[assembly: AssemblyTitle("ASX.BusinessLayer.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ASX.BusinessLayer.Test")]
+[assembly: AssemblyProduct("ASX.BusinessLayer.Tests")]
 [assembly: AssemblyCopyright("Copyright © gouw.ws 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
