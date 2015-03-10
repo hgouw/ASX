@@ -51,7 +51,14 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CompanyTest.cs" />
+    <Compile Include="HistoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ASX.BusinessLayer\ASX.BusinessLayer.csproj">
+      <Project>{7283646f-6f54-4ad3-a3e6-797ce85ae3a2}</Project>
+      <Name>ASX.BusinessLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
