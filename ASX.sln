@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ASX.Database", "ASX.Database\ASX.Database.sqlproj", "{A5C10271-6F68-4620-9E82-5AAAEA44E93A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASX.BusinessLayer", "ASX.BusinessLayer\ASX.BusinessLayer.csproj", "{7283646F-6F54-4AD3-A3E6-797CE85AE3A2}"
