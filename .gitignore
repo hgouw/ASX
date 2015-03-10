@@ -10,7 +10,11 @@ ASX.BusinessLayer.Tests/bin/Debug/*
 ASX.BusinessLayer.Tests/obj/Debug/*
 ASX.Common/bin/Debug/*
 ASX.Common/obj/Debug/*
+ASX.Common.Tests/bin/Debug/*
+ASX.Common.Tests/obj/Debug/*
 ASX.DataAccess/bin/Debug/*
 ASX.DataAccess/obj/Debug/*
+ASX.DataAccess.Tests/bin/Debug/*
+ASX.DataAccess.Tests/obj/Debug/*
 ASX.Database/bin/Debug/*
 ASX.Database/obj/Debug/*
