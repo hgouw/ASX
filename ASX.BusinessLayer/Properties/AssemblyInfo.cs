@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ASX.BusinessLayer")]
+[assembly: AssemblyProduct("ASX")]
 [assembly: AssemblyCopyright("Copyright © gouw.ws 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
