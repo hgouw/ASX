@@ -7,7 +7,7 @@ namespace ASX.BusinessLayer.Tests
     public class HistoryTest
     {
         [TestMethod()]
-        public void RetrieveTest()
+        public void ValidateTest()
         {
             Assert.Fail();
         }

@@ -7,7 +7,7 @@ namespace ASX.BusinessLayer.Tests
     public class CompanyTest
     {
         [TestMethod()]
-        public void RetrieveTest()
+        public void ValidateTest()
         {
             Assert.Fail();
         }
