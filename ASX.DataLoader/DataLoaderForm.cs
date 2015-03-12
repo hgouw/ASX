@@ -38,6 +38,7 @@ namespace ASX.DataLoader
                 _log.Append(e.FullPath);
                 _log.Append(" processed on ");
                 _log.Append(DateTime.Now.ToString());
+                _log.Append(Environment.NewLine);
                 _dirty = true;
             }
         }
@@ -46,9 +47,7 @@ namespace ASX.DataLoader
         {
             if (_dirty)
             {
-                lbLog.BeginUpdate();
-                lbLog.Items.Add(_log.ToString());
-                lbLog.EndUpdate();
+                rtbLog.Text += _log.ToString();
                 _dirty = false;
             }
         }
