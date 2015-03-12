@@ -28,13 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.tmrLog = new System.Windows.Forms.Timer(this.components);
+            this.lbLog = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
+            // 
+            // tmrLog
+            // 
+            this.tmrLog.Enabled = true;
+            this.tmrLog.Tick += new System.EventHandler(this.tmrLog_Tick);
+            // 
+            // lbLog
+            // 
+            this.lbLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbLog.FormattingEnabled = true;
+            this.lbLog.Location = new System.Drawing.Point(0, 0);
+            this.lbLog.Name = "lbLog";
+            this.lbLog.Size = new System.Drawing.Size(584, 561);
+            this.lbLog.TabIndex = 0;
             // 
             // DataLoaderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.lbLog);
             this.Name = "DataLoaderForm";
             this.Text = "DataLoaderForm";
             this.ResumeLayout(false);
@@ -42,5 +60,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer tmrLog;
+        private System.Windows.Forms.ListBox lbLog;
     }
 }
