@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[History]
 (
     [Date] DATETIME NOT NULL, 
-    [Code] NVARCHAR(10) NOT NULL, 
+    [Code] VARCHAR(10) NOT NULL, 
     [Open] DECIMAL(6, 3) NOT NULL, 
     [High] DECIMAL(6, 3) NOT NULL, 
     [Low] DECIMAL(6, 3) NOT NULL, 
