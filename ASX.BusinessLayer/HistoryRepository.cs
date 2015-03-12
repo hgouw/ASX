@@ -14,7 +14,7 @@ namespace ASX.BusinessLayer
             return history;
         }
 
-        public bool Save()
+        public bool Save(History history)
         {
             return true;
         }

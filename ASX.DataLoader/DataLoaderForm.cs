@@ -9,7 +9,6 @@ namespace ASX.DataLoader
     {
         private StringBuilder _log = new StringBuilder();
         private FileSystemWatcher _watcher = new FileSystemWatcher();
-        private bool _dirty = false;
 
         public DataLoaderForm()
         {
@@ -20,10 +19,10 @@ namespace ASX.DataLoader
         private void ApplySettings()
         {
             _watcher.Path = "c:\\test\\";
-            _watcher.NotifyFilter = NotifyFilters.LastAccess |
-                                    NotifyFilters.LastWrite |
+            _watcher.NotifyFilter = NotifyFilters.DirectoryName |
                                     NotifyFilters.FileName |
-                                    NotifyFilters.DirectoryName;
+                                    NotifyFilters.LastAccess |
+                                    NotifyFilters.LastWrite;
             _watcher.Filter = "*.csv";
             _watcher.Created += new FileSystemEventHandler(OnCreated);
             _watcher.EnableRaisingEvents = true;
@@ -31,25 +30,16 @@ namespace ASX.DataLoader
 
         private void OnCreated(object sender, FileSystemEventArgs e)
         {
-            var str = e.FullPath;
-            if (!_dirty)
-            {
-                _log.Remove(0, _log.Length);
-                _log.Append(e.FullPath);
-                _log.Append(" processed on ");
-                _log.Append(DateTime.Now.ToString());
-                _log.Append(Environment.NewLine);
-                _dirty = true;
-            }
+            _log.Append(e.FullPath);
+            _log.Append(" processed on ");
+            _log.Append(DateTime.Now.ToString());
+            _log.Append(Environment.NewLine);
         }
 
         private void tmrLog_Tick(object sender, System.EventArgs e)
         {
-            if (_dirty)
-            {
-                rtbLog.Text += _log.ToString();
-                _dirty = false;
-            }
+            rtbLog.Text += _log.ToString();
+            _log.Remove(0, _log.Length);
         }
     }
 }

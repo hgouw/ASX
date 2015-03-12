@@ -8,7 +8,7 @@
             return company;
         }
 
-        public bool Save()
+        public bool Save(Company company)
         {
             return true;
         }

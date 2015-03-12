@@ -36,7 +36,6 @@
             // tmrLog
             // 
             this.tmrLog.Enabled = true;
-            this.tmrLog.Interval = 1000;
             this.tmrLog.Tick += new System.EventHandler(this.tmrLog_Tick);
             // 
             // rtbLog
