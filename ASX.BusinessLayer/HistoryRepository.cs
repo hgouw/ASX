@@ -16,7 +16,21 @@ namespace ASX.BusinessLayer
 
         public bool Save(History history)
         {
-            return true;
+            var success = true;
+
+            if (history.IsValid && history.HasChanges)
+            {
+                if (history.IsNew)
+                {
+                    // Call Insert Stored Procedure
+                }
+                else
+                {
+                    // Call Update Stored Procedure
+                }
+            }
+
+            return success;
         }
     }
 }

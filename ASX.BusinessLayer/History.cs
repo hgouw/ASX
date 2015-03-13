@@ -2,7 +2,7 @@
 
 namespace ASX.BusinessLayer
 {
-    public class History
+    public class History : EntityBase
     {
         public History(DateTime date, string code)
         {
@@ -17,9 +17,14 @@ namespace ASX.BusinessLayer
         public decimal Low { get; set; }
         public decimal Last { get; set; }
 
-        public bool Validate()
+        public override bool Validate()
         {
             return true;
+        }
+
+        public override string ToString()
+        {
+            return String.Format("{0} - {1}", Code, Date.ToString("yyyy-mm-dd"));
         }
     }
 }

@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Company.cs" />
     <Compile Include="CompanyRepository.cs" />
+    <Compile Include="EntityBase.cs" />
     <Compile Include="History.cs" />
     <Compile Include="HistoryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

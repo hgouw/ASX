@@ -10,7 +10,21 @@
 
         public bool Save(Company company)
         {
-            return true;
+            var success = true;
+
+            if (company.IsValid && company.HasChanges)
+            {
+                if (company.IsNew)
+                {
+                    // Call Insert Stored Procedure
+                }
+                else
+                {
+                    // Call Update Stored Procedure
+                }
+            }
+
+            return success;
         }
     }
 }
