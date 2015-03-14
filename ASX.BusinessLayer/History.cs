@@ -1,8 +1,9 @@
-﻿using System;
+﻿using ASX.Common;
+using System;
 
 namespace ASX.BusinessLayer
 {
-    public class History : EntityBase
+    public class History : EntityBase, ILoggable
     {
         public History(DateTime date, string code)
         {
@@ -19,12 +20,17 @@ namespace ASX.BusinessLayer
 
         public override bool Validate()
         {
-            return true;
+            throw new NotImplementedException();
         }
 
         public override string ToString()
         {
-            return String.Format("{0} - {1}", Code, Date.ToString("yyyy-mm-dd"));
+            return String.Format("{0} - {1}", Date.ToString("yyyy-mm-dd"), Code);
+        }
+
+        public string Log()
+        {
+            return String.Format("Date: {0} - Code: v{1}", Date.ToString("yyyy-mm-dd"), Code);
         }
     }
 }

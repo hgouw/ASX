@@ -1,8 +1,9 @@
-﻿using System;
+﻿using ASX.Common;
+using System;
 
 namespace ASX.BusinessLayer
 {
-    public class Company : EntityBase
+    public class Company : EntityBase, ILoggable
     {
         public Company(string code, string name)
         {
@@ -15,12 +16,17 @@ namespace ASX.BusinessLayer
 
         public override bool Validate()
         {
-            return false;
+            throw new NotImplementedException();
         }
 
         public override string ToString()
         {
             return String.Format("{0} - {1}", Code, Name);
+        }
+
+        public string Log()
+        {
+            return String.Format("Code: {0} - Name: {1}", Code, Name);
         }
     }
 }
