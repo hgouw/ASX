@@ -3,7 +3,7 @@ using System;
 
 namespace ASX.BusinessLayer
 {
-    public class History : EntityBase, ILoggable
+    public class History : EntityBase, ILoggable, IEquatable<History>
     {
         public History(DateTime date, string code)
         {
@@ -31,6 +31,11 @@ namespace ASX.BusinessLayer
         public string Log()
         {
             return String.Format("Date: {0} - Code: v{1}", Date.ToString("yyyy-mm-dd"), Code);
+        }
+
+        public bool Equals(History other)
+        {
+            throw new NotImplementedException();
         }
     }
 }

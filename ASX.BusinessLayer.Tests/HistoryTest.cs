@@ -11,5 +11,23 @@ namespace ASX.BusinessLayer.Tests
         {
             Assert.Fail();
         }
+
+        [TestMethod()]
+        public void ToStringTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void LogTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void EqualsTest()
+        {
+            Assert.Fail();
+        }
     }
 }

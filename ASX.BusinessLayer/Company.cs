@@ -3,7 +3,7 @@ using System;
 
 namespace ASX.BusinessLayer
 {
-    public class Company : EntityBase, ILoggable
+    public class Company : EntityBase, ILoggable, IEquatable<Company>
     {
         public Company(string code, string name)
         {
@@ -27,6 +27,11 @@ namespace ASX.BusinessLayer
         public string Log()
         {
             return String.Format("Code: {0} - Name: {1}", Code, Name);
+        }
+
+        public bool Equals(Company other)
+        {
+            throw new NotImplementedException();
         }
     }
 }
