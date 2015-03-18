@@ -1,9 +1,3 @@
-*.dacpac
-*.dbmdl
-*.pdb
-*.suo
-*.user
-
 #################
 ## Visual Studio
 #################
