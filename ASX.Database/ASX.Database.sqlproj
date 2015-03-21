@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{a5c10271-6f68-4620-9e82-5aaaea44e93a}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -64,12 +64,15 @@
   <ItemGroup>
     <Build Include="Tables\Company.sql" />
     <Build Include="Tables\History.sql" />
+    <Build Include="Tables\IndustryGroup.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ASX.Database.test-localdb.publish.xml" />
     <None Include="ASX.Database.test-sqlexpress.publish.xml" />
     <None Include="Reference Data\Company.insert.data.sql" />
     <None Include="Reference Data\Company.merge.data.sql" />
+    <None Include="Reference Data\IndustryGroup.insert.data.sql" />
+    <None Include="Reference Data\IndustryGroup.merge.data.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Reference Data\ASX.Database.Script.PostDeployment.sql" />
