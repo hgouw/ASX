@@ -6,6 +6,6 @@
     [High] DECIMAL(6, 3) NOT NULL, 
     [Low] DECIMAL(6, 3) NOT NULL, 
     [Last] DECIMAL(6, 3) NOT NULL, 
-    CONSTRAINT [FK_History_Company] FOREIGN KEY ([Code]) REFERENCES [Company]([Code]), 
-    PRIMARY KEY ([Date], [Code])
+    PRIMARY KEY ([Date], [Code]),
+    CONSTRAINT [FK_History_Company] FOREIGN KEY ([Code]) REFERENCES [dbo].[Company]([Code])
 )

@@ -1,20 +1,21 @@
 ﻿-- Reference Data for Company
-MERGE INTO Company AS Target USING
+MERGE INTO [dbo].[Company] AS Target USING
 (VALUES
-  (N'CPU', N'COMPUTERSHARE LTD FPO'),
-  (N'CSR', N'CSR LIMITED FPO'),
-  (N'FXJ', N'FAIRFAX MEDIA LTD FPO'),
-  (N'MPL', N'MEDIBANK PRIVATE LTD FPO')
+  (N'CPU', N'COMPUTERSHARE LTD FPO', N'Software & Services'),
+  (N'CSR', N'CSR LIMITED FPO', N'Materials'),
+  (N'FXJ', N'FAIRFAX MEDIA LTD FPO', N'Media'),
+  (N'MPL', N'MEDIBANK PRIVATE LTD FPO', N'Insurance')
 )
-AS SOURCE ([Code], Name)
-ON Target.Code = Source.Code
+AS SOURCE ([Code], [Name], [Group])
+ON Target.[Code] = Source.[Code]
 
 -- Update matched rows
 WHEN MATCHED THEN
 UPDATE SET [Code] = Source.[Code],
-           Name = Source.Name
+           [Name] = Source.[Name],
+           [Group] = Source.[Group]
 
 -- Insert new rows
 WHEN NOT MATCHED BY TARGET THEN
-INSERT ([Code], Name)
-VALUES (Source.[Code], Source.Name);
+INSERT ([Code], [Name], [Group])
+VALUES (Source.[Code], Source.[Name], Source.[Group]);

@@ -10,6 +10,8 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
+--:r ".\IndustryGroup.insert.data.sql"
+:r ".\IndustryGroup.merge.data.sql"
 --:r ".\Company.insert.data.sql"
 :r ".\Company.merge.data.sql"
 GO
