@@ -5,14 +5,14 @@ namespace ASX.BusinessLayer
 {
     public class History : EntityBase, ILoggable, IEquatable<History>
     {
-        public History(DateTime date, string code)
+        public History(string code, DateTime date)
         {
-            Date = date;
             Code = code;
+            Date = date;
         }
         
-        public DateTime Date { get; private set; }
         public string Code { get; private set; }
+        public DateTime Date { get; private set; }
         public decimal Open { get; set; }
         public decimal High { get; set; }
         public decimal Low { get; set; }
@@ -25,12 +25,12 @@ namespace ASX.BusinessLayer
 
         public override string ToString()
         {
-            return String.Format("{0} - {1}", Date.ToString("yyyy-mm-dd"), Code);
+            return String.Format("{0} - {1}", Code, Date.ToString("yyyy-mm-dd"));
         }
 
         public string Log()
         {
-            return String.Format("Date: {0} - Code: v{1}", Date.ToString("yyyy-mm-dd"), Code);
+            return String.Format("Code: {0} - : Date{1}", Code, Date.ToString("yyyy-mm-dd"));
         }
 
         public bool Equals(History other)

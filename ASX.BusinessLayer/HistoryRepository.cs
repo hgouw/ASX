@@ -4,9 +4,9 @@ namespace ASX.BusinessLayer
 {
     public class HistoryRepository
     {
-        public History Retrieve(DateTime date, string code)
+        public History Retrieve(string code, DateTime date)
         {
-            var history = new History(date, code);
+            var history = new History(code, date);
             history.Open = 2;
             history.High = 2;
             history.Low = 2;

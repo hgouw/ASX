@@ -30,10 +30,13 @@ namespace ASX.DataLoader
 
         private void OnCreated(object sender, FileSystemEventArgs e)
         {
-            _log.Append(e.FullPath);
-            _log.Append(" processed on ");
-            _log.Append(DateTime.Now.ToString());
-            _log.Append(Environment.NewLine);
+            if (FileHandler.Process(e.FullPath))
+            {
+                _log.Append(e.FullPath);
+                _log.Append(" processed on ");
+                _log.Append(DateTime.Now.ToString());
+                _log.Append(Environment.NewLine);
+            }
         }
 
         private void tmrLog_Tick(object sender, System.EventArgs e)

@@ -53,6 +53,7 @@
     <Compile Include="DataLoaderForm.Designer.cs">
       <DependentUpon>DataLoaderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,6 +63,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Sample Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ASX.BusinessLayer\ASX.BusinessLayer.csproj">
+      <Project>{7283646f-6f54-4ad3-a3e6-797ce85ae3a2}</Project>
+      <Name>ASX.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASX.Common\ASX.Common.csproj">
+      <Project>{42f24c19-a7c4-4c5b-bb02-2e39e2fd25aa}</Project>
+      <Name>ASX.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
