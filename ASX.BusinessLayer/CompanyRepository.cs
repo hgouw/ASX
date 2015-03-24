@@ -4,7 +4,7 @@
     {
         public Company Retrieve(string code)
         {
-            var company = new Company(code, "MEDIBANK PRIVATE LTD FPO");
+            var company = new Company(code, "MEDIBANK PRIVATE LTD FPO", "Insurance");
             return company;
         }
 

@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
+using ASX.BusinessLayer;
 
 namespace ASX.DataAccess
 {
     public class ASXModelContext : DbContext
     {
-        public DbSet<Company> Companies { get; set; }
+        public DbSet<Company> Companys { get; set; }
         public DbSet<History> Historys { get; set; }
     }
 }

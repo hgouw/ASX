@@ -1,5 +1,5 @@
-﻿using ASX.Common;
-using System;
+﻿using System;
+using ASX.Common;
 
 namespace ASX.BusinessLayer
 {

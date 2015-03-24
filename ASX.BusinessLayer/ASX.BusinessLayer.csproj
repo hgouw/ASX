@@ -44,6 +44,8 @@
     <Compile Include="EntityBase.cs" />
     <Compile Include="History.cs" />
     <Compile Include="HistoryRepository.cs" />
+    <Compile Include="IndustryGroup.cs" />
+    <Compile Include="IndustryGroupRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
