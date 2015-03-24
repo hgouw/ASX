@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using ASX.Common;
 
 namespace ASX.BusinessLayer
@@ -12,6 +13,7 @@ namespace ASX.BusinessLayer
             Group = group;
         }
 
+        [Key]
         public string Code { get; private set; }
         public string Name { get; private set; }
         public string Group { get; private set; }

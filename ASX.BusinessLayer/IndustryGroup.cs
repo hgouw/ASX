@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using ASX.Common;
 
 namespace ASX.BusinessLayer
@@ -10,6 +11,7 @@ namespace ASX.BusinessLayer
             Group = group;
         }
 
+        [Key]
         public string Group { get; private set; }
 
         public override bool Validate()

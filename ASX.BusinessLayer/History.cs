@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using ASX.Common;
 
 namespace ASX.BusinessLayer
@@ -10,8 +11,10 @@ namespace ASX.BusinessLayer
             Code = code;
             Date = date;
         }
-        
+
+        [Key]
         public string Code { get; private set; }
+        [Key]
         public DateTime Date { get; private set; }
         public decimal Open { get; set; }
         public decimal High { get; set; }
