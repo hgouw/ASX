@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using ASX.Common;
 
 namespace ASX.BusinessLayer
@@ -16,6 +17,7 @@ namespace ASX.BusinessLayer
         [Key]
         public string Code { get; private set; }
         public string Name { get; private set; }
+        [ForeignKey("IndustryGroup")]
         public string Group { get; private set; }
 
         public override bool Validate()

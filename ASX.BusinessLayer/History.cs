@@ -13,8 +13,7 @@ namespace ASX.BusinessLayer
             Date = date;
         }
 
-        [Key]
-        [ForeignKey("Company")] 
+        [Key, Column(Order = 1), ForeignKey("Company")]
         public string Code { get; private set; }
         [Key, Column(Order = 2)]
         public DateTime Date { get; private set; }
