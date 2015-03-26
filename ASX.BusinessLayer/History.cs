@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using ASX.Common;
 
 namespace ASX.BusinessLayer
@@ -13,8 +14,9 @@ namespace ASX.BusinessLayer
         }
 
         [Key]
+        [ForeignKey("Company")] 
         public string Code { get; private set; }
-        [Key]
+        [Key, Column(Order = 2)]
         public DateTime Date { get; private set; }
         public decimal Open { get; set; }
         public decimal High { get; set; }
