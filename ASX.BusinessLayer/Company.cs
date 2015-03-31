@@ -20,6 +20,8 @@ namespace ASX.BusinessLayer
         [ForeignKey("IndustryGroup")]
         public string Group { get; private set; }
 
+        public IndustryGroup IndustryGroup { get; set; }
+
         public override bool Validate()
         {
             throw new NotImplementedException();

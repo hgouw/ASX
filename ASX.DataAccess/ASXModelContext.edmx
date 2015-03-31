@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Edmx Version="3.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Runtime>
+    <ConceptualModels>
+      <Schema Namespace="ASX.DataAccess" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Company" customannotation:ClrType="ASX.BusinessLayer.Company, ASX.BusinessLayer, Version=0.0.0.1, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Group" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="EntityState" Type="Self.EntityStates" Nullable="false" />
+          <Property Name="IsNew" Type="Boolean" Nullable="false" />
+          <Property Name="HasChanges" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="IndustryGroup" Relationship="Self.Company_IndustryGroup" FromRole="Company_IndustryGroup_Source" ToRole="Company_IndustryGroup_Target" />
+        </EntityType>
+        <EntityType Name="IndustryGroup" customannotation:ClrType="ASX.BusinessLayer.IndustryGroup, ASX.BusinessLayer, Version=0.0.0.1, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Group" />
+          </Key>
+          <Property Name="Group" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EntityState" Type="Self.EntityStates" Nullable="false" />
+          <Property Name="IsNew" Type="Boolean" Nullable="false" />
+          <Property Name="HasChanges" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EnumType Name="EntityStates" IsFlags="false" customannotation:ClrType="ASX.BusinessLayer.EntityStates, ASX.BusinessLayer, Version=0.0.0.1, Culture=neutral, PublicKeyToken=null" UnderlyingType="Int32">
+          <Member Name="Active" Value="0" />
+          <Member Name="Deleted" Value="1" />
+        </EnumType>
+        <Association Name="Company_IndustryGroup">
+          <End Role="Company_IndustryGroup_Source" Type="Self.Company" Multiplicity="*" />
+          <End Role="Company_IndustryGroup_Target" Type="Self.IndustryGroup" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Company_IndustryGroup_Target">
+              <PropertyRef Name="Group" />
+            </Principal>
+            <Dependent Role="Company_IndustryGroup_Source">
+              <PropertyRef Name="Group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ASXModelContext" customannotation:UseClrTypes="true">
+          <EntitySet Name="Companys" EntityType="Self.Company" />
+          <EntitySet Name="IndustryGroups" EntityType="Self.IndustryGroup" />
+          <AssociationSet Name="Company_IndustryGroup" Association="Self.Company_IndustryGroup">
+            <End Role="Company_IndustryGroup_Source" EntitySet="Companys" />
+            <End Role="Company_IndustryGroup_Target" EntitySet="IndustryGroups" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </ConceptualModels>
+    <Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CodeFirstDatabase" CdmEntityContainer="ASXModelContext">
+          <EntitySetMapping Name="Companys">
+            <EntityTypeMapping TypeName="ASX.DataAccess.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Group" ColumnName="Group" />
+                <ScalarProperty Name="EntityState" ColumnName="EntityState" />
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="HasChanges" ColumnName="HasChanges" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IndustryGroups">
+            <EntityTypeMapping TypeName="ASX.DataAccess.IndustryGroup">
+              <MappingFragment StoreEntitySet="IndustryGroup">
+                <ScalarProperty Name="Group" ColumnName="Group" />
+                <ScalarProperty Name="EntityState" ColumnName="EntityState" />
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="HasChanges" ColumnName="HasChanges" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </Mappings>
+    <StorageModels>
+      <Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="Group" Type="nvarchar" customannotation:Index="{ Name: IX_Group, Order: 0 }" MaxLength="128" Nullable="true" />
+          <Property Name="EntityState" Type="int" Nullable="false" />
+          <Property Name="IsNew" Type="bit" Nullable="false" />
+          <Property Name="HasChanges" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IndustryGroup">
+          <Key>
+            <PropertyRef Name="Group" />
+          </Key>
+          <Property Name="Group" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="EntityState" Type="int" Nullable="false" />
+          <Property Name="IsNew" Type="bit" Nullable="false" />
+          <Property Name="HasChanges" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="Company_IndustryGroup">
+          <End Role="IndustryGroup" Type="Self.IndustryGroup" Multiplicity="0..1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IndustryGroup">
+              <PropertyRef Name="Group" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="Group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CodeFirstDatabase">
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" Table="Companies" />
+          <EntitySet Name="IndustryGroup" EntityType="Self.IndustryGroup" Schema="dbo" Table="IndustryGroups" />
+          <AssociationSet Name="Company_IndustryGroup" Association="Self.Company_IndustryGroup">
+            <End Role="IndustryGroup" EntitySet="IndustryGroup" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </StorageModels>
+  </Runtime>
+  <Designer>
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="ProcessDependentTemplatesOnSave" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <Diagrams >
+      <Diagram DiagramId="98eb8f4f5a764a56bde19ee8138dc02f" Name="Diagram1">
+        <EntityTypeShape EntityType="ASX.DataAccess.Company" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ASX.DataAccess.IndustryGroup" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="ASX.DataAccess.Company_IndustryGroup" ManuallyRouted="false" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</Edmx>
