@@ -4,7 +4,7 @@ using ASX.BusinessLayer;
 namespace ASX.BusinessLayer.Tests
 {
     [TestClass()]
-    public class HistoryTest
+    public class EndOfDayTest
     {
         [TestMethod()]
         public void ValidateTest()

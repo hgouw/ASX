@@ -6,9 +6,9 @@ using ASX.BusinessLayer;
 
 namespace ASX.DataLoader
 {
-    public sealed class HistoryMap : CsvClassMap<History>
+    public sealed class EndOfDayMap : CsvClassMap<EndOfDay>
     {
-        public HistoryMap()
+        public EndOfDayMap()
         {
             Map(m => m.Code).Name("Code");
             Map(m => m.Date).Name("Date");
@@ -24,7 +24,7 @@ namespace ASX.DataLoader
         public static bool Process(string fullPath)
         {
             var csv = new CsvReader(File.OpenText(fullPath));
-            var records = csv.GetRecords<History>();
+            var records = csv.GetRecords<EndOfDay>();
 
             return true;
         }

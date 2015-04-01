@@ -7,6 +7,6 @@ namespace ASX.DataAccess
     {
         public DbSet<IndustryGroup> IndustryGroups { get; set; }
         public DbSet<Company> Companys { get; set; }
-        //public DbSet<History> Historys { get; set; }
+        public DbSet<EndOfDay> EndOfDays { get; set; }
     }
 }

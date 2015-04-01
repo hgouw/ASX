@@ -4,7 +4,7 @@ using ASX.Common;
 
 namespace ASX.BusinessLayer
 {
-    public class IndustryGroup : EntityBase, ILoggable, IEquatable<History>
+    public class IndustryGroup : EntityBase, ILoggable, IEquatable<EndOfDay>
     {
         public IndustryGroup(string group)
         {
@@ -29,7 +29,7 @@ namespace ASX.BusinessLayer
             return String.Format("Group: {0}", Group);
         }
 
-        public bool Equals(History other)
+        public bool Equals(EndOfDay other)
         {
             throw new NotImplementedException();
         }

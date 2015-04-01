@@ -5,9 +5,9 @@ using ASX.Common;
 
 namespace ASX.BusinessLayer
 {
-    public class History : EntityBase, ILoggable, IEquatable<History>
+    public class EndOfDay : EntityBase, ILoggable, IEquatable<EndOfDay>
     {
-        public History(string code, DateTime date)
+        public EndOfDay(string code, DateTime date)
         {
             Code = code;
             Date = date;
@@ -39,7 +39,7 @@ namespace ASX.BusinessLayer
             return String.Format("Code: {0} - : Date{1}", Code, Date.ToString("yyyy-mm-dd"));
         }
 
-        public bool Equals(History other)
+        public bool Equals(EndOfDay other)
         {
             throw new NotImplementedException();
         }

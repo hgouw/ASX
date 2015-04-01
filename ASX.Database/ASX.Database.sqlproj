@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Company.sql" />
-    <Build Include="Tables\History.sql" />
+    <Build Include="Tables\EndOfDay.sql" />
     <Build Include="Tables\IndustryGroup.sql" />
   </ItemGroup>
   <ItemGroup>

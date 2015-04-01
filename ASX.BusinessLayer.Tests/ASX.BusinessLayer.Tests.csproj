@@ -52,8 +52,8 @@
   <ItemGroup>
     <Compile Include="CompanyRepositoryTest.cs" />
     <Compile Include="CompanyTest.cs" />
-    <Compile Include="HistoryRepositoryTest.cs" />
-    <Compile Include="HistoryTest.cs" />
+    <Compile Include="EndOfDayRepositoryTest.cs" />
+    <Compile Include="EndOfDayTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
