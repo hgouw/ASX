@@ -1,5 +1,5 @@
 ﻿-- Reference Data for Company
-MERGE INTO [dbo].[Company] AS Target USING
+MERGE INTO [dbo].[Companies] AS Target USING
 (VALUES
   (N'CPU', N'COMPUTERSHARE LTD FPO', N'Software & Services'),
   (N'CSR', N'CSR LIMITED FPO', N'Materials'),

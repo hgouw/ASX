@@ -1,5 +1,5 @@
 ﻿-- Reference Data for IndustryGroup
-MERGE INTO [dbo].[IndustryGroup] AS Target USING
+MERGE INTO [dbo].[IndustryGroups] AS Target USING
 (VALUES
   (N'Automobiles & Components'),
   (N'Banks'),
