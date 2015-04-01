@@ -24,6 +24,22 @@
           <Property Name="IsNew" Type="Boolean" Nullable="false" />
           <Property Name="HasChanges" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="EndOfDay" customannotation:ClrType="ASX.BusinessLayer.EndOfDay, ASX.BusinessLayer, Version=0.0.0.1, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Open" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="High" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Low" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Last" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EntityState" Type="Self.EntityStates" Nullable="false" />
+          <Property Name="IsNew" Type="Boolean" Nullable="false" />
+          <Property Name="HasChanges" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Self.EndOfDay_Company" FromRole="EndOfDay_Company_Source" ToRole="EndOfDay_Company_Target" />
+        </EntityType>
         <EnumType Name="EntityStates" IsFlags="false" customannotation:ClrType="ASX.BusinessLayer.EntityStates, ASX.BusinessLayer, Version=0.0.0.1, Culture=neutral, PublicKeyToken=null" UnderlyingType="Int32">
           <Member Name="Active" Value="0" />
           <Member Name="Deleted" Value="1" />
@@ -40,12 +56,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="EndOfDay_Company">
+          <End Role="EndOfDay_Company_Source" Type="Self.EndOfDay" Multiplicity="*" />
+          <End Role="EndOfDay_Company_Target" Type="Self.Company" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="EndOfDay_Company_Target">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="EndOfDay_Company_Source">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ASXModelContext" customannotation:UseClrTypes="true">
           <EntitySet Name="Companys" EntityType="Self.Company" />
           <EntitySet Name="IndustryGroups" EntityType="Self.IndustryGroup" />
+          <EntitySet Name="EndOfDays" EntityType="Self.EndOfDay" />
           <AssociationSet Name="Company_IndustryGroup" Association="Self.Company_IndustryGroup">
             <End Role="Company_IndustryGroup_Source" EntitySet="Companys" />
             <End Role="Company_IndustryGroup_Target" EntitySet="IndustryGroups" />
+          </AssociationSet>
+          <AssociationSet Name="EndOfDay_Company" Association="Self.EndOfDay_Company">
+            <End Role="EndOfDay_Company_Source" EntitySet="EndOfDays" />
+            <End Role="EndOfDay_Company_Target" EntitySet="Companys" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -75,11 +110,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="EndOfDays">
+            <EntityTypeMapping TypeName="ASX.DataAccess.EndOfDay">
+              <MappingFragment StoreEntitySet="EndOfDay">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Open" ColumnName="Open" />
+                <ScalarProperty Name="High" ColumnName="High" />
+                <ScalarProperty Name="Low" ColumnName="Low" />
+                <ScalarProperty Name="Last" ColumnName="Last" />
+                <ScalarProperty Name="EntityState" ColumnName="EntityState" />
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="HasChanges" ColumnName="HasChanges" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </Mappings>
     <StorageModels>
-      <Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="Code" />
@@ -100,6 +150,21 @@
           <Property Name="IsNew" Type="bit" Nullable="false" />
           <Property Name="HasChanges" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="EndOfDay">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Code" Type="nvarchar" customannotation:Index="{ Name: IX_Code, Order: 0 }" MaxLength="128" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Open" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="High" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Low" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Last" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EntityState" Type="int" Nullable="false" />
+          <Property Name="IsNew" Type="bit" Nullable="false" />
+          <Property Name="HasChanges" Type="bit" Nullable="false" />
+        </EntityType>
         <Association Name="Company_IndustryGroup">
           <End Role="IndustryGroup" Type="Self.IndustryGroup" Multiplicity="0..1" />
           <End Role="Company" Type="Self.Company" Multiplicity="*" />
@@ -112,12 +177,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="EndOfDay_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EndOfDay" Type="Self.EndOfDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="EndOfDay">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="CodeFirstDatabase">
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" Table="Companies" />
           <EntitySet Name="IndustryGroup" EntityType="Self.IndustryGroup" Schema="dbo" Table="IndustryGroups" />
+          <EntitySet Name="EndOfDay" EntityType="Self.EndOfDay" Schema="dbo" Table="EndOfDays" />
           <AssociationSet Name="Company_IndustryGroup" Association="Self.Company_IndustryGroup">
             <End Role="IndustryGroup" EntitySet="IndustryGroup" />
             <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="EndOfDay_Company" Association="Self.EndOfDay_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="EndOfDay" EntitySet="EndOfDay" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -138,10 +222,12 @@
       </DesignerInfoPropertySet>
     </Options>
     <Diagrams >
-      <Diagram DiagramId="98eb8f4f5a764a56bde19ee8138dc02f" Name="Diagram1">
-        <EntityTypeShape EntityType="ASX.DataAccess.Company" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ASX.DataAccess.IndustryGroup" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+      <Diagram DiagramId="b698ca303a3d44b9a318b2090eab0d59" Name="Diagram1">
+        <EntityTypeShape EntityType="ASX.DataAccess.Company" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ASX.DataAccess.IndustryGroup" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ASX.DataAccess.EndOfDay" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="ASX.DataAccess.Company_IndustryGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="ASX.DataAccess.EndOfDay_Company" ManuallyRouted="false" />
       </Diagram>
     </Diagrams>
   </Designer>
