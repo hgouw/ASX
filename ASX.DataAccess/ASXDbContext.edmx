@@ -70,25 +70,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ASXModelContext" customannotation:UseClrTypes="true">
-          <EntitySet Name="Companys" EntityType="Self.Company" />
+        <EntityContainer Name="ASXDbContext" customannotation:UseClrTypes="true">
+          <EntitySet Name="Companies" EntityType="Self.Company" />
           <EntitySet Name="IndustryGroups" EntityType="Self.IndustryGroup" />
           <EntitySet Name="EndOfDays" EntityType="Self.EndOfDay" />
           <AssociationSet Name="Company_IndustryGroup" Association="Self.Company_IndustryGroup">
-            <End Role="Company_IndustryGroup_Source" EntitySet="Companys" />
+            <End Role="Company_IndustryGroup_Source" EntitySet="Companies" />
             <End Role="Company_IndustryGroup_Target" EntitySet="IndustryGroups" />
           </AssociationSet>
           <AssociationSet Name="EndOfDay_Company" Association="Self.EndOfDay_Company">
             <End Role="EndOfDay_Company_Source" EntitySet="EndOfDays" />
-            <End Role="EndOfDay_Company_Target" EntitySet="Companys" />
+            <End Role="EndOfDay_Company_Target" EntitySet="Companies" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </ConceptualModels>
     <Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CodeFirstDatabase" CdmEntityContainer="ASXModelContext">
-          <EntitySetMapping Name="Companys">
+        <EntityContainerMapping StorageEntityContainer="CodeFirstDatabase" CdmEntityContainer="ASXDbContext">
+          <EntitySetMapping Name="Companies">
             <EntityTypeMapping TypeName="ASX.DataAccess.Company">
               <MappingFragment StoreEntitySet="Company">
                 <ScalarProperty Name="Code" ColumnName="Code" />
@@ -129,7 +129,7 @@
       </Mapping>
     </Mappings>
     <StorageModels>
-      <Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="Code" />
@@ -222,7 +222,7 @@
       </DesignerInfoPropertySet>
     </Options>
     <Diagrams >
-      <Diagram DiagramId="b698ca303a3d44b9a318b2090eab0d59" Name="Diagram1">
+      <Diagram DiagramId="6bb5969252a043ffba9a88f37c39a977" Name="Diagram1">
         <EntityTypeShape EntityType="ASX.DataAccess.Company" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ASX.DataAccess.IndustryGroup" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ASX.DataAccess.EndOfDay" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />

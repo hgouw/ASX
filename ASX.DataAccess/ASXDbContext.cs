@@ -3,7 +3,7 @@ using ASX.BusinessLayer;
 
 namespace ASX.DataAccess
 {
-    public class ASXModelContext : DbContext
+    public class ASXDbContext : DbContext
     {
         public DbSet<IndustryGroup> IndustryGroups { get; set; }
         public DbSet<Company> Companies { get; set; }
