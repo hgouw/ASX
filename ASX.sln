@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASX.Web", "ASX.Web\ASX.Web.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASX.Web.Tests", "ASX.Web.Tests\ASX.Web.Tests.csproj", "{704AA357-760F-46D6-9AEB-B99C74B6AA55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASX.DataAccess.Tests", "ASX.DataAccess.Tests\ASX.DataAccess.Tests.csproj", "{FD466B06-0322-45CE-9D6B-B1D497381DBB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASX.DataAccess.Tests", "ASX.DataAccess.Tests\ASX.DataAccess.Tests.csproj", "{D0613780-3EEA-478A-9D1C-E7D49BCA7864}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,10 +61,10 @@ Global
 		{704AA357-760F-46D6-9AEB-B99C74B6AA55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{704AA357-760F-46D6-9AEB-B99C74B6AA55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{704AA357-760F-46D6-9AEB-B99C74B6AA55}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD466B06-0322-45CE-9D6B-B1D497381DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD466B06-0322-45CE-9D6B-B1D497381DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD466B06-0322-45CE-9D6B-B1D497381DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD466B06-0322-45CE-9D6B-B1D497381DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0613780-3EEA-478A-9D1C-E7D49BCA7864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0613780-3EEA-478A-9D1C-E7D49BCA7864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0613780-3EEA-478A-9D1C-E7D49BCA7864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0613780-3EEA-478A-9D1C-E7D49BCA7864}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

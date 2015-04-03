@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FD466B06-0322-45CE-9D6B-B1D497381DBB}</ProjectGuid>
+    <ProjectGuid>{D0613780-3EEA-478A-9D1C-E7D49BCA7864}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ASX.DataAccess.Tests</RootNamespace>
@@ -35,7 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -50,13 +57,26 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ASXDbContextTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ASX.BusinessLayer\ASX.BusinessLayer.csproj">
+      <Project>{7283646f-6f54-4ad3-a3e6-797ce85ae3a2}</Project>
+      <Name>ASX.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASX.Common\ASX.Common.csproj">
+      <Project>{42f24c19-a7c4-4c5b-bb02-2e39e2fd25aa}</Project>
+      <Name>ASX.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ASX.DataAccess\ASX.DataAccess.csproj">
-      <Project>{ac7191c6-c657-4288-8d8b-cee1acfbd3fd}</Project>
+      <Project>{AC7191C6-C657-4288-8D8B-CEE1ACFBD3FD}</Project>
       <Name>ASX.DataAccess</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

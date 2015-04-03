@@ -4,8 +4,12 @@ using ASX.Common;
 
 namespace ASX.BusinessLayer
 {
-    public class IndustryGroup : EntityBase, ILoggable, IEquatable<EndOfDay>
+    public class IndustryGroup : ILoggable, IEquatable<EndOfDay>
     {
+        public IndustryGroup()
+        {
+        }
+
         public IndustryGroup(string group)
         {
             Group = group;
@@ -13,11 +17,6 @@ namespace ASX.BusinessLayer
 
         [Key]
         public string Group { get; private set; }
-
-        public override bool Validate()
-        {
-            throw new NotImplementedException();
-        }
 
         public override string ToString()
         {
