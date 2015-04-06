@@ -49,18 +49,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ASXDbContext.cs" />
-    <Compile Include="ASXDbContext.Designer.cs">
+    <Compile Include="ASXModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ASXDbContext.edmx</DependentUpon>
+      <DependentUpon>ASXModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="ASXDbContext.edmx">
+    <EntityDeploy Include="ASXModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ASXDbContext.Designer.cs</LastGenOutput>
+      <LastGenOutput>ASXModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="packages.config" />
   </ItemGroup>
