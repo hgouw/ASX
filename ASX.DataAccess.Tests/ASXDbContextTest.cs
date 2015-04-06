@@ -10,14 +10,14 @@ namespace ASX.DataAccess.Tests
         public void GetIndustryGroupsTest()
         {
             var industryGroups = ASXDbContext.GetIndustryGroups();
-            Assert.IsTrue(industryGroups.Count > 0);
+            Assert.IsTrue(industryGroups.Count == 26);
         }
 
         [TestMethod()]
         public void GetCompaniesTest()
         {
             var companies = ASXDbContext.GetCompanies();
-            Assert.IsTrue(companies.Count > 0);
+            Assert.IsTrue(companies.Count == 4);
         }
 
         [TestMethod()]

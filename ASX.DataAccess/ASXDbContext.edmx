@@ -10,9 +10,6 @@
           <Property Name="Code" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Group" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="EntityState" Type="Self.EntityStates" Nullable="false" />
-          <Property Name="IsNew" Type="Boolean" Nullable="false" />
-          <Property Name="HasChanges" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="IndustryGroup" Relationship="Self.Company_IndustryGroup" FromRole="Company_IndustryGroup_Source" ToRole="Company_IndustryGroup_Target" />
         </EntityType>
         <EntityType Name="IndustryGroup" customannotation:ClrType="ASX.BusinessLayer.IndustryGroup, ASX.BusinessLayer, Version=0.0.0.1, Culture=neutral, PublicKeyToken=null">
@@ -20,9 +17,6 @@
             <PropertyRef Name="Group" />
           </Key>
           <Property Name="Group" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="EntityState" Type="Self.EntityStates" Nullable="false" />
-          <Property Name="IsNew" Type="Boolean" Nullable="false" />
-          <Property Name="HasChanges" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="EndOfDay" customannotation:ClrType="ASX.BusinessLayer.EndOfDay, ASX.BusinessLayer, Version=0.0.0.1, Culture=neutral, PublicKeyToken=null">
           <Key>
@@ -35,15 +29,8 @@
           <Property Name="High" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Low" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Last" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="EntityState" Type="Self.EntityStates" Nullable="false" />
-          <Property Name="IsNew" Type="Boolean" Nullable="false" />
-          <Property Name="HasChanges" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Company" Relationship="Self.EndOfDay_Company" FromRole="EndOfDay_Company_Source" ToRole="EndOfDay_Company_Target" />
         </EntityType>
-        <EnumType Name="EntityStates" IsFlags="false" customannotation:ClrType="ASX.BusinessLayer.EntityStates, ASX.BusinessLayer, Version=0.0.0.1, Culture=neutral, PublicKeyToken=null" UnderlyingType="Int32">
-          <Member Name="Active" Value="0" />
-          <Member Name="Deleted" Value="1" />
-        </EnumType>
         <Association Name="Company_IndustryGroup">
           <End Role="Company_IndustryGroup_Source" Type="Self.Company" Multiplicity="*" />
           <End Role="Company_IndustryGroup_Target" Type="Self.IndustryGroup" Multiplicity="0..1" />
@@ -94,9 +81,6 @@
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Group" ColumnName="Group" />
-                <ScalarProperty Name="EntityState" ColumnName="EntityState" />
-                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
-                <ScalarProperty Name="HasChanges" ColumnName="HasChanges" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -104,9 +88,6 @@
             <EntityTypeMapping TypeName="ASX.DataAccess.IndustryGroup">
               <MappingFragment StoreEntitySet="IndustryGroup">
                 <ScalarProperty Name="Group" ColumnName="Group" />
-                <ScalarProperty Name="EntityState" ColumnName="EntityState" />
-                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
-                <ScalarProperty Name="HasChanges" ColumnName="HasChanges" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -119,9 +100,6 @@
                 <ScalarProperty Name="High" ColumnName="High" />
                 <ScalarProperty Name="Low" ColumnName="Low" />
                 <ScalarProperty Name="Last" ColumnName="Last" />
-                <ScalarProperty Name="EntityState" ColumnName="EntityState" />
-                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
-                <ScalarProperty Name="HasChanges" ColumnName="HasChanges" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -137,18 +115,12 @@
           <Property Name="Code" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
           <Property Name="Group" Type="nvarchar" customannotation:Index="{ Name: IX_Group, Order: 0 }" MaxLength="128" Nullable="true" />
-          <Property Name="EntityState" Type="int" Nullable="false" />
-          <Property Name="IsNew" Type="bit" Nullable="false" />
-          <Property Name="HasChanges" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="IndustryGroup">
           <Key>
             <PropertyRef Name="Group" />
           </Key>
           <Property Name="Group" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="EntityState" Type="int" Nullable="false" />
-          <Property Name="IsNew" Type="bit" Nullable="false" />
-          <Property Name="HasChanges" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="EndOfDay">
           <Key>
@@ -161,9 +133,6 @@
           <Property Name="High" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Low" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Last" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="EntityState" Type="int" Nullable="false" />
-          <Property Name="IsNew" Type="bit" Nullable="false" />
-          <Property Name="HasChanges" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="Company_IndustryGroup">
           <End Role="IndustryGroup" Type="Self.IndustryGroup" Multiplicity="0..1" />
@@ -222,7 +191,7 @@
       </DesignerInfoPropertySet>
     </Options>
     <Diagrams >
-      <Diagram DiagramId="6bb5969252a043ffba9a88f37c39a977" Name="Diagram1">
+      <Diagram DiagramId="2b55f762d5774830bbdc2faf50430c42" Name="Diagram1">
         <EntityTypeShape EntityType="ASX.DataAccess.Company" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ASX.DataAccess.IndustryGroup" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ASX.DataAccess.EndOfDay" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
