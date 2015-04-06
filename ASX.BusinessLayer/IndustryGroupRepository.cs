@@ -12,7 +12,6 @@
         {
             var success = true;
 
-            /*
             if (industryGroup.IsValid && industryGroup.HasChanges)
             {
                 if (industryGroup.IsNew)
@@ -24,7 +23,6 @@
                     // Call Update Stored Procedure
                 }
             }
-            */
 
             return success;
         }

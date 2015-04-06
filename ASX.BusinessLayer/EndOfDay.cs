@@ -5,7 +5,7 @@ using ASX.Common;
 
 namespace ASX.BusinessLayer
 {
-    public class EndOfDay : ILoggable, IEquatable<EndOfDay>
+    public class EndOfDay : EntityBase, ILoggable, IEquatable<EndOfDay>
     {
         public EndOfDay()
         {
@@ -27,6 +27,11 @@ namespace ASX.BusinessLayer
         public decimal Last { get; set; }
 
         public Company Company { get; set; }
+
+        public override bool Validate()
+        {
+            throw new NotImplementedException();
+        }
 
         public override string ToString()
         {

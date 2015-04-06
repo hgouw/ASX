@@ -12,7 +12,6 @@
         {
             var success = true;
 
-            /*
             if (company.IsValid && company.HasChanges)
             {
                 if (company.IsNew)
@@ -24,7 +23,6 @@
                     // Call Update Stored Procedure
                 }
             }
-            */
 
             return success;
         }

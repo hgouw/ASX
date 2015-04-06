@@ -18,7 +18,6 @@ namespace ASX.BusinessLayer
         {
             var success = true;
 
-            /*
             if (endOfDay.IsValid && endOfDay.HasChanges)
             {
                 if (endOfDay.IsNew)
@@ -30,7 +29,6 @@ namespace ASX.BusinessLayer
                     // Call Update Stored Procedure
                 }
             }
-            */
 
             return success;
         }
