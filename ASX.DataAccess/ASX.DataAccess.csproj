@@ -54,6 +54,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ASXModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
