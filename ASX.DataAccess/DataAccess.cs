@@ -6,7 +6,7 @@ namespace ASX.DataAccess
 {
     public static class DataAccess
     {
-        public static List<IndustryGroup> GetIndustryGroups()
+        public static IList<IndustryGroup> GetIndustryGroups()
         {
             using (ASXDbContext dbContext = new ASXDbContext())
             {
@@ -14,7 +14,7 @@ namespace ASX.DataAccess
             }
         }
 
-        public static List<Company> GetCompanies()
+        public static IList<Company> GetCompanies()
         {
             using (ASXDbContext dbContext = new ASXDbContext())
             {
@@ -22,7 +22,7 @@ namespace ASX.DataAccess
             }
         }
 
-        public static List<EndOfDay> GetEndOfDays()
+        public static IList<EndOfDay> GetEndOfDays()
         {
             using (ASXDbContext dbContext = new ASXDbContext())
             {
