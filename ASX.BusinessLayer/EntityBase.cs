@@ -11,16 +11,16 @@ namespace ASX.BusinessLayer
     public abstract class EntityBase
     {
         [NotMapped]
-        public EntityStates EntityState { get; set; }
+        public virtual EntityStates EntityState { get; set; }
 
         [NotMapped]
-        public bool IsNew { get; private set; }
+        public virtual bool IsNew { get; private set; }
 
         [NotMapped]
-        public bool HasChanges { get; set; }
+        public virtual bool HasChanges { get; set; }
 
         [NotMapped]
-        public bool IsValid
+        public virtual bool IsValid
         {
             get
             {

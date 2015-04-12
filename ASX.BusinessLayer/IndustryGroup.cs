@@ -16,7 +16,7 @@ namespace ASX.BusinessLayer
         }
 
         [Key]
-        public string Group { get; private set; }
+        public virtual string Group { get; private set; }
 
         public override bool Validate()
         {
