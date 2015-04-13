@@ -8,7 +8,7 @@ namespace ASX.BusinessLayer
     {
         void Add(T newEntity);
         void Remove(T entity);
-        IQueryable<T> Find(Expression<Func<T, bool>> predicate);
         IQueryable<T> FindAll();
+        IQueryable<T> Find(Expression<Func<T, bool>> predicate);
     }
 }

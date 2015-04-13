@@ -47,6 +47,7 @@
     <Compile Include="EntityBase.cs" />
     <Compile Include="EndOfDay.cs" />
     <Compile Include="EndOfDayRepository.cs" />
+    <Compile Include="FakeRepository.cs" />
     <Compile Include="IndustryGroup.cs" />
     <Compile Include="IndustryGroupRepository.cs" />
     <Compile Include="IRepository.cs" />

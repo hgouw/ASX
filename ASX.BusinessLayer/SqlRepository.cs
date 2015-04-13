@@ -24,14 +24,14 @@ namespace ASX.BusinessLayer
             _objectSet.DeleteObject(entity);
         }
 
-        public IQueryable<T> Find(Expression<Func<T, bool>> predicate)
-        {
-            return _objectSet.Where(predicate);
-        }
-
         public IQueryable<T> FindAll()
         {
             return _objectSet;
+        }
+
+        public IQueryable<T> Find(Expression<Func<T, bool>> predicate)
+        {
+            return _objectSet.Where(predicate);
         }
     }
 }
