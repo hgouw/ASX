@@ -4,8 +4,9 @@ using System.Data.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ASX.BusinessLayer;
 
-namespace ASX.BusinessLayer
+namespace ASX.DataAccess
 {
     public class IMemoryUnitOfWork : IUnitOfWork
     {

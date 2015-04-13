@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace ASX.BusinessLayer
+namespace ASX.DataAccess
 {
     public interface IRepository<T> where T : class
     {

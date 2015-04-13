@@ -1,21 +1,19 @@
 ﻿using System.Configuration;
 using System.Data.Objects;
+using ASX.BusinessLayer;
 
-namespace ASX.BusinessLayer
+namespace ASX.DataAccess
 {
     public class SqlUnitOfWork : IUnitOfWork
     {
-        private const string ConnectionStringName = "ASXDbContext";
-
         private readonly ObjectContext _context;
         private SqlRepository<IndustryGroup> _industryGroups = null;
         private SqlRepository<Company> _companies = null;
         private SqlRepository<EndOfDay> _endOfDays = null;
 
-        public SqlUnitOfWork()
+        public SqlUnitOfWork(string connectionStringName)
         {
-            var connectionString = ConfigurationManager.ConnectionStrings[ConnectionStringName].ConnectionString;
-            _context = new ObjectContext(connectionString);
+            _context = new ObjectContext(ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString);
             _context.ContextOptions.LazyLoadingEnabled = true;
         }
 

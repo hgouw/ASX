@@ -43,19 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Company.cs" />
-    <Compile Include="CompanyRepository.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="EndOfDay.cs" />
-    <Compile Include="EndOfDayRepository.cs" />
-    <Compile Include="FakeRepository.cs" />
-    <Compile Include="IMemoryUnitOfWork.cs" />
     <Compile Include="IndustryGroup.cs" />
-    <Compile Include="IndustryGroupRepository.cs" />
-    <Compile Include="IRepository.cs" />
-    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlRepository.cs" />
-    <Compile Include="SqlUnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ASX.Common\ASX.Common.csproj">

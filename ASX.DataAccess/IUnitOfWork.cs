@@ -1,4 +1,6 @@
-﻿namespace ASX.BusinessLayer
+﻿using ASX.BusinessLayer;
+
+namespace ASX.DataAccess
 {
     interface IUnitOfWork
     {

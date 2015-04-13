@@ -6,6 +6,7 @@ namespace ASX.DataAccess.Tests
     [TestClass()]
     public class DataAccessTest
     {
+      
         [TestMethod()]
         public void GetIndustryGroupsTest()
         {
