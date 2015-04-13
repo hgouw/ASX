@@ -14,9 +14,9 @@ namespace ASX.BusinessLayer
             _objectSet = context.CreateObjectSet<T>();
         }
 
-        public void Add(T newEntity)
+        public void Add(T entity)
         {
-            _objectSet.AddObject(newEntity);
+            _objectSet.AddObject(entity);
         }
 
         public void Remove(T entity)
