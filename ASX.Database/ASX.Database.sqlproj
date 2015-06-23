@@ -65,6 +65,7 @@
     <Build Include="Tables\Company.sql" />
     <Build Include="Tables\EndOfDay.sql" />
     <Build Include="Tables\IndustryGroup.sql" />
+    <Build Include="Tables\WatchList.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ASX.Database.test-localdb.publish.xml" />
