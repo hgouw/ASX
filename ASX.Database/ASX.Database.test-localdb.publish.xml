@@ -3,7 +3,7 @@
   <PropertyGroup>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseName>ASX.Database</TargetDatabaseName>
-    <DeployScriptFileName>ASX.Test.Database.sql</DeployScriptFileName>
+    <DeployScriptFileName>ASX.Database.sql</DeployScriptFileName>
     <ScriptDatabaseOptions>True</ScriptDatabaseOptions>
     <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
     <CreateNewDatabase>True</CreateNewDatabase>
