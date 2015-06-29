@@ -74,6 +74,8 @@
     <None Include="Reference Data\Company.merge.data.sql" />
     <None Include="Reference Data\IndustryGroup.insert.data.sql" />
     <None Include="Reference Data\IndustryGroup.merge.data.sql" />
+    <None Include="Reference Data\WatchList.insert.data.sql" />
+    <None Include="Reference Data\WatchList.merge.data.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Reference Data\ASX.Database.Script.PostDeployment.sql" />
