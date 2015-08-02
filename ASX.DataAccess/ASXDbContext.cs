@@ -11,5 +11,6 @@ namespace ASX.DataAccess
         public DbSet<IndustryGroup> IndustryGroups { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<EndOfDay> EndOfDays { get; set; }
+        public DbSet<WatchList> WatchLists { get; set; }
     }
 }

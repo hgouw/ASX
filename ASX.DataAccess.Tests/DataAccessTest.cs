@@ -27,5 +27,12 @@ namespace ASX.DataAccess.Tests
             var endOfDays = DataAccess.GetEndOfDays();
             Assert.IsTrue(endOfDays.Count == 0);
         }
+
+        [TestMethod()]
+        public void GetWatchListsTest()
+        {
+            var watchLists = DataAccess.GetWatchLists();
+            Assert.IsTrue(watchLists.Count == 0);
+        }
     }
 }

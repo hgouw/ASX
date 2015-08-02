@@ -29,5 +29,13 @@ namespace ASX.DataAccess
                 return dbContext.EndOfDays.ToList();
             }
         }
+
+        public static IList<WatchList> GetWatchLists()
+        {
+            using (ASXDbContext dbContext = new ASXDbContext())
+            {
+                return dbContext.WatchLists.ToList();
+            }
+        }
     }
 }
