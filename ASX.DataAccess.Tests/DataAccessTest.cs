@@ -18,7 +18,7 @@ namespace ASX.DataAccess.Tests
         public void GetCompaniesTest()
         {
             var companies = DataAccess.GetCompanies();
-            Assert.IsTrue(companies.Count == 4);
+            Assert.IsTrue(companies.Count == 2171);
         }
 
         [TestMethod()]
@@ -32,7 +32,7 @@ namespace ASX.DataAccess.Tests
         public void GetWatchListsTest()
         {
             var watchLists = DataAccess.GetWatchLists();
-            Assert.IsTrue(watchLists.Count == 0);
+            Assert.IsTrue(watchLists.Count == 42);
         }
     }
 }
