@@ -23,6 +23,7 @@ MERGE INTO [dbo].[WatchLists] AS Target USING
   (N'LYC'),
   (N'MPL'),
   (N'MQG'),
+  (N'MYO'),
   (N'MYR'),
   (N'NEC'),
   (N'NHF'),
