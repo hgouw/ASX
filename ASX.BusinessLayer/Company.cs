@@ -31,15 +31,9 @@ namespace ASX.BusinessLayer
             throw new NotImplementedException();
         }
 
-        public override string ToString()
-        {
-            return String.Format("{0} - {1} - {2}", Code, Name, Group);
-        }
+        public override string ToString() => $"{Code} - {Name} - {Group}";
 
-        public string Log()
-        {
-            return String.Format("Code: {0} - Name: {1} - Group: {2}", Code, Name, Group);
-        }
+        public string Log() => $"{Code} - {Name} - {Group}";
 
         public bool Equals(Company other)
         {

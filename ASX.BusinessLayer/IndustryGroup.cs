@@ -23,15 +23,9 @@ namespace ASX.BusinessLayer
             throw new NotImplementedException();
         }
 
-        public override string ToString()
-        {
-            return String.Format("{0}", Group);
-        }
+        public override string ToString() => $"{Group}";
 
-        public string Log()
-        {
-            return String.Format("Group: {0}", Group);
-        }
+        public string Log() => $"Group: {Group}";
 
         public bool Equals(EndOfDay other)
         {

@@ -26,15 +26,9 @@ namespace ASX.BusinessLayer
             throw new NotImplementedException();
         }
 
-        public override string ToString()
-        {
-            return String.Format("{0}", Code);
-        }
+        public override string ToString() => $"{Code}";
 
-        public string Log()
-        {
-            return String.Format("Code: {0}", Code);
-        }
+        public string Log() => $"{Code}";
 
         public bool Equals(WatchList other)
         {

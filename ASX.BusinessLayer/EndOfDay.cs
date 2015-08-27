@@ -34,15 +34,9 @@ namespace ASX.BusinessLayer
             throw new NotImplementedException();
         }
 
-        public override string ToString()
-        {
-            return String.Format("{0} - {1}", Code, Date.ToString("yyyy-mm-dd"));
-        }
+        public override string ToString() => $"{Code} - {Date.ToString("yyyy-mm-dd")}";
 
-        public string Log()
-        {
-            return String.Format("Code: {0} - : Date{1}", Code, Date.ToString("yyyy-mm-dd"));
-        }
+        public string Log() => $"{Code} - {Date.ToString("yyyy-mm-dd")}";
 
         public bool Equals(EndOfDay other)
         {
