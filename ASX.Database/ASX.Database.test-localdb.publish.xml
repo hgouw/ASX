@@ -2,12 +2,12 @@
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
-    <TargetDatabaseName>ASX.Database</TargetDatabaseName>
+    <TargetDatabaseName>ASX</TargetDatabaseName>
     <DeployScriptFileName>ASX.Database.sql</DeployScriptFileName>
     <ScriptDatabaseOptions>True</ScriptDatabaseOptions>
     <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
     <CreateNewDatabase>True</CreateNewDatabase>
-    <TargetConnectionString>Data Source=(localdb)\Projects;Integrated Security=True;Pooling=False</TargetConnectionString>
+    <TargetConnectionString>Data Source=(localdb)\ProjectsV12;Integrated Security=True;Pooling=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
 </Project>
