@@ -1331,7 +1331,7 @@ INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'MUS', N'MUSTAN
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'MPX', N'MUSTERA PROPERTY GROUP LIMITED', N'Real Estate')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'MNF', N'MY NET FONE LIMITED', N'Telecommunication Services')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'MYR', N'MYER HOLDINGS LIMITED', N'Retailing')
-INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'MYB', N'MYOB FINANCE AUSTRALIA LIMITED', N'Software & Services')
+INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'MYO', N'MYOB GROUP LIMITED', N'Software & Services')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'MYS', N'MYSTATE LIMITED', N'Banks')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'MZI', N'MZI RESOURCES LTD', N'Materials')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'NAG', N'NAGAMBIE MINING LIMITED', N'Materials')

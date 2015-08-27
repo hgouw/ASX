@@ -1331,7 +1331,7 @@ MERGE INTO [dbo].[Companies] AS Target USING
   (N'MPX', N'MUSTERA PROPERTY GROUP LIMITED', N'Real Estate'),
   (N'MNF', N'MY NET FONE LIMITED', N'Telecommunication Services'),
   (N'MYR', N'MYER HOLDINGS LIMITED', N'Retailing'),
-  (N'MYB', N'MYOB FINANCE AUSTRALIA LIMITED', N'Software & Services'),
+  (N'MYO', N'MYOB GROUP LIMITED', N'Software & Services'),
   (N'MYS', N'MYSTATE LIMITED', N'Banks'),
   (N'MZI', N'MZI RESOURCES LTD', N'Materials'),
   (N'NAG', N'NAGAMBIE MINING LIMITED', N'Materials'),
