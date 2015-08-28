@@ -17,9 +17,9 @@ namespace ASX.BusinessLayer
         }
 
         [Key, Column(Order = 1), ForeignKey("Company")]
-        public virtual string Code { get; set; }
+        public virtual string Code { get; }
 
-        public virtual Company Company { get; set; }
+        public virtual Company Company { get; }
 
         public override bool Validate()
         {

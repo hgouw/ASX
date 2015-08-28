@@ -18,16 +18,16 @@ namespace ASX.BusinessLayer
         }
 
         [Key, Column(Order = 1), ForeignKey("Company")]
-        public virtual string Code { get; set; }
+        public virtual string Code { get; }
         [Key, Column(Order = 2)]
-        public DateTime Date { get; set; }
-        public virtual decimal Open { get; set; }
-        public virtual decimal High { get; set; }
-        public virtual decimal Low { get; set; }
-        public virtual decimal Last { get; set; }
-        public virtual int Volume { get; set; }
+        public DateTime Date { get; }
+        public virtual decimal Open { get; }
+        public virtual decimal High { get; }
+        public virtual decimal Low { get; }
+        public virtual decimal Last { get; }
+        public virtual int Volume { get; }
 
-        public virtual Company Company { get; set; }
+        public virtual Company Company { get; }
 
         public override bool Validate()
         {

@@ -19,12 +19,12 @@ namespace ASX.BusinessLayer
         }
 
         [Key]
-        public virtual string Code { get; private set; }
-        public virtual string Name { get; private set; }
+        public virtual string Code { get; }
+        public virtual string Name { get; }
         [ForeignKey("IndustryGroup")]
-        public virtual string Group { get; private set; }
+        public virtual string Group { get; }
 
-        public virtual IndustryGroup IndustryGroup { get; set; }
+        public virtual IndustryGroup IndustryGroup { get; }
 
         public override bool Validate()
         {
