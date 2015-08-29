@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Configuration.ConfigurationManager;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -18,12 +19,12 @@ namespace ASX.DataLoader
 
         private void ApplySettings()
         {
-            _watcher.Path = "c:\\test\\";
+            _watcher.Path = AppSettings["FilePath"];
             _watcher.NotifyFilter = NotifyFilters.DirectoryName |
                                     NotifyFilters.FileName |
                                     NotifyFilters.LastAccess |
                                     NotifyFilters.LastWrite;
-            _watcher.Filter = "*.csv";
+            _watcher.Filter = AppSettings["FileExt"];
             _watcher.Created += new FileSystemEventHandler(OnCreated);
             _watcher.EnableRaisingEvents = true;
         }

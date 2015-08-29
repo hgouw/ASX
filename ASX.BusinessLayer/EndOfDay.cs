@@ -18,14 +18,14 @@ namespace ASX.BusinessLayer
         }
 
         [Key, Column(Order = 1), ForeignKey("Company")]
-        public virtual string Code { get; }
+        public virtual string Code { get; set; }
         [Key, Column(Order = 2)]
-        public DateTime Date { get; }
-        public virtual decimal Open { get; }
-        public virtual decimal High { get; }
-        public virtual decimal Low { get; }
-        public virtual decimal Last { get; }
-        public virtual int Volume { get; }
+        public virtual DateTime Date { get; set; }
+        public virtual decimal Open { get; set; }
+        public virtual decimal High { get; set; }
+        public virtual decimal Low { get; set; }
+        public virtual decimal Last { get; set; }
+        public virtual int Volume { get; set; }
 
         public virtual Company Company { get; }
 
