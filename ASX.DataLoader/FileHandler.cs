@@ -17,6 +17,7 @@ namespace ASX.DataLoader
             Map(m => m.High).Name("High");
             Map(m => m.Low).Name("Low");
             Map(m => m.Last).Name("Last");
+            Map(m => m.Volume).Name("Volume");
         }
     }
 
