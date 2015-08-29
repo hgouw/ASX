@@ -21,16 +21,23 @@ namespace ASX.DataLoader
         }
     }
 
-    public class FileHandler
+    public static class FileHandler
     {
-        public static bool Process(string fullPath)
+        public static IEnumerable<EndOfDay> ReadCsv(string fullPath)
         {
-            using (var csv = new CsvReader(File.OpenText(fullPath)))
+            using (var textReader = File.OpenText(fullPath))
             {
-                csv.Configuration.RegisterClassMap<EndOfDayMap>();
-                var records = csv.GetRecords<EndOfDay>().ToList();
+                using (var csvReader = new CsvReader(textReader))
+                {
+                    csvReader.Configuration.RegisterClassMap<EndOfDayMap>();
+                    while (csvReader.Read())
+                    {
+                        var record = csvReader.GetRecord<EndOfDay>();
+                        yield return record;
+                    }
+                    //var records = csv.GetRecords<EndOfDay>().ToList();
+                }
             }
-            return true;
         }
     }
 }

@@ -3,6 +3,8 @@ using static System.Configuration.ConfigurationManager;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using ASX.BusinessLayer;
+using System.Collections.Generic;
 
 namespace ASX.DataLoader
 {
@@ -31,12 +33,10 @@ namespace ASX.DataLoader
 
         private void OnCreated(object sender, FileSystemEventArgs e)
         {
-            if (FileHandler.Process(e.FullPath))
+            var records = new List<EndOfDay>(FileHandler.ReadCsv(e.FullPath));
+            if (records != null)
             {
-                _log.Append(e.FullPath);
-                _log.Append(" processed on ");
-                _log.Append(DateTime.Now.ToString());
-                _log.Append(Environment.NewLine);
+                _log.Append($"{e.FullPath} processed on {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss tt")} ({records.Count}){Environment.NewLine}");
             }
         }
 
