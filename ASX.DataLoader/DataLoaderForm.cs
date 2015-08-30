@@ -38,6 +38,7 @@ namespace ASX.DataLoader
             {
                 _log.Append($"{e.FullPath} processed on {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss tt")} ({records.Count}){Environment.NewLine}");
             }
+            File.Delete(e.FullPath);
         }
 
         private void tmrLog_Tick(object sender, System.EventArgs e)
