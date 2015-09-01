@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using static System.Configuration.ConfigurationManager;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using ASX.BusinessLayer;
-using System.Collections.Generic;
 
 namespace ASX.DataLoader
 {
