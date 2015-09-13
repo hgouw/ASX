@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using ASX.BusinessLayer;
 
 namespace ASX.DataLoader
 {
@@ -28,6 +29,13 @@ namespace ASX.DataLoader
         private void DisplayWatchList()
         {
             var watchLists = ASX.DataAccess.DataAccess.GetWatchLists();
+            this.checkedListBox.Items.Clear();
+            foreach (var watchList in watchLists)           
+            {
+                this.checkedListBox.Items.Add(((WatchList)watchList).Code);
+                this.checkedListBox.SetItemChecked(this.checkedListBox.Items.Count - 1, true);
+                this.checkedListBox.Enabled = false;
+            }
         }
     }
 }
