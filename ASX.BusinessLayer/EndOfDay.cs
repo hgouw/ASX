@@ -27,7 +27,7 @@ namespace ASX.BusinessLayer
         public virtual decimal Last { get; set; }
         public virtual int Volume { get; set; }
 
-        public virtual Company Company { get; }
+        public virtual Company Company { get; set; }
 
         public override bool Validate()
         {
