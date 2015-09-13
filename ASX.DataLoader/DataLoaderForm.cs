@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ASX.DataLoader
@@ -15,6 +8,26 @@ namespace ASX.DataLoader
         public DataLoaderForm()
         {
             InitializeComponent();
+            DisplayWatchList();
+        }
+
+        private void Load_Click(object sender, EventArgs e)
+        {
+            this.openFileDialog.Filter = "TXT files (*.txt)|*.txt";
+            if (this.openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                //LoadWatchList(this.dlgOpenFile.FileName);
+            }
+        }
+
+        private void Form_Closing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
+
+        private void DisplayWatchList()
+        {
+            var watchLists = ASX.DataAccess.DataAccess.GetWatchLists();
         }
     }
 }
