@@ -21,9 +21,15 @@ namespace ASX.DataLoader
             }
         }
 
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            SaveSettings();
+            Application.Exit();
+        }
+
         private void Form_Closing(object sender, FormClosingEventArgs e)
         {
-            Properties.Settings.Default.Save();
+            SaveSettings();
         }
 
         private void DisplayWatchList()
@@ -36,6 +42,10 @@ namespace ASX.DataLoader
                 this.checkedListBox.SetItemChecked(this.checkedListBox.Items.Count - 1, true);
                 this.checkedListBox.Enabled = false;
             }
+        }
+        private void SaveSettings()
+        {
+            Properties.Settings.Default.Save();
         }
     }
 }

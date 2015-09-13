@@ -37,6 +37,7 @@
             this.menuLoad = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -92,7 +93,8 @@
             // menuData
             // 
             this.menuData.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuLoad});
+            this.menuLoad,
+            this.menuExit});
             this.menuData.Name = "menuData";
             this.menuData.Size = new System.Drawing.Size(43, 20);
             this.menuData.Text = "&Data";
@@ -102,8 +104,9 @@
             this.menuLoad.Image = ((System.Drawing.Image)(resources.GetObject("menuLoad.Image")));
             this.menuLoad.Name = "menuLoad";
             this.menuLoad.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.menuLoad.Size = new System.Drawing.Size(140, 22);
+            this.menuLoad.Size = new System.Drawing.Size(152, 22);
             this.menuLoad.Text = "&Load";
+            this.menuLoad.ToolTipText = "Load";
             this.menuLoad.Click += new System.EventHandler(this.Load_Click);
             // 
             // statusStrip
@@ -119,6 +122,15 @@
             this.openFileDialog.ReadOnlyChecked = true;
             this.openFileDialog.RestoreDirectory = true;
             this.openFileDialog.ShowReadOnly = true;
+            // 
+            // menuExit
+            // 
+            this.menuExit.Name = "menuExit";
+            this.menuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.menuExit.Size = new System.Drawing.Size(152, 22);
+            this.menuExit.Text = "E&xit";
+            this.menuExit.ToolTipText = "Exit";
+            this.menuExit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // DataLoaderForm
             // 
@@ -155,5 +167,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuData;
         private System.Windows.Forms.ToolStripMenuItem menuLoad;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.ToolStripMenuItem menuExit;
     }
 }
