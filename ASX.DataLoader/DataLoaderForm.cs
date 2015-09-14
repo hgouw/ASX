@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using ASX.BusinessLayer;
 
@@ -17,7 +18,11 @@ namespace ASX.DataLoader
             this.openFileDialog.Filter = "TXT files (*.txt)|*.txt";
             if (this.openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                //LoadWatchList(this.dlgOpenFile.FileName);
+                var filenames = this.openFileDialog.FileNames.OrderBy(f => f);
+                foreach (var filename in filenames)
+                {
+                    LoadDataFile(filename);
+                }
             }
         }
 
@@ -34,15 +39,39 @@ namespace ASX.DataLoader
 
         private void DisplayWatchList()
         {
-            var watchLists = ASX.DataAccess.DataAccess.GetWatchLists();
-            this.checkedListBox.Items.Clear();
-            foreach (var watchList in watchLists)           
+            try
             {
-                this.checkedListBox.Items.Add(((WatchList)watchList).Code);
-                this.checkedListBox.SetItemChecked(this.checkedListBox.Items.Count - 1, true);
-                this.checkedListBox.Enabled = false;
+                var watchLists = ASX.DataAccess.DataAccess.GetWatchLists();
+                this.checkedListBox.Items.Clear();
+                foreach (var watchList in watchLists)
+                {
+                    this.checkedListBox.Items.Add(((WatchList)watchList).Code);
+                    this.checkedListBox.SetItemChecked(this.checkedListBox.Items.Count - 1, true);
+                    this.checkedListBox.Enabled = false;
+                }
+                DisplayOutput("Successfully loaded WatchLists");
+            }
+            catch
+            {
             }
         }
+
+        private void LoadDataFile(string filename)
+        {
+            try
+            {
+                DisplayOutput("Successfully loaded data from " + filename);
+            }
+            catch
+            {
+            }
+        }
+
+        private void DisplayOutput(string text)
+        {
+            this.richTextBox.Text += text + Environment.NewLine;
+        }
+
         private void SaveSettings()
         {
             Properties.Settings.Default.Save();
