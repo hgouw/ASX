@@ -1,37 +1,35 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ASX.DataAccess;
 
 namespace ASX.DataAccess.Tests
 {
     [TestClass()]
-    public class DataAccessTest
-    {
-      
+    public class ASXDbContextTest
+    {     
         [TestMethod()]
         public void GetIndustryGroupsTest()
         {
-            var industryGroups = DataAccess.GetIndustryGroups();
+            var industryGroups = ASXDbContext.GetIndustryGroups();
             Assert.IsTrue(industryGroups.Count == 26);
         }
 
         [TestMethod()]
         public void GetCompaniesTest()
         {
-            var companies = DataAccess.GetCompanies();
+            var companies = ASXDbContext.GetCompanies();
             Assert.IsTrue(companies.Count == 2171);
         }
 
         [TestMethod()]
         public void GetEndOfDaysTest()
         {
-            var endOfDays = DataAccess.GetEndOfDays();
+            var endOfDays = ASXDbContext.GetEndOfDays();
             Assert.IsTrue(endOfDays.Count == 0);
         }
 
         [TestMethod()]
         public void GetWatchListsTest()
         {
-            var watchLists = DataAccess.GetWatchLists();
+            var watchLists = ASXDbContext.GetWatchLists();
             Assert.IsTrue(watchLists.Count == 42);
         }
     }

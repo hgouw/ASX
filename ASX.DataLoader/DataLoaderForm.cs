@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using ASX.BusinessLayer;
+using ASX.DataAccess;
 
 namespace ASX.DataLoader
 {
@@ -41,7 +42,7 @@ namespace ASX.DataLoader
         {
             try
             {
-                var watchLists = ASX.DataAccess.DataAccess.GetWatchLists();
+                var watchLists = ASXDbContext.GetWatchLists();
                 this.checkedListBox.Items.Clear();
                 foreach (var watchList in watchLists)
                 {

@@ -56,7 +56,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ASXModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess.cs" />
     <Compile Include="FakeRepository.cs" />
     <Compile Include="IMemoryUnitOfWork.cs" />
     <Compile Include="IRepository.cs" />
