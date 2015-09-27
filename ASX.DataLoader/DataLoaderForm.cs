@@ -16,7 +16,7 @@ namespace ASX.DataLoader
         public DataLoaderForm()
         {
             InitializeComponent();
-            DisplayWatchList();
+            LoadWatchList();
         }
 
         private void Load_Click(object sender, EventArgs e)
@@ -27,7 +27,7 @@ namespace ASX.DataLoader
                 var filenames = this.openFileDialog.FileNames.OrderBy(f => f);
                 foreach (var filename in filenames)
                 {
-                    LoadDataFile(filename);
+                    LoadData(filename);
                 }
             }
         }
@@ -43,7 +43,7 @@ namespace ASX.DataLoader
             SaveSettings();
         }
 
-        private void DisplayWatchList()
+        private void LoadWatchList()
         {
             try
             {
@@ -55,18 +55,18 @@ namespace ASX.DataLoader
                     this.checkedListBox.SetItemChecked(this.checkedListBox.Items.Count - 1, true);
                     this.checkedListBox.Enabled = false;
                 }
-                DisplayOutput("Successfully loaded WatchLists");
+                DisplayOutput("Successfully loaded watch list");
             }
             catch
             {
             }
         }
 
-        private void LoadDataFile(string filename)
+        private void LoadData(string filename)
         {
             try
             {
-                LoadData(filename);
+                ConvertData(filename);
                 DisplayOutput("Successfully loaded data from " + filename);
             }
             catch (Exception ex)
@@ -84,7 +84,7 @@ namespace ASX.DataLoader
             Properties.Settings.Default.Save();
         }
 
-        private void LoadData(string filename)
+        private void ConvertData(string filename)
         {
             var lines = File.ReadAllText(filename).Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
             var csv = lines.Select(l => l.Split(',')).ToArray();
