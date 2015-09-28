@@ -12,6 +12,7 @@ namespace ASX.DataLoader
     public partial class DataLoaderForm : Form
     {
         IList<WatchList> _watchLists = null;
+        ASXDbContext _db = new ASXDbContext();
 
         public DataLoaderForm()
         {
@@ -55,9 +56,9 @@ namespace ASX.DataLoader
                     this.checkedListBox.SetItemChecked(this.checkedListBox.Items.Count - 1, true);
                     this.checkedListBox.Enabled = false;
                 }
-                DisplayOutput("Successfully loaded watch list");
+                DisplayOutput("Successfully loaded the watch list");
             }
-            catch
+            catch (Exception ex)
             {
             }
         }
@@ -67,7 +68,7 @@ namespace ASX.DataLoader
             try
             {
                 ConvertData(filename);
-                DisplayOutput("Successfully loaded data from " + filename);
+                DisplayOutput("Successfully saved the data from the file " + filename);
             }
             catch (Exception ex)
             {
@@ -88,14 +89,22 @@ namespace ASX.DataLoader
         {
             var lines = File.ReadAllText(filename).Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
             var csv = lines.Select(l => l.Split(',')).ToArray();
-            var endOfDays = csv.Select(x => new EndOfDay() { Code = x[0],
-                                                             Date = DateTime.ParseExact(x[1], "yyyyMMdd", CultureInfo.InvariantCulture),
-                                                             Open = Decimal.Parse(x[2]),
-                                                             High = Decimal.Parse(x[3]),
-                                                             Low = Decimal.Parse(x[4]),
-                                                             Last = Decimal.Parse(x[5]),
-                                                             Volume = Int32.Parse(x[6])
-                                                           }).ToList();
+            var endOfDays = csv.Select(x => new EndOfDay()
+            {
+                Code = x[0],
+                Date = DateTime.ParseExact(x[1], "yyyyMMdd", CultureInfo.InvariantCulture),
+                Open = Decimal.Parse(x[2]),
+                High = Decimal.Parse(x[3]),
+                Low = Decimal.Parse(x[4]),
+                Last = Decimal.Parse(x[5]),
+                Volume = Int32.Parse(x[6])
+            });
+            var watchList = endOfDays.Where(l => _watchLists.Any(w => w.Code == l.Code)).OrderBy(w => w.Date).ToList();
+            foreach (var w in watchList)
+            {
+                _db.EndOfDays.Add(w);
+            }
+            _db.SaveChanges();
         }
     }
 }
