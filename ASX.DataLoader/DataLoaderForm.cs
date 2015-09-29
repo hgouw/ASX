@@ -100,10 +100,7 @@ namespace ASX.DataLoader
                 Volume = Int32.Parse(x[6])
             });
             var watchList = endOfDays.Where(l => _watchLists.Any(w => w.Code == l.Code)).OrderBy(w => w.Date).ToList();
-            foreach (var w in watchList)
-            {
-                _db.EndOfDays.Add(w);
-            }
+            _db.EndOfDays.AddRange(watchList);
             _db.SaveChanges();
         }
     }
