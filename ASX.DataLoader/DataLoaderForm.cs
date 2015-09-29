@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ASX.BusinessLayer;
 using ASX.DataAccess;
@@ -12,6 +14,7 @@ namespace ASX.DataLoader
     public partial class DataLoaderForm : Form
     {
         IList<WatchList> _watchLists = null;
+        IList<EndOfDay> _endOfDays = null;
         ASXDbContext _db = new ASXDbContext();
 
         public DataLoaderForm()
@@ -60,6 +63,7 @@ namespace ASX.DataLoader
             }
             catch (Exception ex)
             {
+                DisplayOutput($"Failed to load the watch list - {ex.Message}");
             }
         }
 
@@ -67,11 +71,14 @@ namespace ASX.DataLoader
         {
             try
             {
-                ConvertData(filename);
-                DisplayOutput("Successfully saved the data from the file " + filename);
+                _endOfDays = ConvertData(filename);
+                DisplayOutput($"Successfully loaded the data from the file {filename}");
+                SaveData(_endOfDays);
+                DisplayOutput($"Successfully saved the data from the file {filename}");
             }
             catch (Exception ex)
             {
+                DisplayOutput($"Failed to load or save the data from the file {filename} - {ex.Message}");
             }
         }
 
@@ -85,7 +92,7 @@ namespace ASX.DataLoader
             Properties.Settings.Default.Save();
         }
 
-        private void ConvertData(string filename)
+        private IList<EndOfDay> ConvertData(string filename)
         {
             var lines = File.ReadAllText(filename).Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
             var csv = lines.Select(l => l.Split(',')).ToArray();
@@ -99,8 +106,12 @@ namespace ASX.DataLoader
                 Last = Decimal.Parse(x[5]),
                 Volume = Int32.Parse(x[6])
             });
-            var watchList = endOfDays.Where(l => _watchLists.Any(w => w.Code == l.Code)).OrderBy(w => w.Date).ToList();
-            _db.EndOfDays.AddRange(watchList);
+            return endOfDays.Where(l => _watchLists.Any(w => w.Code == l.Code)).OrderBy(w => w.Date).ToList();
+        }
+
+        private void SaveData(IList<EndOfDay> endOfDays)
+        {
+            _db.EndOfDays.AddRange(endOfDays);
             _db.SaveChanges();
         }
     }
