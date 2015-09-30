@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ASX.BusinessLayer;
 using ASX.DataAccess;
@@ -15,7 +13,6 @@ namespace ASX.DataLoader
     {
         IList<WatchList> _watchLists = null;
         IList<EndOfDay> _endOfDays = null;
-        ASXDbContext _db = new ASXDbContext();
 
         public DataLoaderForm()
         {
@@ -106,13 +103,23 @@ namespace ASX.DataLoader
                 Last = Decimal.Parse(x[5]),
                 Volume = Int32.Parse(x[6])
             });
-            return endOfDays.Where(l => _watchLists.Any(w => w.Code == l.Code)).OrderBy(w => w.Date).ToList();
+            return endOfDays.Where(l => _watchLists.Any(w => w.Code == l.Code)).OrderBy(w => w.Date).ToList(); // Select the EndOfDays in WatchLists only
         }
 
         private void SaveData(IList<EndOfDay> endOfDays)
         {
-            _db.EndOfDays.AddRange(endOfDays);
-            _db.SaveChanges();
+            try
+            {
+                using (var db = new ASXDbContext())
+                {
+                    db.EndOfDays.AddRange(endOfDays);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                DisplayOutput($"Failed to save data - {ex.Message}");
+            }
         }
     }
 }
