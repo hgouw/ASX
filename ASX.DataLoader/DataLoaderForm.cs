@@ -22,7 +22,7 @@ namespace ASX.DataLoader
 
         private void Load_Click(object sender, EventArgs e)
         {
-            this.openFileDialog.Filter = "TXT files (*.txt)|*.txt";
+            this.openFileDialog.Filter = "TXT files (*.csv, *.txt)|*.csv;*.txt";
             if (this.openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 var filenames = this.openFileDialog.FileNames.OrderBy(f => f);
@@ -70,7 +70,7 @@ namespace ASX.DataLoader
             {
                 _endOfDays = ConvertData(filename);
                 DisplayOutput($"Successfully loaded the data from the file {filename}");
-                SaveData(_endOfDays);
+                SaveData(_endOfDays, filename);
                 DisplayOutput($"Successfully saved the data from the file {filename}");
             }
             catch (Exception ex)
@@ -106,7 +106,7 @@ namespace ASX.DataLoader
             return endOfDays.Where(l => _watchLists.Any(w => w.Code == l.Code)).OrderBy(w => w.Date).ToList(); // Select the EndOfDays in WatchLists only
         }
 
-        private void SaveData(IList<EndOfDay> endOfDays)
+        private void SaveData(IList<EndOfDay> endOfDays, string filename)
         {
             try
             {
@@ -118,7 +118,7 @@ namespace ASX.DataLoader
             }
             catch (Exception ex)
             {
-                DisplayOutput($"Failed to save data - {ex.Message}");
+                DisplayOutput($"Failed to save data from the file {filename} - {ex.Message}");
             }
         }
     }
