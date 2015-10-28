@@ -1608,6 +1608,7 @@ INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'PUK', N'PUMA S
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'PUO', N'PUMA SERIES 2014-2', N'Not Applic')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'PUQ', N'PUMA SERIES 2014-4P', N'Not Applic')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'PVD', N'PURA VIDA ENERGY NL', N'Energy')
+INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'PPL', N'PUREPROFILE LTD', N'Software & Services')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'QTG', N'Q TECHNOLOGY GROUP LIMITED', N'Technology Hardware & Equipment')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'QAN', N'QANTAS AIRWAYS LIMITED', N'Transportation')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'QBE', N'QBE INSURANCE GROUP LIMITED', N'Insurance')

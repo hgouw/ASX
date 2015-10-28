@@ -1608,6 +1608,7 @@ MERGE INTO [dbo].[Companies] AS Target USING
   (N'PUO', N'PUMA SERIES 2014-2', N'Not Applic'),
   (N'PUQ', N'PUMA SERIES 2014-4P', N'Not Applic'),
   (N'PVD', N'PURA VIDA ENERGY NL', N'Energy'),
+  (N'PPL', N'PUREPROFILE LTD', N'Software & Services'),
   (N'QTG', N'Q TECHNOLOGY GROUP LIMITED', N'Technology Hardware & Equipment'),
   (N'QAN', N'QANTAS AIRWAYS LIMITED', N'Transportation'),
   (N'QBE', N'QBE INSURANCE GROUP LIMITED', N'Insurance'),
