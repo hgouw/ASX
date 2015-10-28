@@ -29,6 +29,7 @@ MERGE INTO [dbo].[WatchLists] AS Target USING
   (N'NEC'),
   (N'NHF'),
   (N'OZL'),
+  (N'PPL'),
   (N'PPT'),
   (N'PTM'),
   (N'QAN'),
