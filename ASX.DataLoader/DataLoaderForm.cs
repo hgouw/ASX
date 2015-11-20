@@ -46,58 +46,36 @@ namespace ASX.DataLoader
             if (this.openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 var filenames = this.openFileDialog.FileNames.OrderBy(f => f);
-                foreach (var filename in filenames)
-                {
-                    LoadData(filename);
-                }
-            }
-        }
-
-        private void LoadData(string filename)
-        {
-            try
-            {
-                _endOfDays = ConvertData(filename);
-                DisplayOutput($"Successfully loaded the data from the file {filename}");
-                SaveData(_endOfDays, filename);
-                DisplayOutput($"Successfully saved the data from the file {filename}");
-            }
-            catch (Exception ex)
-            {
-                DisplayOutput($"Failed to load or save the data from the file {filename} - {ex.Message}");
-            }
-        }
-
-        private IList<EndOfDay> ConvertData(string filename)
-        {
-            var lines = File.ReadAllText(filename).Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-            var csv = lines.Select(l => l.Split(',')).ToArray();
-            var endOfDays = csv.Select(x => new EndOfDay()
-            {
-                Code = x[0],
-                Date = DateTime.ParseExact(x[1], "yyyyMMdd", CultureInfo.InvariantCulture),
-                Open = Decimal.Parse(x[2]),
-                High = Decimal.Parse(x[3]),
-                Low = Decimal.Parse(x[4]),
-                Last = Decimal.Parse(x[5]),
-                Volume = Int32.Parse(x[6])
-            });
-            return endOfDays.Where(e => _watchLists.Any(w => w.Code == e.Code)).OrderBy(w => w.Date).ToList(); // Select the EndOfDays in WatchLists only
-        }
-
-        private void SaveData(IList<EndOfDay> endOfDays, string filename)
-        {
-            try
-            {
                 using (var db = new ASXDbContext())
                 {
-                    db.EndOfDays.AddRange(endOfDays);
+                    foreach (var filename in filenames)
+                    {
+                        try
+                        {
+                            var lines = File.ReadAllText(filename).Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                            var csv = lines.Select(l => l.Split(',')).ToArray();
+                            var endOfDays = csv.Select(x => new EndOfDay()
+                            {
+                                Code = x[0],
+                                Date = DateTime.ParseExact(x[1], "yyyyMMdd", CultureInfo.InvariantCulture),
+                                Open = Decimal.Parse(x[2]),
+                                High = Decimal.Parse(x[3]),
+                                Low = Decimal.Parse(x[4]),
+                                Last = Decimal.Parse(x[5]),
+                                Volume = Int32.Parse(x[6])
+                            });
+                            _endOfDays = endOfDays.Where(a => _watchLists.Any(w => w.Code == a.Code)).OrderBy(w => w.Date).ToList(); // Select the EndOfDays in WatchLists only
+                            db.EndOfDays.AddRange(_endOfDays);
+                            //db.SaveChanges();
+                            DisplayOutput($"Successfully saved the data from the file {filename}");
+                        }
+                        catch (Exception ex)
+                        {
+                            DisplayOutput($"Failed to convert the data in - {filename} {ex.Message} ");
+                        }
+                    }
                     db.SaveChanges();
                 }
-            }
-            catch (Exception ex)
-            {
-                DisplayOutput($"Failed to save data from the file {filename} - {ex.Message}");
             }
         }
 
