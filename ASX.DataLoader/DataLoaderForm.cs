@@ -6,11 +6,24 @@ using System.Linq;
 using System.Windows.Forms;
 using ASX.BusinessLayer;
 using ASX.DataAccess;
+using NLog;
 
 namespace ASX.DataLoader
 {
+    public enum OutputType
+    {
+        Debug = 0,
+        Error = 1,
+        Fatal = 2,
+        Info = 3,
+        Trace = 4,
+        Warn = 5
+    }
+
     public partial class DataLoaderForm : Form
     {
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+
         IList<WatchList> _watchLists = null;
         IList<EndOfDay> _endOfDays = null;
 
@@ -32,11 +45,11 @@ namespace ASX.DataLoader
                     this.checkedListBox.SetItemChecked(this.checkedListBox.Items.Count - 1, true);
                     this.checkedListBox.Enabled = false;
                 }
-                DisplayOutput("Successfully loaded the watch list");
+                DisplayOutput(OutputType.Info, "Successfully loaded the watch list");
             }
             catch (Exception ex)
             {
-                DisplayOutput($"Failed to load the watch list - {ex.Message}");
+                DisplayOutput(OutputType.Error, $"Failed to load the watch list - {ex.Message}");
             }
         }
 
@@ -67,11 +80,11 @@ namespace ASX.DataLoader
                             _endOfDays = endOfDays.Where(a => _watchLists.Any(w => w.Code == a.Code)).OrderBy(w => w.Date).ToList(); // Select the EndOfDays in WatchLists only
                             db.EndOfDays.AddRange(_endOfDays);
                             //db.SaveChanges();
-                            DisplayOutput($"Successfully saved the data from the file {filename}");
+                            DisplayOutput(OutputType.Info, $"Successfully saved the data from the file {filename}");
                         }
                         catch (Exception ex)
                         {
-                            DisplayOutput($"Failed to convert the data in - {filename} {ex.Message} ");
+                            DisplayOutput(OutputType.Error, $"Failed to convert the data in - {filename} {ex.Message} ");
                         }
                     }
                     db.SaveChanges();
@@ -79,9 +92,19 @@ namespace ASX.DataLoader
             }
         }
 
-        private void DisplayOutput(string text)
+        private void DisplayOutput(OutputType type, string text)
         {
             this.richTextBox.Text += text + Environment.NewLine;
+            switch (type)
+            {
+                case OutputType.Error:
+                    _logger.Error($"{type.ToString().ToUpper()}  {text}");
+                    break;
+
+                case OutputType.Info:
+                    _logger.Info($"{type.ToString().ToUpper()}  {text}");
+                    break;
+            }
         }
 
         private void Exit_Click(object sender, EventArgs e)
