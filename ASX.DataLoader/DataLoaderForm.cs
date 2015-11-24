@@ -98,11 +98,11 @@ namespace ASX.DataLoader
             switch (type)
             {
                 case OutputType.Error:
-                    _logger.Error($"{type.ToString().ToUpper()}  {text}");
+                    _logger.Error($"{text}");
                     break;
 
                 case OutputType.Info:
-                    _logger.Info($"{type.ToString().ToUpper()}  {text}");
+                    _logger.Info($"{text}");
                     break;
             }
         }
