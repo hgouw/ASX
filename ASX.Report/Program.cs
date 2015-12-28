@@ -14,7 +14,7 @@ namespace ASX.Report
                 foreach (var watchList in watchLists)
                 {
                     var endOfDays = ASXDbContext.GetEndOfDays();
-                    for (int i = 1998; i <= DateTime.Now.Year; i++)
+                    for (int i = 1997; i <= DateTime.Now.Year; i++)
                     {
                         var count = endOfDays.Where(d => d.Code == watchList.Code && d.Date >= new DateTime(i, 1, 1).Date && d.Date <= new DateTime(i, 12, 31).Date).Count();
                         Console.WriteLine($"{watchList.Code} - {i} - {count}");
