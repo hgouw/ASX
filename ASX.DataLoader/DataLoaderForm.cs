@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -87,7 +88,27 @@ namespace ASX.DataLoader
                             DisplayOutput(OutputType.Error, $"Failed to convert the data in - {filename} {ex.Message} ");
                         }
                     }
-                    db.SaveChanges();
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (DbEntityValidationException ex)
+                    {
+                        foreach (DbEntityValidationResult item in ex.EntityValidationErrors)
+                        {
+                            var entry = item.Entry;
+                            var entityTypeName = entry.Entity.GetType().Name;
+                            foreach (var subItem in item.ValidationErrors)
+                            {
+                                var message = $"Error '{subItem.ErrorMessage}' occurred in {entityTypeName} at {subItem.PropertyName}";
+                                DisplayOutput(OutputType.Error, $"Failed to save changes - {message}");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        DisplayOutput(OutputType.Error, $"Failed to save changes - {ex.Message}");
+                    }
                 }
             }
         }
