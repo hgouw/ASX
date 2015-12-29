@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASX.DataLoader", "ASX.DataL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASX.Report", "ASX.Report\ASX.Report.csproj", "{49D6967B-81D1-4135-B2A9-894B3687EC9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASX.Web", "ASX.Web\ASX.Web.csproj", "{A58B3733-0CDB-4045-9B79-1B1321D0E7B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{49D6967B-81D1-4135-B2A9-894B3687EC9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49D6967B-81D1-4135-B2A9-894B3687EC9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49D6967B-81D1-4135-B2A9-894B3687EC9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A58B3733-0CDB-4045-9B79-1B1321D0E7B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58B3733-0CDB-4045-9B79-1B1321D0E7B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A58B3733-0CDB-4045-9B79-1B1321D0E7B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A58B3733-0CDB-4045-9B79-1B1321D0E7B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
