@@ -16,21 +16,21 @@ namespace ASX.DataAccess.Tests
         public void GetCompaniesTest()
         {
             var companies = ASXDbContext.GetCompanies();
-            Assert.IsTrue(companies.Count == 2171);
+            Assert.IsTrue(companies.Count == 2175);
         }
 
         [TestMethod()]
         public void GetEndOfDaysTest()
         {
             var endOfDays = ASXDbContext.GetEndOfDays();
-            Assert.IsTrue(endOfDays.Count == 0);
+            Assert.IsTrue(endOfDays.Count == 153640);
         }
 
         [TestMethod()]
         public void GetWatchListsTest()
         {
             var watchLists = ASXDbContext.GetWatchLists();
-            Assert.IsTrue(watchLists.Count == 42);
+            Assert.IsTrue(watchLists.Count == 47);
         }
     }
 }
