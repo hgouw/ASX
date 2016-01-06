@@ -23,7 +23,7 @@ namespace ASX.DataAccess.Tests
         public void GetEndOfDaysTest()
         {
             var endOfDays = ASXDbContext.GetEndOfDays();
-            Assert.IsTrue(endOfDays.Count == 153640);
+            Assert.IsTrue(endOfDays.Count == 152938);
         }
 
         [TestMethod()]
