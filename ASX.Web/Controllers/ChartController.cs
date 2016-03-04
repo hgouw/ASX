@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web.Helpers;
 using System.Web.Mvc;
+using ASX.Web.Models;
 
 namespace ASX.Web.Controllers
 {
@@ -11,7 +9,23 @@ namespace ASX.Web.Controllers
         // GET: Chart
         public ActionResult Display()
         {
-            return View();
+            var model = new ChartViewModel
+            {
+                Chart = GetChart()
+            };
+            return View(model);
+        }
+
+        private Chart GetChart()
+        {
+            var chart = new Chart(width: 600, height: 400)
+                .AddTitle("Chart Title")
+                .AddSeries(
+                    name: "Family",
+                    xValue: new[] { "Herman", "Helen", "Sarah", "Olivia" },
+                    yValues: new[] { "55", "44", "11", "7" }
+                );
+            return chart;
         }
     }
 }
