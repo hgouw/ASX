@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using ASX.DataAccess;
@@ -13,7 +14,7 @@ namespace ASX.Web.Controllers
         {
             var model = new ChartViewModel
             {
-                Chart = GetChart()
+                Chart = GetChart("MPL", new DateTime(2015,1,1), DateTime.Today)
             };
             return View(model);
         }
@@ -24,21 +25,29 @@ namespace ASX.Web.Controllers
                 .AddTitle("Chart Title")
                 .AddSeries(
                     name: "Family",
-                    xValue: new[] { "Herman", "Helen", "Sarah", "Olivia" },
-                    yValues: new[] { "55", "44", "11", "7" }
+                    chartType: "pie",
+                    xValue: new[] { "Herman", "Helen", "Sarah", "Olivia" }, xField: "Name",
+                    yValues: new[] { "55", "44", "11", "7" }, yFields: "Age"
                 );
             return chart;
         }
 
-        private static Chart GetChart(string code, DateTime dtFrom, DateTime dtTo)
+        private Chart GetChart(string code, DateTime dtFrom, DateTime dtTo)
         {
-            var chart = new Chart(width: 600, height: 400);
-            using (var db = new ASXDbContext())
+            using (ASXDbContext db = new ASXDbContext())
             {
-                var endOfDays = ASXDbContext.GetEndOfDays();
-                endOfDays.Where(d => d.Code == watchList.Code && d.Date >= new DateTime(year, 1, 1).Date && d.Date <= new DateTime(year, 12, 31).Date);
+                var endOfDays = db.EndOfDays;//.Where(d => d.Code == code && (d.Date >= dtFrom || d.Date <= dtTo));
+                var chart = new Chart(width: 600, height: 400)
+                    .AddTitle(code)
+                    .AddSeries(
+                        chartType: "stockchart",
+                        name: code,
+                        xValue: endOfDays, xField: "Price",
+                        yValues: endOfDays, yFields: "Date"
+                    );
+                //.DataBindTable(dataSource: endOfDays, xField: "Date");
+                return chart;
             }
-            return chart;
         }
     }
 }
