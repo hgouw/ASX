@@ -36,14 +36,16 @@ namespace ASX.Web.Controllers
         {
             using (ASXDbContext db = new ASXDbContext())
             {
-                var endOfDays = db.EndOfDays;//.Where(d => d.Code == code && (d.Date >= dtFrom || d.Date <= dtTo));
+                var endOfDays = db.EndOfDays.Where(d => d.Code == code && (d.Date >= dtFrom || d.Date <= dtTo));
+                var prices = endOfDays.Select(r => new { r.High, r.Low, r.Close });
+                var dates = endOfDays.Select(r => new { r.Date });
                 var chart = new Chart(width: 600, height: 400)
                     .AddTitle(code)
                     .AddSeries(
-                        chartType: "stockchart",
                         name: code,
-                        xValue: endOfDays, xField: "Price",
-                        yValues: endOfDays, yFields: "Date"
+                        chartType: "StockChart",
+                        xValue: prices, xField: "Price",
+                        yValues: dates, yFields: "Date"
                     );
                 //.DataBindTable(dataSource: endOfDays, xField: "Date");
                 return chart;
