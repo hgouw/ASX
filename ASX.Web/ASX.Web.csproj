@@ -138,6 +138,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ASX.BusinessLayer\ASX.BusinessLayer.csproj">
+      <Project>{7283646f-6f54-4ad3-a3e6-797ce85ae3a2}</Project>
+      <Name>ASX.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASX.DataAccess\ASX.DataAccess.csproj">
+      <Project>{ac7191c6-c657-4288-8d8b-cee1acfbd3fd}</Project>
+      <Name>ASX.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

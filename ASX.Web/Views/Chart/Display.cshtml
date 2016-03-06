@@ -1,8 +1,9 @@
-﻿@model ASX.Web.Models.ChartViewModel
+﻿@using ASX.Web.Models
+@model ChartViewModel
 
 @{
     ViewBag.Title = "Display";
 }
 
 <h2>Display</h2>
-@Model.Chart.Write("png");
+@Model.Chart.Write();
