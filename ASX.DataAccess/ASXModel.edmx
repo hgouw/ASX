@@ -28,7 +28,7 @@
           <Property Name="Open" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="High" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Low" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Last" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Close" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <NavigationProperty Name="Company" Relationship="Self.EndOfDay_Company" FromRole="EndOfDay_Company_Source" ToRole="EndOfDay_Company_Target" />
         </EntityType>
         <Association Name="Company_IndustryGroup">
@@ -99,7 +99,7 @@
                 <ScalarProperty Name="Open" ColumnName="Open" />
                 <ScalarProperty Name="High" ColumnName="High" />
                 <ScalarProperty Name="Low" ColumnName="Low" />
-                <ScalarProperty Name="Last" ColumnName="Last" />
+                <ScalarProperty Name="Close" ColumnName="Close" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -132,7 +132,7 @@
           <Property Name="Open" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="High" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Low" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Last" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Close" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <Association Name="Company_IndustryGroup">
           <End Role="IndustryGroup" Type="Self.IndustryGroup" Multiplicity="0..1" />

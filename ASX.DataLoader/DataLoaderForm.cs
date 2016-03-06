@@ -75,7 +75,7 @@ namespace ASX.DataLoader
                                 Open = Decimal.Parse(x[2]),
                                 High = Decimal.Parse(x[3]),
                                 Low = Decimal.Parse(x[4]),
-                                Last = Decimal.Parse(x[5]),
+                                Close = Decimal.Parse(x[5]),
                                 Volume = Int32.Parse(x[6])
                             });
                             _endOfDays = endOfDays.Where(a => _watchLists.Any(w => w.Code == a.Code)).OrderBy(w => w.Date).ToList(); // Select the EndOfDays in WatchLists only
