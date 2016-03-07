@@ -14,14 +14,14 @@ namespace ASX.Web.Controllers
         {
             var model = new ChartViewModel
             {
-                Chart = GetChart("CPU", new DateTime(2000,1,1), DateTime.Today)
+                Chart = GetChart("MPL", new DateTime(2010,1,1), DateTime.Today)
             };
             return View(model);
         }
 
         private Chart GetChart()
         {
-            var chart = new Chart(width: 1200, height: 400)
+            var chart = new Chart(width: 600, height: 400)
                 .AddTitle("Chart Title")
                 .AddSeries(
                     name: "Family",
@@ -39,7 +39,7 @@ namespace ASX.Web.Controllers
                 var endOfDays = db.EndOfDays.Where(d => d.Code == code && d.Date >= dtFrom.Date && d.Date <= dtTo.Date);
                 var prices = endOfDays.Select(r => new { Price = r.Close }).ToList();
                 var dates = endOfDays.Select(r => new { r.Date }).ToList();
-                var chart = new Chart(width: 600, height: 400)
+                var chart = new Chart(width: 1000, height: 400)
                     .AddTitle(code)
                     .AddSeries(
                         name: code,
