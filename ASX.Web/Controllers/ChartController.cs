@@ -21,7 +21,7 @@ namespace ASX.Web.Controllers
 
         private Chart GetChart()
         {
-            var chart = new Chart(width: 600, height: 400)
+            var chart = new Chart(width: 1200, height: 400)
                 .AddTitle("Chart Title")
                 .AddSeries(
                     name: "Family",
@@ -36,7 +36,7 @@ namespace ASX.Web.Controllers
         {
             using (ASXDbContext db = new ASXDbContext())
             {
-                var endOfDays = db.EndOfDays.Where(d => d.Code == code && (d.Date >= dtFrom || d.Date <= dtTo));
+                var endOfDays = db.EndOfDays.Where(d => d.Code == code && d.Date >= dtFrom.Date && d.Date <= dtTo.Date);
                 var prices = endOfDays.Select(r => new { Price = r.Close }).ToList();
                 var dates = endOfDays.Select(r => new { r.Date }).ToList();
                 var chart = new Chart(width: 600, height: 400)
