@@ -52,7 +52,8 @@ MERGE INTO [dbo].[WatchLists] AS Target USING
   (N'WES'),
   (N'WIG'),
   (N'WOW'),
-  (N'WPL')
+  (N'WPL'),
+  (N'XRO')
 )
 AS SOURCE ([Code])
 ON Target.[Code] = Source.[Code]
