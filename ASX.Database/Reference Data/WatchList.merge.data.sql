@@ -43,6 +43,7 @@ MERGE INTO [dbo].[WatchLists] AS Target USING
   (N'PTM'),
   (N'QAN'),
   (N'QBE'),
+  (N'REA'),
   (N'RIO'),
   (N'RMD'),
   (N'SVW'),
