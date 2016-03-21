@@ -10,6 +10,7 @@ MERGE INTO [dbo].[WatchLists] AS Target USING
   (N'BFG'),
   (N'BHP'),
   (N'BKL'),
+  (N'BMP'),
   (N'BSL'),
   (N'BTT'),
   (N'BWX'),
