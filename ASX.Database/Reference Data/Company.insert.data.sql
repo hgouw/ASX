@@ -399,6 +399,7 @@ INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'BUR', N'BURLES
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'BAP', N'BURSON GROUP LIMITED', N'Retailing')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'BRU', N'BURU ENERGY LIMITED', N'Energy')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'BUX', N'BUXTON RESOURCES LIMITED', N'Materials')
+INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'BMP', N'BUYMYPLACE.COM.AU LIMITED', N'Materials')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'BWP', N'BWP TRUST', N'Real Estate')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'BWX', N'BWX LIMITED', N'Household & Personal Products')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'BYE', N'BYRON ENERGY LIMITED', N'Energy')

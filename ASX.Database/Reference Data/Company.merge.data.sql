@@ -399,6 +399,7 @@ MERGE INTO [dbo].[Companies] AS Target USING
   (N'BAP', N'BURSON GROUP LIMITED', N'Retailing'),
   (N'BRU', N'BURU ENERGY LIMITED', N'Energy'),
   (N'BUX', N'BUXTON RESOURCES LIMITED', N'Materials'),
+  (N'BMP', N'BUYMYPLACE.COM.AU LIMITED', N'Materials'),
   (N'BWP', N'BWP TRUST', N'Real Estate'),
   (N'BWX', N'BWX LIMITED', N'Household & Personal Products'),
   (N'BYE', N'BYRON ENERGY LIMITED', N'Energy'),
