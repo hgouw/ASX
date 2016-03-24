@@ -49,6 +49,7 @@ MERGE INTO [dbo].[WatchLists] AS Target USING
   (N'SVW'),
   (N'TEN'),
   (N'TLS'),
+  (N'TPM'),
   (N'TRS'),
   (N'WBC'),
   (N'WES'),
