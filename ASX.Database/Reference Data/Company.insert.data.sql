@@ -2138,6 +2138,7 @@ INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'WEL', N'WINCHE
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'WVL', N'WINDIMURRA VANADIUM LIMITED', N'Materials')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'WIN', N'WINDWARD RESOURCES LTD', N'Materials')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'WFE', N'WINMAR RESOURCES LIMITED', N'Materials')
+INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'WTC', N'WISETECH GLOBAL LIMITED', N'Software & Services')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'WLF', N'WOLF MINERALS LIMITED', N'Materials')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'WOF', N'WOLF PETROLEUM LTD', N'Energy')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'WLC', N'WOLLONGONG COAL LIMITED', N'Materials')

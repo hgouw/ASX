@@ -2138,6 +2138,7 @@ MERGE INTO [dbo].[Companies] AS Target USING
   (N'WVL', N'WINDIMURRA VANADIUM LIMITED', N'Materials'),
   (N'WIN', N'WINDWARD RESOURCES LTD', N'Materials'),
   (N'WFE', N'WINMAR RESOURCES LIMITED', N'Materials'),
+  (N'WTC', N'WISETECH GLOBAL LIMITED', N'Software & Services'),
   (N'WLF', N'WOLF MINERALS LIMITED', N'Materials'),
   (N'WOF', N'WOLF PETROLEUM LTD', N'Energy'),
   (N'WLC', N'WOLLONGONG COAL LIMITED', N'Materials'),
