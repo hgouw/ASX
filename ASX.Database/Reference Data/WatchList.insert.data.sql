@@ -2,6 +2,7 @@
 
 -- Insert Reference Data for WatchList
 INSERT INTO [dbo].[WatchLists] ([Code]) VALUES (N'A2M')
+INSERT INTO [dbo].[WatchLists] ([Code]) VALUES (N'ACX')
 INSERT INTO [dbo].[WatchLists] ([Code]) VALUES (N'AMP')
 INSERT INTO [dbo].[WatchLists] ([Code]) VALUES (N'ANZ')
 INSERT INTO [dbo].[WatchLists] ([Code]) VALUES (N'ASX')
@@ -57,4 +58,5 @@ INSERT INTO [dbo].[WatchLists] ([Code]) VALUES (N'WES')
 INSERT INTO [dbo].[WatchLists] ([Code]) VALUES (N'WIG')
 INSERT INTO [dbo].[WatchLists] ([Code]) VALUES (N'WOW')
 INSERT INTO [dbo].[WatchLists] ([Code]) VALUES (N'WPL')
+INSERT INTO [dbo].[WatchLists] ([Code]) VALUES (N'WTC')
 INSERT INTO [dbo].[WatchLists] ([Code]) VALUES (N'XRO')

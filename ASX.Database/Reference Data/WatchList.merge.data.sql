@@ -2,6 +2,7 @@
 MERGE INTO [dbo].[WatchLists] AS Target USING
 (VALUES
   (N'A2M'),
+  (N'ACX'),
   (N'AMP'),
   (N'ANZ'),
   (N'ASX'),
@@ -57,6 +58,7 @@ MERGE INTO [dbo].[WatchLists] AS Target USING
   (N'WIG'),
   (N'WOW'),
   (N'WPL'),
+  (N'WTC'),
   (N'XRO')
 )
 AS SOURCE ([Code])
