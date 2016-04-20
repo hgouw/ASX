@@ -1,17 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
 
 namespace ASX.BusinessLayer
 {
-    public enum EntityStates
-    {
-        Active = 0,
-        Deleted
-    }
-
     public abstract class EntityBase
     {
         [NotMapped]
-        public virtual EntityStates EntityState { get; set; }
+        public virtual EntityState State { get; set; }
 
         [NotMapped]
         public virtual bool IsNew { get; private set; }
