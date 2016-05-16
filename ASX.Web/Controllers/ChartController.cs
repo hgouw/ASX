@@ -9,7 +9,12 @@ namespace ASX.Web.Controllers
 {
     public class ChartController : Controller
     {
-        // GET: Chart
+        [Route("Chart")]
+        public ActionResult Default()
+        {
+            return View();
+        }
+
         public ActionResult Display()
         {
             var model = new ChartViewModel

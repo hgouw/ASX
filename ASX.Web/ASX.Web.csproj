@@ -131,6 +131,7 @@
     <Content Include="Views\Home\Default.cshtml" />
     <Content Include="Views\Chart\Display.cshtml" />
     <Content Include="Views\IndustryGroup\List.cshtml" />
+    <Content Include="Views\Chart\Default.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
