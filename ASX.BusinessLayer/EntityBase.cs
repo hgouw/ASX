@@ -9,7 +9,7 @@ namespace ASX.BusinessLayer
         public virtual EntityState State { get; set; }
 
         [NotMapped]
-        public virtual bool IsNew { get; private set; }
+        public virtual bool IsNew { get; }
 
         [NotMapped]
         public virtual bool HasChanges { get; set; }
