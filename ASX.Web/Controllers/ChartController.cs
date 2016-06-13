@@ -15,11 +15,16 @@ namespace ASX.Web.Controllers
             return View();
         }
 
-        public ActionResult Display()
+        public ActionResult Display(string code)
         {
+            DateTime startDate;
+            using (ASXDbContext db = new ASXDbContext())
+            {
+                startDate = db.EndOfDays.Where(e => e.Code == code).OrderBy(e => e.Date).ToList()[0].Date;
+            }
             var model = new ChartViewModel
             {
-                Chart = GetChart("MPL", new DateTime(2010,1,1), DateTime.Today)
+                Chart = GetChart(code, startDate, DateTime.Today)
             };
             return View(model);
         }
