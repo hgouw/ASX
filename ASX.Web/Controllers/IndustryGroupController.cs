@@ -5,7 +5,6 @@ namespace ASX.Web.Controllers
 {
     public class IndustryGroupController : Controller
     {
-        // GET: IndustryGroup
         public ActionResult List()
         {
             var industryGroups = ASXDbContext.GetIndustryGroups();
