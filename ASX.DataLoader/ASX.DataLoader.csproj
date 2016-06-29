@@ -67,6 +67,7 @@
     <Compile Include="DataLoaderForm.Designer.cs">
       <DependentUpon>DataLoaderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Enum.cs" />
     <Compile Include="GenerateScriptForm.cs">
       <SubType>Form</SubType>
     </Compile>
