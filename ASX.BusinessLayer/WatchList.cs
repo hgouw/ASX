@@ -23,7 +23,8 @@ namespace ASX.BusinessLayer
 
         public override bool Validate()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return true;
         }
 
         public override string ToString() => $"{Code}";

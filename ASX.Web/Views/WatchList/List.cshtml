@@ -1,3 +1,9 @@
 ﻿<h2>Watch Lists</h2>
 
-@Html.DropDownList("WatchLists", "Select Watch List")
+@using (Html.BeginForm())
+{
+    @Html.DropDownList("WatchLists", "Select Watch List")
+    <div>
+        <input type="submit" value="Display" />
+    </div>
+}
