@@ -26,8 +26,10 @@ namespace ASX.DataLoader
             {
                 _endOfDays = ASXDbContext.GetEndOfDays();
                 var lastDate = _endOfDays.OrderByDescending(e => e.Date).First().Date;
-                dtpStart.Value = lastDate.AddDays(1);
-                dtpEnd.Value = DateTime.Today;
+                var startDate = lastDate.AddDays(-1);
+                dtpStart.Value = startDate;
+                dtpEnd.Value = lastDate;
+                dtpEnd.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -37,7 +39,7 @@ namespace ASX.DataLoader
 
         private void Generate_Click(object sender, EventArgs e)
         {
-
+            var endOfDays = _endOfDays.Where(x => x.Date >= dtpStart.Value && x.Date <= dtpEnd.Value).ToList();
         }
     }
 }
