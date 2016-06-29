@@ -115,6 +115,8 @@ namespace ASX.DataLoader
 
         private void Script_Click(object sender, EventArgs e)
         {
+            var script = new GenerateScriptForm();
+            script.ShowDialog();
         }
 
         private void DisplayOutput(OutputType type, string text)

@@ -67,10 +67,19 @@
     <Compile Include="DataLoaderForm.Designer.cs">
       <DependentUpon>DataLoaderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenerateScriptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerateScriptForm.Designer.cs">
+      <DependentUpon>GenerateScriptForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DataLoaderForm.resx">
       <DependentUpon>DataLoaderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerateScriptForm.resx">
+      <DependentUpon>GenerateScriptForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
