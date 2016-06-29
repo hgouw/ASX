@@ -113,6 +113,10 @@ namespace ASX.DataLoader
             }
         }
 
+        private void Script_Click(object sender, EventArgs e)
+        {
+        }
+
         private void DisplayOutput(OutputType type, string text)
         {
             this.richTextBox.Text += text + Environment.NewLine;

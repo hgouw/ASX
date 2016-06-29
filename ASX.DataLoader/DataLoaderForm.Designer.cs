@@ -35,6 +35,7 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuData = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLoad = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuScript = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,6 +95,7 @@
             // 
             this.menuData.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuLoad,
+            this.menuScript,
             this.menuExit});
             this.menuData.Name = "menuData";
             this.menuData.Size = new System.Drawing.Size(43, 20);
@@ -108,6 +110,15 @@
             this.menuLoad.Text = "&Load";
             this.menuLoad.ToolTipText = "Load";
             this.menuLoad.Click += new System.EventHandler(this.Load_Click);
+            // 
+            // menuScript
+            // 
+            this.menuScript.Name = "menuScript";
+            this.menuScript.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.menuScript.Size = new System.Drawing.Size(152, 22);
+            this.menuScript.Text = "&Script";
+            this.menuScript.ToolTipText = "Script";
+            this.menuScript.Click += new System.EventHandler(this.Script_Click);
             // 
             // statusStrip
             // 
@@ -166,6 +177,7 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripMenuItem menuData;
         private System.Windows.Forms.ToolStripMenuItem menuLoad;
+        private System.Windows.Forms.ToolStripMenuItem menuScript;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ToolStripMenuItem menuExit;
     }
