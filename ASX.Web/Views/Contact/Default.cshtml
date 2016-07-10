@@ -1,0 +1,32 @@
+﻿@model ASX.Web.Models.ContactModel
+@{
+    ViewBag.Title = "Contact Me";
+}
+
+<h2>Contact Me</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="row">
+        @Html.LabelFor(model => model.Name, "Name")
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <div class="row">
+        @Html.LabelFor(model => model.Email, "Email")
+        @Html.EditorFor(model => model.Email)
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+    <div class="row">
+        @Html.LabelFor(model => model.Phone, "Phone")
+        @Html.EditorFor(model => model.Phone)
+    </div>
+    <div class="row">
+        @Html.LabelFor(model => model.Message, "Message")
+        @Html.TextAreaFor(model => model.Message)
+        @Html.ValidationMessageFor(model => model.Message)
+    </div>
+    <div class="row">
+        <input type="submit" value="Submit" />
+    </div>
+}
