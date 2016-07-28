@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Web.Mvc;
 using ASX.Web.Models;
 using SendGrid.Helpers.Mail;
@@ -20,11 +21,10 @@ namespace ASX.Web.Controllers
             {
                 try
                 {
-                    var apiKey = "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";
-                    dynamic sendGrid = new SendGrid.SendGridAPIClient(apiKey, "https://api.sendgrid.com");
+                    dynamic sendGrid = new SendGrid.SendGridAPIClient(ConfigurationManager.AppSettings["ApiKey"], ConfigurationManager.AppSettings["SendGridUrl"]);
                     var from = new Email(contact.Email, contact.Name);
-                    var subject = "Message from hermangouw@net";
-                    var to = new Email("hermangouw@gmail.com", "Herman Gouw");
+                    var to = new Email(ConfigurationManager.AppSettings["ToEmailAddress"], ConfigurationManager.AppSettings["ToName"]);
+                    var subject = ConfigurationManager.AppSettings["Subject"];
                     var content = new Content("text/plain", contact.Message);
                     var mail = new Mail(from, subject, to, content);
                     dynamic response = sendGrid.client.mail.send.post(requestBody: mail.Get());
