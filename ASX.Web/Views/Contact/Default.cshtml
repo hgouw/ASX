@@ -29,12 +29,10 @@
     </div>
     <div class="row">
         @Html.ReCaptcha()
-        <div>
-            @if (TempData["ReCaptcha-Error"] != null)
-            {
-                @TempData["ReCaptcha-Error"]
-            }
-        </div>
+        @if (TempData["ReCaptchaError"] != null)
+        {
+            <p>@TempData["ReCaptchaError"]</p>
+        }
     </div>
     <div class="row">
         <input type="submit" value="Submit" />
