@@ -6,6 +6,7 @@
 <h2>Contact Me</h2>
 @using (Html.BeginForm())
 {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     <div class="row">
         @Html.LabelFor(model => model.Name, "Name")
@@ -25,6 +26,15 @@
         @Html.LabelFor(model => model.Message, "Message")
         @Html.TextAreaFor(model => model.Message)
         @Html.ValidationMessageFor(model => model.Message)
+    </div>
+    <div class="row">
+        @Html.ReCaptcha()
+        <div>
+            @if (TempData["ReCaptcha-Error"] != null)
+            {
+                @TempData["ReCaptcha-Error"]
+            }
+        </div>
     </div>
     <div class="row">
         <input type="submit" value="Submit" />

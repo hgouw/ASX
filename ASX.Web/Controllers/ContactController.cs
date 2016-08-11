@@ -15,9 +15,13 @@ namespace ASX.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Default(ContactModel contact)
+        public ActionResult Default(ContactModel contact, bool IsCaptchaValid)
         {
-            if (ModelState.IsValid)
+            if (!IsCaptchaValid)
+            {
+                TempData["ReCaptcha-Error"] = "Please verify that you are not a robot.";
+            }
+            if (ModelState.IsValid && IsCaptchaValid)
             {
                 try
                 {
