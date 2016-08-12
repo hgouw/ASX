@@ -30,9 +30,9 @@
     <div class="row">
         @Html.ReCaptcha()
         <div>
-            @if (TempData["ReCaptcha-Error"] != null)
+            @if (TempData["ReCaptchaError"] != null)
             {
-                @TempData["ReCaptcha-Error"]
+                @TempData["ReCaptchaError"]
             }
         </div>
     </div>

@@ -19,7 +19,7 @@ namespace ASX.Web.Controllers
         {
             if (!IsCaptchaValid)
             {
-                TempData["ReCaptcha-Error"] = "Please verify that you are not a robot.";
+                TempData["ReCaptchaError"] = "Please verify that you are not a robot.";
             }
             if (ModelState.IsValid && IsCaptchaValid)
             {
