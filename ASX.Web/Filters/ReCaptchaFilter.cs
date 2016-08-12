@@ -31,8 +31,7 @@ namespace ASX.Web
         {
             try
             {
-                //var request = (HttpWebRequest)WebRequest.Create(String.Format(ConfigurationManager.AppSettings["ReCaptchaUrl"], privateKey, mainResponse));
-                var request = (HttpWebRequest)WebRequest.Create("https://www.google.com/recaptcha/api/siteverify?secret=" + privateKey + "&response=" + mainResponse);
+                var request = (HttpWebRequest)WebRequest.Create(String.Format(ConfigurationManager.AppSettings["ReCaptchaUrl"], privateKey, mainResponse));
                 var response = request.GetResponse();
                 using (var stream = new StreamReader(response.GetResponseStream()))
                 {
