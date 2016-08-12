@@ -15,22 +15,5 @@ namespace ASX.Web
             sb.AppendLine("<div class=\"g-recaptcha\" data-sitekey=\"" + ConfigurationManager.AppSettings["RecaptchaPublicKey"] + "\"></div>");
             return MvcHtmlString.Create(sb.ToString());
         }
-
-        //public static void ValidateReeCaptcha(this Controller controller)
-        //{
-        //    RecaptchaVerificationHelper recaptchaHelper = controller.GetRecaptchaVerificationHelper();
-        //    if (String.IsNullOrEmpty(recaptchaHelper.Response))
-        //    {
-        //        controller.ModelState.AddModelError("", "Please enter the captcha code");
-        //    }
-        //    else
-        //    {
-        //        RecaptchaVerificationResult recaptchaResult = recaptchaHelper.VerifyRecaptchaResponse();
-        //        if (recaptchaResult != RecaptchaVerificationResult.Success)
-        //        {
-        //            controller.ModelState.AddModelError("", "Please enter the correct captcha code");
-        //        }
-        //    }
-        //}
     }
 }
