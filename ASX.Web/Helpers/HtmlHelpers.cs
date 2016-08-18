@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace ASX.Web
 {
-    public static class ExtensionMethods
+    public static partial class ExtensionMethods
     {
         public static IHtmlString ReCaptcha(this HtmlHelper helper)
         {
