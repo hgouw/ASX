@@ -4,6 +4,7 @@ using System.Data.Entity.Validation;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ASX.BusinessLayer;
 using ASX.DataAccess;
@@ -45,7 +46,7 @@ namespace ASX.DataLoader
             }
         }
 
-        private void Load_Click(object sender, EventArgs e)
+        private async void Load_Click(object sender, EventArgs e)
         {
             this.openFileDialog.Filter = "TXT files (*.csv, *.txt)|*.csv;*.txt";
             if (this.openFileDialog.ShowDialog() == DialogResult.OK)
@@ -55,50 +56,30 @@ namespace ASX.DataLoader
                 {
                     foreach (var filename in filenames)
                     {
-                        try
+                        var lines = File.ReadAllText(filename).Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                        var csv = lines.Select(l => l.Split(',')).ToArray();
+                        var endOfDays = csv.Select(x => new EndOfDay()
                         {
-                            var lines = File.ReadAllText(filename).Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-                            var csv = lines.Select(l => l.Split(',')).ToArray();
-                            var endOfDays = csv.Select(x => new EndOfDay()
-                            {
-                                Code = x[0],
-                                Date = DateTime.ParseExact(x[1], "yyyyMMdd", CultureInfo.InvariantCulture),
-                                Open = Decimal.Parse(x[2]),
-                                High = Decimal.Parse(x[3]),
-                                Low = Decimal.Parse(x[4]),
-                                Close = Decimal.Parse(x[5]),
-                                Volume = Int32.Parse(x[6])
-                            });
-                            _endOfDays = endOfDays.Where(a => _watchLists.Any(w => w.Code == a.Code)).OrderBy(w => w.Date).ToList(); // Select the EndOfDays in WatchLists only
-                            db.EndOfDays.AddRange(_endOfDays);
-                            //db.SaveChanges();
+                            Code = x[0],
+                            Date = DateTime.ParseExact(x[1], "yyyyMMdd", CultureInfo.InvariantCulture),
+                            Open = Decimal.Parse(x[2]),
+                            High = Decimal.Parse(x[3]),
+                            Low = Decimal.Parse(x[4]),
+                            Close = Decimal.Parse(x[5]),
+                            Volume = Int32.Parse(x[6])
+                        });
+                        _endOfDays = endOfDays.Where(a => _watchLists.Any(w => w.Code == a.Code)).OrderBy(w => w.Date).ToList(); // Select the EndOfDays in WatchLists only
+                        db.EndOfDays.AddRange(_endOfDays);
+                        var msg = await SaveDatabase(db);
+                        if (String.IsNullOrEmpty(msg))
+                        {
                             DisplayOutput(OutputType.Info, $"Successfully saved the data from the file {filename}");
                         }
-                        catch (Exception ex)
+                        else
                         {
-                            DisplayOutput(OutputType.Error, $"Failed to convert the data in - {filename} {ex.Message} ");
+                            DisplayOutput(OutputType.Error, $"Failed to convert the data in - {filename} {msg} ");
+                            db.EndOfDays.RemoveRange(_endOfDays);
                         }
-                    }
-                    try
-                    {
-                        db.SaveChanges();
-                    }
-                    catch (DbEntityValidationException ex)
-                    {
-                        foreach (DbEntityValidationResult item in ex.EntityValidationErrors)
-                        {
-                            var entry = item.Entry;
-                            var entityTypeName = entry.Entity.GetType().Name;
-                            foreach (var subItem in item.ValidationErrors)
-                            {
-                                var message = $"Error '{subItem.ErrorMessage}' occurred in {entityTypeName} at {subItem.PropertyName}";
-                                DisplayOutput(OutputType.Error, $"Failed to save changes - {message}");
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        DisplayOutput(OutputType.Error, $"Failed to save changes - {ex.Message}");
                     }
                 }
             }
@@ -108,6 +89,22 @@ namespace ASX.DataLoader
         {
             var script = new GenerateScriptForm();
             script.ShowDialog();
+        }
+
+        private Task<string> SaveDatabase(ASXDbContext db)
+        {
+            return Task.Run(() =>
+            {
+                try
+                {
+                    db.SaveChanges();
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    return ex.InnerException.InnerException.Message;
+                }
+            });
         }
 
         private void DisplayOutput(OutputType type, string text)
