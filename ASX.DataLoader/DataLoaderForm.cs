@@ -57,6 +57,7 @@ namespace ASX.DataLoader
                 {
                     foreach (var filename in filenames)
                     {
+                        // The input data is in .txt file so cannot use CsvHelper
                         var lines = File.ReadAllText(filename).Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
                         var csv = lines.Select(l => l.Split(',')).ToArray();
                         var endOfDays = csv.Select(x => new EndOfDay()
