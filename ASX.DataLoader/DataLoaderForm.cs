@@ -51,6 +51,7 @@ namespace ASX.DataLoader
             this.openFileDialog.Filter = "TXT files (*.csv, *.txt)|*.csv;*.txt";
             if (this.openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                this.menuLoad.Enabled = false;
                 var filenames = this.openFileDialog.FileNames.OrderBy(f => f);
                 using (var db = new ASXDbContext())
                 {
@@ -82,6 +83,7 @@ namespace ASX.DataLoader
                         }
                     }
                 }
+                this.menuLoad.Enabled = true;
             }
         }
 
