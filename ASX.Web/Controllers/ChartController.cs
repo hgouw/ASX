@@ -47,19 +47,6 @@ namespace ASX.Web.Controllers
             return View(model);
         }
 
-        private Chart GetChart()
-        {
-            var chart = new Chart(width: 600, height: 400)
-                .AddTitle("Chart Title")
-                .AddSeries(
-                    name: "Family",
-                    chartType: "pie",
-                    xValue: new[] { "Herman", "Helen", "Sarah", "Olivia" }, xField: "Name",
-                    yValues: new[] { "55", "44", "11", "7" }, yFields: "Age"
-                );
-            return chart;
-        }
-
         private Chart GetChart(string code, DateTime startDate, DateTime endDate)
         {
             using (ASXDbContext db = new ASXDbContext())
