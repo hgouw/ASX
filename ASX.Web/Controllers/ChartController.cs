@@ -15,16 +15,34 @@ namespace ASX.Web.Controllers
             return View();
         }
 
-        public ActionResult Display(string code)
+        public ActionResult Display(string code, DateTime? from = null, DateTime? to = null)
         {
             DateTime startDate;
-            using (ASXDbContext db = new ASXDbContext())
+            if (from == null)
             {
-                startDate = db.EndOfDays.Where(e => e.Code == code).OrderBy(e => e.Date).ToList()[0].Date;
+                using (ASXDbContext db = new ASXDbContext())
+                {
+                    startDate = db.EndOfDays.Where(e => e.Code == code).OrderBy(e => e.Date).ToList()[0].Date;
+                }
             }
+            else
+            {
+                startDate = (DateTime)from;
+            }
+
+            DateTime endDate;
+            if (to == null)
+            {
+                endDate = DateTime.Today;
+            }
+            else
+            {
+                endDate = (DateTime)to;
+            }
+
             var model = new ChartViewModel
             {
-                Chart = GetChart(code, startDate, DateTime.Today)
+                Chart = GetChart(code, startDate, endDate)
             };
             return View(model);
         }
@@ -42,11 +60,11 @@ namespace ASX.Web.Controllers
             return chart;
         }
 
-        private Chart GetChart(string code, DateTime dtFrom, DateTime dtTo)
+        private Chart GetChart(string code, DateTime startDate, DateTime endDate)
         {
             using (ASXDbContext db = new ASXDbContext())
             {
-                var endOfDays = db.EndOfDays.Where(d => d.Code == code && d.Date >= dtFrom.Date && d.Date <= dtTo.Date);
+                var endOfDays = db.EndOfDays.Where(d => d.Code == code && d.Date >= startDate.Date && d.Date <= endDate.Date);
                 var prices = endOfDays.Select(r => new { Price = r.Close }).ToList();
                 var dates = endOfDays.Select(r => new { r.Date }).ToList();
                 var chart = new Chart(width: 1000, height: 400)
