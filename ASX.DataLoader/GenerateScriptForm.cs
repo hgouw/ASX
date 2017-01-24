@@ -52,6 +52,7 @@ namespace ASX.DataLoader
                 var sb = new StringBuilder();
                 sb.Append("USE [ASX]");
                 sb.Append("GO");
+                sb.Append(Environment.NewLine);
                 foreach (var watchList in _watchLists)
                 {
                     var endOfDays = _endOfDays.Where(x => x.Code == watchList.Code && x.Date >= dtpStart.Value && x.Date <= dtpEnd.Value).ToList();
