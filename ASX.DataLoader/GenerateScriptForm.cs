@@ -14,7 +14,7 @@ namespace ASX.DataLoader
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
 
-        private const string _sql = "INSERT [ASX].[dbo].[EndOfDays] ([Code], [Date], [Open], [High], [Low], [Close], [Volume]) VALUES (N'{0}', CAST(N'{1}' AS DateTime), CAST({2} AS Decimal(6, 3)), CAST({3} AS Decimal(6, 3)), CAST({4} AS Decimal(6, 3)), CAST({5} AS Decimal(6, 3)), {6})";
+        private const string _sql = "INSERT INTO [dbo].[EndOfDays] ([Code], [Date], [Open], [High], [Low], [Close], [Volume]) VALUES (N'{0}', CAST(N'{1}' AS DateTime), CAST({2} AS Decimal(6, 3)), CAST({3} AS Decimal(6, 3)), CAST({4} AS Decimal(6, 3)), CAST({5} AS Decimal(6, 3)), {6})";
         private const string _filename = "AzureSQL_EndOfDays.sql";
 
         IList<EndOfDay> _endOfDays = null;
@@ -50,23 +50,28 @@ namespace ASX.DataLoader
             try
             {
                 var sb = new StringBuilder();
+                sb.Append("USE [ASX]");
+                sb.Append("GO");
                 foreach (var watchList in _watchLists)
                 {
                     var endOfDays = _endOfDays.Where(x => x.Code == watchList.Code && x.Date >= dtpStart.Value && x.Date <= dtpEnd.Value).ToList();
-                    foreach (var endOfDay in endOfDays)
+                    if (endOfDays.Count > 0)
                     {
-                        // Code:   {0} - ACX
-                        // Date:   {1} - 2015-12-31 00:00:00.000
-                        // Open:   {2} - 1.910
-                        // High:   {3} - 1.910
-                        // Low:    {4} - 1.800
-                        // Close:  {5} - 1.800
-                        // Volume: {6} - 191455
-                        sb.Append(String.Format(_sql, endOfDay.Code, endOfDay.Date.ToString("yyyy-MM-dd HH:mm:ss.fff"), endOfDay.Open, endOfDay.High, endOfDay.Low, endOfDay.Close, endOfDay.Volume));
+                        foreach (var endOfDay in endOfDays)
+                        {
+                            // Code:   {0} - ACX
+                            // Date:   {1} - 2015-12-31 00:00:00.000
+                            // Open:   {2} - 1.910
+                            // High:   {3} - 1.910
+                            // Low:    {4} - 1.800
+                            // Close:  {5} - 1.800
+                            // Volume: {6} - 191455
+                            sb.Append(String.Format(_sql, endOfDay.Code, endOfDay.Date.ToString("yyyy-MM-dd HH:mm:ss.fff"), endOfDay.Open, endOfDay.High, endOfDay.Low, endOfDay.Close, endOfDay.Volume));
+                            sb.Append(Environment.NewLine);
+                        }
+                        sb.Append("GO");
                         sb.Append(Environment.NewLine);
                     }
-                    sb.Append("GO");
-                    sb.Append(Environment.NewLine);
                 }
                 var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 var filePath = Path.Combine(desktopPath, _filename);
