@@ -51,6 +51,7 @@ namespace ASX.DataLoader
             {
                 var sb = new StringBuilder();
                 sb.Append("USE [ASX]");
+                sb.Append(Environment.NewLine);
                 sb.Append("GO");
                 sb.Append(Environment.NewLine);
                 foreach (var watchList in _watchLists)
