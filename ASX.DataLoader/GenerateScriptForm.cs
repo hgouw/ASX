@@ -79,6 +79,7 @@ namespace ASX.DataLoader
                 var filePath = Path.Combine(desktopPath, _filename);
                 File.WriteAllText(filePath, sb.ToString());
                 ok = true;
+                _logger.Info(String.Format("Successfully generated the script file from {0} to {1}", dtpStart.Value.ToString("yyyy-MM-dd"), dtpEnd.Value.ToString("yyyy-MM-dd")));
             }
             catch (Exception ex)
             {
