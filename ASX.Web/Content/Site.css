@@ -16,3 +16,19 @@ textarea {
     max-width: 280px;
 }
 
+.editor-field input {
+    width : 420px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.editor-field textarea {
+    display: block;
+    width : 400px;
+    height : 100px;
+    margin-bottom: 10px;
+}
+
+.submit input {
+    margin-top: 10px;
+}

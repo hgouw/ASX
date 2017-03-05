@@ -8,21 +8,21 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    <div>
+    <div class="editor-field">
         @Html.LabelFor(model => model.Name, "Name")
         @Html.EditorFor(model => model.Name)
         @Html.ValidationMessageFor(model => model.Name)
     </div>
-    <div>
+    <div class="editor-field">
         @Html.LabelFor(model => model.Email, "Email")
         @Html.EditorFor(model => model.Email)
         @Html.ValidationMessageFor(model => model.Email)
     </div>
-    <div>
+    <div class="editor-field">
         @Html.LabelFor(model => model.Phone, "Phone")
         @Html.EditorFor(model => model.Phone)
     </div>
-    <div>
+    <div class="editor-field">
         @Html.LabelFor(model => model.Message, "Message")
         @Html.TextAreaFor(model => model.Message)
         @Html.ValidationMessageFor(model => model.Message)
@@ -34,7 +34,7 @@
             <p>@TempData["ReCaptchaError"]</p>
         }
     </div>
-    <div>
+    <div class="submit">
         <input type="submit" value="Submit" />
     </div>
 }
