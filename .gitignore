@@ -7,9 +7,7 @@
 
 # User-specific files
 *.suo
-# *.user
-*.csproj.user
-*.sqlproj.user
+*.user
 *.sln.docstates
 
 # Build results
@@ -99,7 +97,7 @@ publish/
 
 # Publish Web Output
 *.Publish.xml
-# *.pubxml
+*.pubxml
 
 # NuGet Packages Directory
 packages/
