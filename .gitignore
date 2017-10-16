@@ -28,6 +28,7 @@ build/
 *_i.c
 *_p.c
 *.ilk
+*.jfm
 *.meta
 *.obj
 *.pch
