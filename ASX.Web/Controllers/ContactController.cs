@@ -25,7 +25,7 @@ namespace ASX.Web.Controllers
             {
                 try
                 {
-                    dynamic sendGrid = new SendGrid.SendGridAPIClient(ConfigurationManager.AppSettings["ApiKey"], ConfigurationManager.AppSettings["SendGridUrl"]);
+                    dynamic sendGrid = new SendGrid.SendGridAPIClient(ConfigurationManager.AppSettings["SendGridApiKey"], ConfigurationManager.AppSettings["SendGridUrl"]);
                     var from = new Email(contact.Email, contact.Name);
                     var to = new Email(ConfigurationManager.AppSettings["ToEmailAddress"], ConfigurationManager.AppSettings["ToName"]);
                     var subject = ConfigurationManager.AppSettings["Subject"];
