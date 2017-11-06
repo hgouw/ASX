@@ -79,7 +79,7 @@ namespace ASX.DataLoader
                         }
                         else
                         {
-                            DisplayOutput(OutputType.Error, $"Failed to convert the data in - {filename} {msg} ");
+                            DisplayOutput(OutputType.Error, $"Failed to convert the data in - {filename} {msg}");
                             db.EndOfDays.RemoveRange(_endOfDays);
                         }
                     }
