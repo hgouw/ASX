@@ -1379,7 +1379,7 @@ INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'NCM', N'NEWCRE
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'NRU', N'NEWERA RESOURCES LIMITED', N'Energy')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'NWF', N'NEWFIELD RESOURCES LIMITED', N'Materials')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'NHH', N'NEWHAVEN HOTELS LIMITED', N'Consumer Services')
-INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'NWS', N'NEWS CORPORATION..', N'Media')
+INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'NWS', N'NEWS CORPORATION', N'Media')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'NWT', N'NEWSAT LIMITED', N'Telecommunication Services')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'NWZ', N'NEWZULU LIMITED', N'Media')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'NME', N'NEX METALS EXPLORATION LIMITED', N'Materials')
