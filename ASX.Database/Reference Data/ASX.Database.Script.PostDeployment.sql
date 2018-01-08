@@ -36,4 +36,5 @@ Post-Deployment Script Template
 :r ".\EndOfDay.insert.data.2014.sql"
 :r ".\EndOfDay.insert.data.2015.sql"
 :r ".\EndOfDay.insert.data.2016.sql"
+:r ".\EndOfDay.insert.data.2017.sql"
 GO
