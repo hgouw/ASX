@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -36,7 +37,7 @@ namespace ASX.DataLoader
                 var startDate = lastDate.AddDays(-1);
                 dtpStart.Value = startDate;
                 dtpEnd.Value = lastDate;
-                dtpEnd.Enabled = false;
+                dtpEnd.Enabled = Convert.ToBoolean(ConfigurationManager.AppSettings["EndDateEnabled"]);
             }
             catch (Exception ex)
             {
