@@ -8,11 +8,12 @@ namespace ASX.Report
     {
         static void Main(string[] args)
         {
-            var years = new int[] { 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 };
+            var year = 1997;
             var label = "Code";
-            foreach (var year in years)
+            while (year <= DateTime.Today.Year)
             {
                 label += "," + year;
+                year++;
             }
             Console.WriteLine(label);
 
@@ -20,10 +21,12 @@ namespace ASX.Report
             var watchLists = ASXDbContext.GetWatchLists();
             foreach (var watchList in watchLists)
             {
+                year = 1997;
                 var line = $"{watchList.Code}";
-                foreach (var year in years)
+                while (year <= DateTime.Today.Year)
                 {
                     line += "," + endOfDays.Where(d => d.Code == watchList.Code && d.Date >= new DateTime(year, 1, 1) && d.Date <= new DateTime(year, 12, 31)).Count();
+                    year++;
                 }
                 Console.WriteLine(line);
             }
