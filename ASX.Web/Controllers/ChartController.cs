@@ -20,7 +20,7 @@ namespace ASX.Web.Controllers
             DateTime startDate;
             if (from == null)
             {
-                using (ASXDbContext db = new ASXDbContext())
+                using (var db = new ASXDbContext())
                 {
                     startDate = db.EndOfDays.Where(e => e.Code == code).OrderBy(e => e.Date).ToList()[0].Date;
                 }
