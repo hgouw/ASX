@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -16,13 +17,31 @@ namespace ASX.Api
             HttpRequestMessage req,
             TraceWriter log)
         {
-            log.Info("Process EndOfDays API");
+            log.Info("Received EndOfDays request");
+            HttpResponseMessage response;
+            var company = await req.Content.ReadAsAsync<Company>();
+            if (company != null)
+            {
+                try
+                {
+                    log.Info("Processed EndOfDays request");
+                    response = req.CreateResponse(HttpStatusCode.OK, $"Returned EndOfDays request for {company.Code}");
+                    log.Info($"Returned EndOfDays request for {company.Code}");
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex.Message, ex);
+                    response = req.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+                }
+            }
+            else
+            {
+                var errorMessage = "Invalid company code";
+                log.Error(errorMessage);
+                response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
+            }
 
-            Company endOfDay = await req.Content.ReadAsAsync<Company>();
-
-            log.Info($"Request EndOfDays API for {endOfDay.Code}");
-
-            return req.CreateResponse(HttpStatusCode.OK, $"Return from EndOfDays API with data for {endOfDay.Code}");
+            return response;
         }
     }
 }
