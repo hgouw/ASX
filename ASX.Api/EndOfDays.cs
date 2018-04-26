@@ -13,20 +13,22 @@ namespace ASX.Api
     {
         [FunctionName("EndOfDays")]
         public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)]
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]
             HttpRequestMessage req,
             TraceWriter log)
         {
             log.Info("Received EndOfDays request");
             HttpResponseMessage response;
-            var company = await req.Content.ReadAsAsync<Company>();
+            var company = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "company", true) == 0).Value;
+            var from = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "from", true) == 0).Value;
+            var to = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "to", true) == 0).Value;
             if (company != null)
             {
                 try
                 {
                     log.Info("Processed EndOfDays request");
-                    response = req.CreateResponse(HttpStatusCode.OK, $"Returned EndOfDays request for {company.Code}");
-                    log.Info($"Returned EndOfDays request for {company.Code}");
+                    response = req.CreateResponse(HttpStatusCode.OK, $"Returned EndOfDays request for {company}");
+                    log.Info($"Returned EndOfDays request for {company}");
                 }
                 catch (Exception ex)
                 {
