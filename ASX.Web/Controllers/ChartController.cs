@@ -40,7 +40,7 @@ namespace ASX.Web.Controllers
                 endDate = (DateTime)to;
             }
 
-            var model = new ChartViewModel
+            var model = new ChartModel
             {
                 Chart = GetChart(code, startDate, endDate)
             };

@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\GoogleChartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndustryGroupController.cs" />
     <Compile Include="Controllers\WatchListController.cs" />
@@ -205,8 +206,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlHelpers.cs" />
-    <Compile Include="Models\ChartViewModel.cs" />
+    <Compile Include="Models\ChartModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\GoogleChartModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +226,8 @@
     <Content Include="Views\Contact\Default.cshtml" />
     <Content Include="Views\Contact\Success.cshtml" />
     <Content Include="Views\Contact\Error.cshtml" />
+    <Content Include="Views\GoogleChart\Default.cshtml" />
+    <Content Include="Views\GoogleChart\Display.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
