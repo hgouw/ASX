@@ -14,22 +14,12 @@ namespace ASX.Api
     public static class EndOfDays
     {
         [FunctionName("EndOfDays")]
-        public static async Task<HttpResponseMessage> Run(
+        public static HttpResponseMessage Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]
             HttpRequestMessage req,
             TraceWriter log)
         {
             log.Info("Received EndOfDays request");
-
-            try
-            {
-                var watchLists = ASXDbContext.GetWatchLists();
-                log.Info("Successfully get the list of Watchlists");
-            }
-            catch (Exception ex)
-            {
-                log.Info("Unsuccessfully get the list of Watchlists {" + ex.Message + "}");
-            }
 
             HttpResponseMessage response;
             var code = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "code", true) == 0).Value;
@@ -40,6 +30,10 @@ namespace ASX.Api
                 try
                 {
                     log.Info("Processed EndOfDays request");
+                    using (ASXDbContext db = new ASXDbContext())
+                    {
+                        var endOfDays = db.EndOfDays.Where(d => d.Code == code); // && d.Date >= startDate.Date && d.Date <= endDate.Date);
+                    }
                     response = req.CreateResponse(HttpStatusCode.OK, $"Returned EndOfDays request for {code}");
                     log.Info($"Returned EndOfDays request for {code}");
                 }
