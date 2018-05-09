@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
-using ASX.DataAccessLayer;
+using ASX.BusinessLayer;
+using ASX.DataAccess;
 
 namespace ASX.Api
 {
@@ -20,25 +21,27 @@ namespace ASX.Api
         {
             log.Info("Received EndOfDays request");
 
-            HttpResponseMessage response;
-
-            using (var db = new ASXEntities())
+            try
             {
-                log.Info("Try to get the list of Companies");
-                var companies = db.Companies.ToList();
-                log.Info("Successfully get the list of Companies");
+                var watchLists = ASXDbContext.GetWatchLists();
+                log.Info("Successfully get the list of Watchlists");
+            }
+            catch (Exception ex)
+            {
+                log.Info("Unsuccessfully get the list of Watchlists {" + ex.Message + "}");
             }
 
-            var company = "CPU"; //req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "company", true) == 0).Value;
+            HttpResponseMessage response;
+            var code = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "code", true) == 0).Value;
             var from = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "from", true) == 0).Value;
             var to = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "to", true) == 0).Value;
-            if (company != null)
+            if (code != null)
             {
                 try
                 {
                     log.Info("Processed EndOfDays request");
-                    response = req.CreateResponse(HttpStatusCode.OK, $"Returned EndOfDays request for {company}");
-                    log.Info($"Returned EndOfDays request for {company}");
+                    response = req.CreateResponse(HttpStatusCode.OK, $"Returned EndOfDays request for {code}");
+                    log.Info($"Returned EndOfDays request for {code}");
                 }
                 catch (Exception ex)
                 {

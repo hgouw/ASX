@@ -7,7 +7,8 @@
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.6" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ASX.DataAccessLayer\ASX.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\ASX.BusinessLayer\ASX.BusinessLayer.csproj" />
+    <ProjectReference Include="..\ASX.DataAccess\ASX.DataAccess.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
