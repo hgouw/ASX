@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ASXModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Group" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EndOfDays">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Open" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="High" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="Low" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="Close" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="Volume" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IndustryGroups">
+          <Key>
+            <PropertyRef Name="Group" />
+          </Key>
+          <Property Name="Group" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WatchLists">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Company_IndustryGroup">
+          <End Role="IndustryGroups" Type="Self.IndustryGroups" Multiplicity="1" />
+          <End Role="Companies" Type="Self.Companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IndustryGroups">
+              <PropertyRef Name="Group" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="Group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EndOfDay_Company">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1" />
+          <End Role="EndOfDays" Type="Self.EndOfDays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="EndOfDays">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WatchList_Company">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1" />
+          <End Role="WatchLists" Type="Self.WatchLists" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="WatchLists">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ASXModelStoreContainer">
+          <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EndOfDays" EntityType="Self.EndOfDays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IndustryGroups" EntityType="Self.IndustryGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WatchLists" EntityType="Self.WatchLists" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Company_IndustryGroup" Association="Self.FK_Company_IndustryGroup">
+            <End Role="IndustryGroups" EntitySet="IndustryGroups" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EndOfDay_Company" Association="Self.FK_EndOfDay_Company">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="EndOfDays" EntitySet="EndOfDays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WatchList_Company" Association="Self.FK_WatchList_Company">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="WatchLists" EntitySet="WatchLists" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ASXModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="IndustryGroup" Relationship="Self.FK_Company_IndustryGroup" FromRole="Companies" ToRole="IndustryGroups" />
+          <NavigationProperty Name="EndOfDays" Relationship="Self.FK_EndOfDay_Company" FromRole="Companies" ToRole="EndOfDays" />
+          <NavigationProperty Name="WatchList" Relationship="Self.FK_WatchList_Company" FromRole="Companies" ToRole="WatchLists" />
+        </EntityType>
+        <EntityType Name="EndOfDay">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Open" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="High" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="Low" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="Close" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="Volume" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_EndOfDay_Company" FromRole="EndOfDays" ToRole="Companies" />
+        </EntityType>
+        <EntityType Name="IndustryGroup">
+          <Key>
+            <PropertyRef Name="Group" />
+          </Key>
+          <Property Name="Group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_Company_IndustryGroup" FromRole="IndustryGroups" ToRole="Companies" />
+        </EntityType>
+        <EntityType Name="WatchList">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_WatchList_Company" FromRole="WatchLists" ToRole="Companies" />
+        </EntityType>
+        <Association Name="FK_Company_IndustryGroup">
+          <End Role="IndustryGroups" Type="Self.IndustryGroup" Multiplicity="1" />
+          <End Role="Companies" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IndustryGroups">
+              <PropertyRef Name="Group" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="Group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EndOfDay_Company">
+          <End Role="Companies" Type="Self.Company" Multiplicity="1" />
+          <End Role="EndOfDays" Type="Self.EndOfDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="EndOfDays">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WatchList_Company">
+          <End Role="Companies" Type="Self.Company" Multiplicity="1" />
+          <End Role="WatchLists" Type="Self.WatchList" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="WatchLists">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ASXEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="EndOfDays" EntityType="Self.EndOfDay" />
+          <EntitySet Name="IndustryGroups" EntityType="Self.IndustryGroup" />
+          <EntitySet Name="WatchLists" EntityType="Self.WatchList" />
+          <AssociationSet Name="FK_Company_IndustryGroup" Association="Self.FK_Company_IndustryGroup">
+            <End Role="IndustryGroups" EntitySet="IndustryGroups" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EndOfDay_Company" Association="Self.FK_EndOfDay_Company">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="EndOfDays" EntitySet="EndOfDays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WatchList_Company" Association="Self.FK_WatchList_Company">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="WatchLists" EntitySet="WatchLists" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ASXModelStoreContainer" CdmEntityContainer="ASXEntities">
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="ASXModel.Company">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Group" ColumnName="Group" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EndOfDays">
+            <EntityTypeMapping TypeName="ASXModel.EndOfDay">
+              <MappingFragment StoreEntitySet="EndOfDays">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Open" ColumnName="Open" />
+                <ScalarProperty Name="High" ColumnName="High" />
+                <ScalarProperty Name="Low" ColumnName="Low" />
+                <ScalarProperty Name="Close" ColumnName="Close" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IndustryGroups">
+            <EntityTypeMapping TypeName="ASXModel.IndustryGroup">
+              <MappingFragment StoreEntitySet="IndustryGroups">
+                <ScalarProperty Name="Group" ColumnName="Group" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WatchLists">
+            <EntityTypeMapping TypeName="ASXModel.WatchList">
+              <MappingFragment StoreEntitySet="WatchLists">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
