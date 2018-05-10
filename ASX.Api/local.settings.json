@@ -6,7 +6,7 @@
   },
   "ConnectionStrings": {
     "ASXDbContext": {
-      "ConnectionString": "Data Source=LNGSYDL-600244\\SQLEXPRESS;Initial Catalog=ASX;Integrated Security=True",
+      "ConnectionString": "Data Source=SNOOPY-AIO\\SQLEXPRESS;Initial Catalog=ASX;Integrated Security=True",
       //"ConnectionString": "Data Source=SNOOPY-AIO\\SQLEXPRESS;Initial Catalog=ASX;Integrated Security=True",
       //"ConnectionString": "Data Source=LNGSYDL-600244\\SQLEXPRESS;Initial Catalog=ASX;Integrated Security=True",
       "ProviderName": "System.Data.SqlClient"
