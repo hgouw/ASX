@@ -5,7 +5,7 @@ using ASX.Common;
 
 namespace ASX.BusinessLayer
 {
-    public class WatchList : EntityBase, ILoggable, IEquatable<WatchList>
+    public class WatchList : ILoggable, IEquatable<WatchList>
     {
         public WatchList()
         {
@@ -20,12 +20,6 @@ namespace ASX.BusinessLayer
         public virtual string Code { get; set; }
 
         public virtual Company Company { get; set; }
-
-        public override bool Validate()
-        {
-            //throw new NotImplementedException();
-            return true;
-        }
 
         public override string ToString() => $"{Code}";
 

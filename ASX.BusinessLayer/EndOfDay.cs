@@ -5,7 +5,7 @@ using ASX.Common;
 
 namespace ASX.BusinessLayer
 {
-    public class EndOfDay : EntityBase, ILoggable, IEquatable<EndOfDay>
+    public class EndOfDay : ILoggable, IEquatable<EndOfDay>
     {
         public EndOfDay()
         {
@@ -28,11 +28,6 @@ namespace ASX.BusinessLayer
         public virtual int Volume { get; set; }
 
         public virtual Company Company { get; set; }
-
-        public override bool Validate()
-        {
-            throw new NotImplementedException();
-        }
 
         public override string ToString() => $"{Code} - {Date.ToString("yyyy-mm-dd")}";
 
