@@ -31,7 +31,6 @@ namespace ASX.Api
                     using (ASXDbContext db = new ASXDbContext())
                     {
                         var endOfDay = db.EndOfDays.Where(d => d.Code == code).OrderByDescending(e => e.Date).FirstOrDefault();
-                        string s = JsonConvert.SerializeObject(endOfDay);
                         response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(endOfDay), Encoding.UTF8, "application/json") };
                     }
                     log.Info($"Returned Price request for {code}");
