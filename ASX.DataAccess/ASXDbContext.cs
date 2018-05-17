@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using ASX.BusinessLayer;
 
 namespace ASX.DataAccess
@@ -41,6 +42,38 @@ namespace ASX.DataAccess
             using (ASXDbContext dbContext = new ASXDbContext())
             {
                 return dbContext.EndOfDays.ToList();
+            }
+        }
+
+        public static async Task<IList<IndustryGroup>> GetIndustryGroupsAsync()
+        {
+            using (ASXDbContext dbContext = new ASXDbContext())
+            {
+                return await dbContext.IndustryGroups.ToListAsync();
+            }
+        }
+
+        public static async Task<IList<Company>> GetCompaniesAsync()
+        {
+            using (ASXDbContext dbContext = new ASXDbContext())
+            {
+                return await dbContext.Companies.ToListAsync();
+            }
+        }
+
+        public static async Task<IList<WatchList>> GetWatchListsAsync()
+        {
+            using (ASXDbContext dbContext = new ASXDbContext())
+            {
+                return await dbContext.WatchLists.ToListAsync();
+            }
+        }
+
+        public static async Task<IList<EndOfDay>> GetEndOfDaysAsync()
+        {
+            using (ASXDbContext dbContext = new ASXDbContext())
+            {
+                return await dbContext.EndOfDays.ToListAsync();
             }
         }
     }
