@@ -41,7 +41,6 @@ namespace ASX.Api
                         var endOfDays = db.EndOfDays.Where(d => d.Code == code && d.Date >= startDate.Date && d.Date <= endDate.Date);
                         response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(endOfDays.ToList()), Encoding.UTF8, "application/json") };
                     }
-                    //response = req.CreateResponse(HttpStatusCode.OK, $"Returned EndOfDays request for {code}");
                     log.Info($"Returned EndOfDays request for {code}");
                 }
                 catch (Exception ex)
