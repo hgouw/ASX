@@ -23,7 +23,6 @@ namespace ASX.Api
             log.Info("Received Price request");
 
             HttpResponseMessage response;
-
             try
             {
                 log.Info("Processed Price request");
@@ -50,7 +49,6 @@ namespace ASX.Api
                 response = req.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
                 log.Info($"Unsuccessfully Processed Price request");
             }
-
             return response;
         }
     }
