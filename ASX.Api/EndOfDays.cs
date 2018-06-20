@@ -1,10 +1,13 @@
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
+using Newtonsoft.Json;
 using ASX.DataAccess;
 
 namespace ASX.Api
@@ -30,9 +33,15 @@ namespace ASX.Api
                     log.Info("Processed EndOfDays request");
                     using (ASXDbContext db = new ASXDbContext())
                     {
-                        var endOfDays = db.EndOfDays.Where(d => d.Code == code); // && d.Date >= startDate.Date && d.Date <= endDate.Date);
+                        if (from != null) from = "01/01/1997";
+                        if (to != null) to = DateTime.Today.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+                        DateTime startDate = DateTime.ParseExact(from, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                        DateTime endDate = DateTime.ParseExact(to, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                        var endOfDays = db.EndOfDays.Where(d => d.Code == code) && d.Date >= startDate.Date && d.Date <= endDate.Date);
+                        response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(endOfDays), Encoding.UTF8, "application/json") };
                     }
-                    response = req.CreateResponse(HttpStatusCode.OK, $"Returned EndOfDays request for {code}");
+                    //response = req.CreateResponse(HttpStatusCode.OK, $"Returned EndOfDays request for {code}");
                     log.Info($"Returned EndOfDays request for {code}");
                 }
                 catch (Exception ex)
