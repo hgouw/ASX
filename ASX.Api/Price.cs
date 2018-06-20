@@ -15,14 +15,14 @@ namespace ASX.Api
     {
         [FunctionName("Price")]
         public static HttpResponseMessage Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "price/{code}")]
             HttpRequestMessage req,
+            string code,
             TraceWriter log)
         {
             log.Info("Received Price request");
 
             HttpResponseMessage response;
-            var code = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "code", true) == 0).Value;
 
             try
             {
