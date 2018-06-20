@@ -33,8 +33,8 @@ namespace ASX.Api
                     log.Info("Processed EndOfDays request");
                     using (ASXDbContext db = new ASXDbContext())
                     {
-                        if (from != null) from = "01/01/1997";
-                        if (to != null) to = DateTime.Today.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+                        if (from == null) from = "01/01/1997";
+                        if (to == null) to = DateTime.Today.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
                         DateTime startDate = DateTime.ParseExact(from, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                         DateTime endDate = DateTime.ParseExact(to, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
