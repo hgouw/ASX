@@ -13,16 +13,16 @@ namespace ASX.Api
     {
         [FunctionName("EndOfDays")]
         public static HttpResponseMessage Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "endofdays/{code}/{from?}/{to?}")]
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "endofdays/{code}")]
             HttpRequestMessage req,
             string code,
-            string from,
-            string to,
             TraceWriter log)
         {
             log.Info("Received EndOfDays request");
 
             HttpResponseMessage response;
+            var from = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "from", true) == 0).Value;
+            var to = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "to", true) == 0).Value;
             if (code != null)
             {
                 try
