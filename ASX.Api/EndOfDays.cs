@@ -63,7 +63,6 @@ namespace ASX.Api
                     log.Info("Processed EndOfDays request");
                     using (ASXDbContext db = new ASXDbContext())
                     {
-
                         var endOfDays = db.EndOfDays.Where(d => d.Code == code && d.Date >= startDate.Date && d.Date <= endDate.Date);
                         response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(endOfDays.ToList()), Encoding.UTF8, "application/json") };
                     }
