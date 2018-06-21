@@ -44,9 +44,10 @@ namespace ASX.Api
                     {
                         if (code != null)
                         {
-                            var endOfDay = db.EndOfDays.Where(d => d.Code == code).OrderByDescending(e => e.Date).FirstOrDefault();
-                            var obj = new { Code = endOfDay.Code, Name = endOfDay.Company.Name, Date = endOfDay.Date, Last = endOfDay.Close, Volume = endOfDay.Volume };
-                            response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json") };
+                            var endOfDay = db.EndOfDays.Where(d => d.Code == code).OrderByDescending(e => e.Date)
+                                                       .Select(o => new { Code = o.Code, Name = o.Company.Name, Date = o.Date, Last = o.Close, Volume = o.Volume })
+                                                       .FirstOrDefault();
+                            response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(endOfDay), Encoding.UTF8, "application/json") };
                         }
                         else
                         {
