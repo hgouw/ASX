@@ -23,20 +23,46 @@ namespace ASX.Api
         {
             log.Info("Received EndOfDays request");
 
-            HttpResponseMessage response;
+            HttpResponseMessage response = null;
+
+            if (code == null)
+            {
+                var errorMessage = "Missing company code";
+                log.Error(errorMessage);
+                response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
+            }
+            else
+            {
+                // Check if the company code is valid
+            }
+
             var from = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "from", true) == 0).Value;
             var to = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "to", true) == 0).Value;
-            if (code != null)
+            if (from == null) from = "01/01/1997";
+            if (to == null) to = DateTime.Today.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+            DateTime startDate;
+            if (!DateTime.TryParseExact(from, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out startDate))
+            {
+                var errorMessage = "Invalid from date";
+                log.Error(errorMessage);
+                response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
+            }
+            DateTime endDate;
+            if (!DateTime.TryParseExact(to, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out endDate))
+            {
+                var errorMessage = "Invalid to date";
+                log.Error(errorMessage);
+                response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
+            }
+
+            if (response == null)
             {
                 try
                 {
                     log.Info("Processed EndOfDays request");
                     using (ASXDbContext db = new ASXDbContext())
                     {
-                        if (from == null) from = "01/01/1997";
-                        if (to == null) to = DateTime.Today.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
-                        DateTime startDate = DateTime.ParseExact(from, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                        DateTime endDate = DateTime.ParseExact(to, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
                         var endOfDays = db.EndOfDays.Where(d => d.Code == code && d.Date >= startDate.Date && d.Date <= endDate.Date);
                         response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(endOfDays.ToList()), Encoding.UTF8, "application/json") };
@@ -49,12 +75,7 @@ namespace ASX.Api
                     response = req.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
                 }
             }
-            else
-            {
-                var errorMessage = "Invalid company code";
-                log.Error(errorMessage);
-                response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
-            }
+
             return response;
         }
     }
