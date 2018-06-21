@@ -22,33 +22,49 @@ namespace ASX.Api
         {
             log.Info("Received Price request");
 
-            HttpResponseMessage response;
-            try
+            HttpResponseMessage response = null;
+
+            if (code == null)
             {
-                log.Info("Processed Price request");
-                using (ASXDbContext db = new ASXDbContext())
+                var errorMessage = "Missing company code";
+                log.Error(errorMessage);
+                response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
+            }
+            else
+            {
+                // Check if the company code is valid
+            }
+
+            if (response == null)
+            {
+                try
                 {
-                    if (code != null)
+                    log.Info("Processed Price request");
+                    using (ASXDbContext db = new ASXDbContext())
                     {
-                        var endOfDay = db.EndOfDays.Where(d => d.Code == code).OrderByDescending(e => e.Date).FirstOrDefault();
-                        var obj = new { Code = endOfDay.Code, Name = endOfDay.Company.Name, Date = endOfDay.Date, Last = endOfDay.Close, Volume = endOfDay.Volume };
-                        response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json") };
+                        if (code != null)
+                        {
+                            var endOfDay = db.EndOfDays.Where(d => d.Code == code).OrderByDescending(e => e.Date).FirstOrDefault();
+                            var obj = new { Code = endOfDay.Code, Name = endOfDay.Company.Name, Date = endOfDay.Date, Last = endOfDay.Close, Volume = endOfDay.Volume };
+                            response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json") };
+                        }
+                        else
+                        {
+                            var errorMessage = "Invalid company code";
+                            log.Error(errorMessage);
+                            response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
+                        }
                     }
-                    else
-                    {
-                        var errorMessage = "Invalid company code";
-                        log.Error(errorMessage);
-                        response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
-                    }
+                    log.Info($"Successfully Processed Price request");
                 }
-                log.Info($"Successfully Processed Price request");
+                catch (Exception ex)
+                {
+                    log.Error(ex.Message, ex);
+                    response = req.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+                    log.Info($"Unsuccessfully Processed Price request");
+                }
             }
-            catch (Exception ex)
-            {
-                log.Error(ex.Message, ex);
-                response = req.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
-                log.Info($"Unsuccessfully Processed Price request");
-            }
+
             return response;
         }
     }
