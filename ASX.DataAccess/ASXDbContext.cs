@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +10,11 @@ namespace ASX.DataAccess
 {
     public class ASXDbContext : DbContext
     {
+        public ASXDbContext()
+        {
+            this.Configuration.ProxyCreationEnabled = Convert.ToBoolean(ConfigurationManager.AppSettings["LazyLoadingEnabled"]);
+        }
+
         public DbSet<IndustryGroup> IndustryGroups { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<WatchList> WatchLists { get; set; }
