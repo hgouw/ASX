@@ -32,7 +32,15 @@ namespace ASX.Api
             }
             else
             {
-                // Check if the company code is valid
+                using (ASXDbContext db = new ASXDbContext())
+                {
+                    if (!db.EndOfDays.Select(c => new { Code = c.Code }).Distinct().OrderBy(c => c.Code).Any(c => c.Code == code))
+                    {
+                        var errorMessage = "Invalid company code";
+                        log.Error(errorMessage);
+                        response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
+                    }
+                }
             }
 
             if (response == null)
