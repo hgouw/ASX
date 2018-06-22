@@ -50,21 +50,12 @@ namespace ASX.Api
                     log.Info("Processed Price request");
                     using (ASXDbContext db = new ASXDbContext())
                     {
-                        if (code != null)
-                        {
-                            var endOfDay = db.EndOfDays.Where(d => d.Code == code).OrderByDescending(e => e.Date)
-                                                       .Select(o => new { Code = o.Code, Name = o.Company.Name, Date = o.Date, Last = o.Close, Volume = o.Volume })
-                                                       .FirstOrDefault();
-                            response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(endOfDay), Encoding.UTF8, "application/json") };
-                        }
-                        else
-                        {
-                            var errorMessage = "Invalid company code";
-                            log.Error(errorMessage);
-                            response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
-                        }
+                        var endOfDay = db.EndOfDays.Where(d => d.Code == code).OrderByDescending(e => e.Date)
+                                                   .Select(o => new { Code = o.Code, Name = o.Company.Name, Date = o.Date, Last = o.Close, Volume = o.Volume })
+                                                   .FirstOrDefault();
+                        response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(endOfDay), Encoding.UTF8, "application/json") };
                     }
-                    log.Info($"Successfully Processed Price request");
+                    log.Info($"Returned Price request for {code}");
                 }
                 catch (Exception ex)
                 {

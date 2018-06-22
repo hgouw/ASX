@@ -82,6 +82,7 @@ namespace ASX.Api
                 {
                     log.Error(ex.Message, ex);
                     response = req.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+                    log.Info($"Unsuccessfully Processed EndOfDays request");
                 }
             }
 
