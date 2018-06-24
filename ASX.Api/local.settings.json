@@ -1,19 +1,2 @@
 {
-  "IsEncrypted": false,
-  "Values": {
-    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "AzureWebJobsDashboard": "UseDevelopmentStorage=true"
-  },
-  "ConnectionStrings": {
-    "ASXDbContext": {
-      "ConnectionString": "Data Source=SNOOPY-AIO\\SQLEXPRESS;Initial Catalog=ASX;Integrated Security=True",
-      //"ConnectionString": "Data Source=SNOOPY-AIO\\SQLEXPRESS;Initial Catalog=ASX;Integrated Security=True",
-      //"ConnectionString": "Data Source=LNGSYDL-600244\\SQLEXPRESS;Initial Catalog=ASX;Integrated Security=True",
-      "ProviderName": "System.Data.SqlClient"
-    }
-  }
 }
-
-// Function Apps - Connection Strings
-// ASXDbContext - Server=tcp:hgouw.database.windows.net,1433;Database=ASX;User ID=hgouw@hgouw;Password=9k2fh0OIy?cZ;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30; - SQLServer
-// ProviderName - System.Data.SqlClient - SQLServer
