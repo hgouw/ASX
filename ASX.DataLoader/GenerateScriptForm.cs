@@ -41,7 +41,7 @@ namespace ASX.DataLoader
             }
             catch (Exception ex)
             {
-                _logger.Error($"Failed to load the dates - {ex.Message}");
+                DisplayOutput(OutputType.Error, $"Failed to load the dates - {ex.Message}");
             }
         }
 
@@ -80,11 +80,11 @@ namespace ASX.DataLoader
                 var filePath = Path.Combine(desktopPath, _filename);
                 File.WriteAllText(filePath, sb.ToString());
                 ok = true;
-                _logger.Info(String.Format("Successfully generated the script file from {0} to {1}", dtpStart.Value.ToString("yyyy-MM-dd"), dtpEnd.Value.ToString("yyyy-MM-dd")));
+                DisplayOutput(OutputType.Info, String.Format("Successfully generated the script file from {0} to {1}", dtpStart.Value.ToString("yyyy-MM-dd"), dtpEnd.Value.ToString("yyyy-MM-dd")), true);
             }
             catch (Exception ex)
             {
-                _logger.Error($"Failed to generate the script - {ex.Message}");
+                DisplayOutput(OutputType.Error, $"Failed to generate the script - {ex.Message}");
                 ok = false;
             }
             finally
@@ -92,6 +92,22 @@ namespace ASX.DataLoader
                 Close();
                 DialogResult = ok ? DialogResult.OK : DialogResult.Abort;
             }
+        }
+
+        private void DisplayOutput(OutputType type, string text, bool popup = false)
+        {
+            switch (type)
+            {
+                case OutputType.Error:
+                    _logger.Error($"{text}");
+                    break;
+
+                case OutputType.Info:
+                    _logger.Info($"{text}");
+                    break;
+            }
+
+            if (popup) MessageBox.Show(text);
         }
     }
 }
