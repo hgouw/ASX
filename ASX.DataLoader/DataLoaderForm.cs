@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Validation;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -17,8 +16,8 @@ namespace ASX.DataLoader
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
 
-        IList<WatchList> _watchLists = null;
         IList<EndOfDay> _endOfDays = null;
+        IList<WatchList> _watchLists = null;
 
         public DataLoaderForm()
         {
