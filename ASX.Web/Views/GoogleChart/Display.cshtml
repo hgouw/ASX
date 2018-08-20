@@ -4,12 +4,10 @@
     <meta charset="utf-8" />
     <title>Line Chart</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-</head>
-<body>
-    <div id="linechart" style="width: 900px; height: 500px"></div>
     <script type="text/javascript">
         google.charts.load('current', { 'packages': ['line'] });
         google.charts.setOnLoadCallback(drawChart);
+
         function drawChart() {
             var data = new google.visualization.DataTable();
             data.addColumn('date', 'Date');
@@ -29,5 +27,8 @@
             var chart = new google.charts.Line(document.getElementById('linechart'));
             chart.draw(data, google.charts.Line.convertOptions(options));
     </script>
+</head>
+<body>
+    <div id="linechart" style="width: 900px; height: 500px"></div>
 </body>
 </html>
