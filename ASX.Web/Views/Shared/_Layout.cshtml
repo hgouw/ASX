@@ -1,57 +1,58 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Herman Gouw</title>
-        <link rel="shortcut icon" href="@Url.Content("~/content/favicon.ico")" type="image/x-icon" />
-        <link href="~/Content/Site.css" rel="stylesheet" />
-        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-        <script type="text/javascript">
-            var appInsights=window.appInsights||function(config){
-                function i(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s="AuthenticatedUserContext",h="start",c="stop",l="Track",a=l+"Event",v=l+"Page",y=u.createElement(o),r,f;y.src=config.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(y);try{t.cookie=u.cookie}catch(p){}for(t.queue=[],t.version="1.0",r=["Event","Exception","Metric","PageView","Trace","Dependency"];r.length;)i("track"+r.pop());return i("set"+s),i("clear"+s),i(h+a),i(c+a),i(h+v),i(c+v),i("flush"),config.disableExceptionTracking||(r="onerror",i("_"+r),f=e[r],e[r]=function(config,i,u,e,o){var s=f&&f(config,i,u,e,o);return s!==!0&&t["_"+r](config,i,u,e,o),s}),t}({
-                    instrumentationKey:"a740a6ca-52cc-4e6c-ace0-0994d07623e6"
-                });
-            window.appInsights=appInsights;
-            appInsights.trackPageView();
-        </script>
-        <script src="~/Scripts/jquery-2.2.3.min.js"></script>
-        <script src="~/Scripts/bootstrap.min.js"></script>
-        <script src="~/Scripts/modernizr-2.8.3.js"></script>
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Herman Gouw", "Default", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("About Me", "Default", "Home")</li>
-                        <li>@Html.ActionLink("Stock Charts", "Default", "Chart")</li>
-                        <li>@Html.ActionLink("Contact Me", "Default", "Contact")</li>
-                    </ul>
-                </div>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Herman Gouw</title>
+    <link rel="shortcut icon" href="@Url.Content("~/content/favicon.ico")" type="image/x-icon" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript">
+        var appInsights = window.appInsights || function (config) {
+            function i(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = "AuthenticatedUserContext", h = "start", c = "stop", l = "Track", a = l + "Event", v = l + "Page", y = u.createElement(o), r, f; y.src = config.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js"; u.getElementsByTagName(o)[0].parentNode.appendChild(y); try { t.cookie = u.cookie } catch (p) { } for (t.queue = [], t.version = "1.0", r = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; r.length;)i("track" + r.pop()); return i("set" + s), i("clear" + s), i(h + a), i(c + a), i(h + v), i(c + v), i("flush"), config.disableExceptionTracking || (r = "onerror", i("_" + r), f = e[r], e[r] = function (config, i, u, e, o) { var s = f && f(config, i, u, e, o); return s !== !0 && t["_" + r](config, i, u, e, o), s }), t
+        }({
+            instrumentationKey: "a740a6ca-52cc-4e6c-ace0-0994d07623e6"
+        });
+        window.appInsights = appInsights;
+        appInsights.trackPageView();
+    </script>
+    <script src="~/Scripts/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Herman Gouw", "Default", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("About Me", "Default", "Home")</li>
+                    <li>@Html.ActionLink("Stock Charts", "Default", "Chart")</li>
+                    <li>@Html.ActionLink("Contact Me", "Default", "Contact")</li>
+                </ul>
             </div>
         </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; Herman Gouw @DateTime.Now.Year</p>
-                <a href="https://www.linkedin.com/in/hermangouw">
-                    <img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_viewmy_160x25.png" width="160" height="25" border="0" alt="View Herman Gouw's profile on LinkedIn">
-                </a>
-            </footer>
-        </div>
-    
-        <script src="~/Scripts/jquery-2.2.3.min.js"></script>
-        <script src="~/Scripts/bootstrap.min.js"></script>
-    </body>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; Herman Gouw @DateTime.Now.Year</p>
+            <a href="https://www.linkedin.com/in/hermangouw">
+                <img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_viewmy_160x25.png" width="160" height="25" border="0" alt="View Herman Gouw's profile on LinkedIn">
+            </a>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
 </html>
