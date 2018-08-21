@@ -1,3 +1,10 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    // Check for browser
+    if (Request.Browser.IsBrowser("Chrome")) { }
+
+    // Check for controller
+    if (HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString() != "GoogleChart")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }
