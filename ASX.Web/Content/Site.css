@@ -37,3 +37,12 @@ textarea {
     transform: scale(0.93);
     transform-origin: 0 0;
 }
+
+.chart {
+    width: 100%;
+    min-height: 450px;
+}
+
+.row {
+    margin: 0 !important;
+}
