@@ -7,30 +7,51 @@
     <title>Herman Gouw</title>
     <link rel="shortcut icon" href="@Url.Content("~/content/favicon.ico")" type="image/x-icon" />
     <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <scpt src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></scpt>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-        google.charts.load('current', { 'packages': ['line'] });
+        //google.charts.load('current', { 'packages': ['line'] });
+        //google.charts.setOnLoadCallback(drawChart);
+
+        google.charts.load('visualization', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
-            var data = new google.visualization.DataTable();
-            data.addColumn('date', 'Date');
-            data.addColumn('number', 'Price');
-            data.addRows([
+            //var data = new google.visualization.DataTable();
+            //data.addColumn('date', 'Date');
+            //data.addColumn('number', 'Price');
+            //data.addRows([
+            //    [new Date(2018, 7, 1), 167],
+            //    [new Date(2018, 7, 2), 149],
+            //    [new Date(2018, 7, 3), 126],
+            //    [new Date(2018, 7, 4), 146]
+            //]);
+
+            var data = new google.visualization.arrayToDataTable([
+                ['Date', 'Price'],
                 [new Date(2018, 7, 1), 167],
                 [new Date(2018, 7, 2), 149],
                 [new Date(2018, 7, 3), 126],
-                [new Date(2018, 7, 4), 146],
+                [new Date(2018, 7, 4), 146]
             ]);
 
             var options = {
-                title: 'ASX',
-                legend: 'none'
+                vAxis: { title: 'Price', minValue: 0 },
+                hAxis: { title: 'Date' }
             };
 
-            var chart = new google.charts.Line(document.getElementById('linechart'));
-            chart.draw(data, google.charts.Line.convertOptions(options));
+            //var chart = new google.charts.Line(document.getElementById('linechart'));
+            //chart.draw(data, options);
+
+            var chart = new google.visualization.AreaChart(document.getElementById('linechart'));
+            chart.draw(data, options);
+
+            $(window).resize(function () {
+                drawChart();
+            });
         }
     </script>
 </head>
@@ -55,7 +76,8 @@
         </div>
     </div>
     <div class="container body-content">
-        <div id="linechart" style="width: 900px; height: 500px"></div>
+        @*<div id="linechart" style="width: 900px; height: 500px"></div>*@
+        <div id="linechart" class="chart"></div>
         <hr />
         <footer>
             <p>&copy; Herman Gouw @DateTime.Now.Year</p>
