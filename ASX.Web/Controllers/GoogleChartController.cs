@@ -1,18 +1,25 @@
 ﻿using System;
 using System.Linq;
-using System.Web.Helpers;
 using System.Web.Mvc;
 using ASX.DataAccess;
-using ASX.Web.Models;
 
 namespace ASX.Web.Controllers
 {
     public class GoogleChartController : Controller
     {
-        [Route("GoogleChart")]
         public ActionResult Default()
         {
+            DropLists(null, null);
             return View();
+        }
+
+        private void DropLists(string industryGroup, string company)
+        {
+            var industryGroups = ASXDbContext.GetIndustryGroups().AsEnumerable().Select((i, index) => new SelectListItem() { Text = i.Group, Value = (index + 1).ToString() }).ToList();
+            ViewBag.IndustryGroupList = new SelectList(industryGroups, "Value", "Text", industryGroup);
+
+            var companies = ASXDbContext.GetWatchLists().AsEnumerable().Select((c, index) => new SelectListItem() { Text = c.Code, Value = (index + 1).ToString() }).ToList();
+            ViewBag.CompanyList = new SelectList(companies, "Value", "Text", company);
         }
 
         public ActionResult Display(string code, DateTime? from = null, DateTime? to = null)

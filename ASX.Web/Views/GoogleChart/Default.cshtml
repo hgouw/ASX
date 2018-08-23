@@ -1,5 +1,78 @@
-﻿@{
-    ViewBag.Title = "Google Charts";
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Herman Gouw</title>
+    <link rel="shortcut icon" href="@Url.Content("~/content/favicon.ico")" type="image/x-icon" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.2.3.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Herman Gouw", "Default", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("About Me", "Default", "Home")</li>
+                    <li>@Html.ActionLink("Stock Charts", "Default", "Chart")</li>
+                    <li>@Html.ActionLink("Contact Me", "Default", "Contact")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @model ASX.Web.Models.ChartModel
 
-<h2>Google Charts</h2>
+        @{
+            ViewBag.Title = "Stock Charts";
+        }
+
+        <h2>Stock Charts</h2>
+        <p>Stock trading is my other passion.</p>
+        <p>I am developing this page which is still in progress to assist me in trading stocks.</p>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <p class="alert-error">@ViewBag.AuthorMessage</p>
+            <table class="table-striped" style="width: 90%;">
+                <tr>
+                    <td>@Html.LabelFor(model => model.IndustryGroup)</td>
+                    <td>@Html.DropDownListFor(model => model.IndustryGroup, ViewBag.IndustryGroupList as SelectList)</td>
+                    <td>@Html.ValidationMessageFor(model => model.IndustryGroup)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.CompanyCode)</td>
+                    <td>@Html.DropDownListFor(model => model.CompanyCode, ViewBag.CompanyList as SelectList)</td>
+                    <td>@Html.ValidationMessageFor(model => model.CompanyCode)</td>
+                </tr>
+                <tr></tr>
+            </table>
+            <p>
+                <input type="submit" value="Display" />
+            </p>
+        }
+        <hr />
+        <footer>
+            <p>&copy; Herman Gouw @DateTime.Now.Year</p>
+            <a href="https://www.linkedin.com/in/hermangouw">
+                <img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_viewmy_160x25.png" width="160" height="25" border="0" alt="View Herman Gouw's profile on LinkedIn">
+            </a>
+        </footer>
+    </div>
+</body>
+</html>
