@@ -48,14 +48,15 @@ namespace ASX.Web.Controllers
                 endDate = (DateTime)to;
             }
 
-            using (ASXDbContext db = new ASXDbContext())
+            using (var db = new ASXDbContext())
             {
                 var endOfDays = db.EndOfDays.Where(d => d.Code == code && d.Date >= startDate.Date && d.Date <= endDate.Date);
                 var prices = endOfDays.Select(r => new { Price = r.Close }).ToList();
                 var dates = endOfDays.Select(r => new { r.Date }).ToList();
             }
 
-            return View();
+            var model = new GoogleChartModel();
+            return View(model);
         }
     }
 }
