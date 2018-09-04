@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using ASX.DataAccess;
 using ASX.Web.Models;
@@ -48,15 +49,24 @@ namespace ASX.Web.Controllers
                 endDate = (DateTime)to;
             }
 
+            var model = new GoogleChartModel
+            {
+                GoogleChart = GetGoogleChart(code, startDate, endDate)
+            };
+            return View(model);
+        }
+
+        private GoogleChart GetGoogleChart(string code, DateTime startDate, DateTime endDate)
+        {
             using (var db = new ASXDbContext())
             {
                 var endOfDays = db.EndOfDays.Where(d => d.Code == code && d.Date >= startDate.Date && d.Date <= endDate.Date);
-                var prices = endOfDays.Select(r => new { Price = r.Close }).ToList();
-                var dates = endOfDays.Select(r => new { r.Date }).ToList();
+                var googleChart = new GoogleChart
+                {
+                    SharePrices = endOfDays.Select(r => new SharePrice { Price = r.Close, Date = r.Date }).ToList()
+                };
+                return googleChart;
             }
-
-            var model = new GoogleChartModel();
-            return View(model);
         }
     }
 }
