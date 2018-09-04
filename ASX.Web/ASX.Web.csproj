@@ -206,6 +206,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Helpers\WebHelpers.cs" />
     <Compile Include="Models\ChartModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\GoogleChartModel.cs" />
