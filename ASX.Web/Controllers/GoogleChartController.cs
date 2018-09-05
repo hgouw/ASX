@@ -24,7 +24,7 @@ namespace ASX.Web.Controllers
             ViewBag.CompanyList = new SelectList(companies, "Value", "Text", company);
         }
 
-        public ActionResult Display(string code = "XRO", DateTime? from = null, DateTime? to = null)
+        public ActionResult Display(string code = "CPU", DateTime? from = null, DateTime? to = null)
         {
             DateTime startDate;
             if (from == null)
