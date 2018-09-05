@@ -35,7 +35,7 @@
             for (var i = 0; i < chart.SharePrices.length; i++) {
                 var date = new Date(parseInt(chart.SharePrices[i].Date.substr(6)));
                 data.addRows([
-                    [new Date(date.getFullYear(), date.getMonth(), date.getDate()), chart.SharePrices[i].Price],
+                    [new Date(date.getFullYear(), date.getMonth(), date.getDate()), chart.SharePrices[i].Price]
                 ]);
             };
 
