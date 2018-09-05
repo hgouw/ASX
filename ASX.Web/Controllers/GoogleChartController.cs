@@ -24,7 +24,7 @@ namespace ASX.Web.Controllers
             ViewBag.CompanyList = new SelectList(companies, "Value", "Text", company);
         }
 
-        public ActionResult Display(string code, DateTime? from = null, DateTime? to = null)
+        public ActionResult Display(string code = "XRO", DateTime? from = null, DateTime? to = null)
         {
             DateTime startDate;
             if (from == null)
@@ -51,7 +51,7 @@ namespace ASX.Web.Controllers
 
             var model = new GoogleChartModel
             {
-                GoogleChart = GetGoogleChart(code, startDate, endDate)
+                GoogleChart = GetGoogleChart(code, DateTime.Today.AddMonths(-1), DateTime.Today)
             };
             return View(model);
         }
