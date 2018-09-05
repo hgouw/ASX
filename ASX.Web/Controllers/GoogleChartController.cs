@@ -51,7 +51,7 @@ namespace ASX.Web.Controllers
 
             var model = new GoogleChartModel
             {
-                GoogleChart = GetGoogleChart(code, DateTime.Today.AddMonths(-1), DateTime.Today)
+                GoogleChart = GetGoogleChart(code, startDate, endDate)
             };
             return View(model);
         }
