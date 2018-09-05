@@ -26,9 +26,6 @@
         google.charts.load('current', { 'packages': ['line'] });
         google.charts.setOnLoadCallback(drawChart);
 
-        //google.charts.load('visualization', { 'packages': ['corechart'] });
-        //google.charts.setOnLoadCallback(drawChart);
-
         function drawChart() {
             var chart = @Html.Raw(Json.Encode(Model.GoogleChart));
             console.log(chart.SharePrices);
@@ -49,9 +46,6 @@
 
             var chart = new google.charts.Line(document.getElementById('linechart'));
             chart.draw(data, google.charts.Line.convertOptions(options));
-
-            //var chart = new google.visualization.AreaChart(document.getElementById('linechart'));
-            //chart.draw(data, options);
 
             $(window).resize(function () {
                 drawChart();
