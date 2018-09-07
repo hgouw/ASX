@@ -26,7 +26,7 @@ namespace ASX.BusinessLayer
 
         public virtual IndustryGroup IndustryGroup { get; set; }
 
-        public override string ToString() => $"{Code} - {Name} - {Group}";
+        public override string ToString() => $"{Code} - {Name}";
 
         public string Log() => $"{Code} - {Name} - {Group}";
 
