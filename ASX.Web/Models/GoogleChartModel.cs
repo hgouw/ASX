@@ -9,7 +9,7 @@ namespace ASX.Web.Models
         [Display(Name = "Industry")]
         public int IndustryGroup { get; set; }
         [Display(Name = "Company")]
-        public int CompanyCode { get; set; }
+        public int Company { get; set; }
         public GoogleChart GoogleChart { get; set; }
     }
 }

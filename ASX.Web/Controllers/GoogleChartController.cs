@@ -18,7 +18,7 @@ namespace ASX.Web.Controllers
         [HttpPost]
         public ActionResult Default(GoogleChartModel model)
         {
-            var companyCode = ASXDbContext.GetWatchLists().ElementAt(model.CompanyCode);
+            var companyCode = ASXDbContext.GetWatchLists().ElementAt(model.Company);
             return RedirectToAction("Display", new { code = companyCode });
         }
 
