@@ -48,8 +48,7 @@
         }
 
         <h2>Stock Charts</h2>
-        <p>Stock trading is my other passion.</p>
-        <p>I am developing this page which is still in progress to assist me in trading stocks.</p>
+        <p>Select the company code:</p>
 
         @using (Html.BeginForm())
         {
@@ -57,12 +56,12 @@
             @Html.ValidationSummary(true)
 
             <p class="alert-error">@ViewBag.AuthorMessage</p>
-            <table class="table-striped" style="width: 90%;">
-                <tr>
+            <table style="width: 15%;">
+                @*<tr>
                     <td>@Html.LabelFor(model => model.IndustryGroup)</td>
                     <td>@Html.DropDownListFor(model => model.IndustryGroup, ViewBag.IndustryGroupList as SelectList)</td>
                     <td>@Html.ValidationMessageFor(model => model.IndustryGroup)</td>
-                </tr>
+                </tr>*@
                 <tr>
                     <td>@Html.LabelFor(model => model.CompanyCode)</td>
                     <td>@Html.DropDownListFor(model => model.CompanyCode, ViewBag.CompanyList as SelectList)</td>
