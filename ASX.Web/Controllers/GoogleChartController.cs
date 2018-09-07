@@ -18,7 +18,7 @@ namespace ASX.Web.Controllers
         [HttpPost]
         public ActionResult Default(GoogleChartModel model)
         {
-            return View(model);
+            return RedirectToAction("Display", new { code = "XRO" });
         }
 
         public ActionResult Display(string code = "CPU", DateTime? from = null, DateTime? to = null)
