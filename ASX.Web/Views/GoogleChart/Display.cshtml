@@ -28,7 +28,6 @@
 
         function drawChart() {
             var chart = @Html.Raw(Json.Encode(Model.GoogleChart));
-            var name = 'CPU - COMPUTERSHARE LIMITED'; // TODO - get the name from Model.CompanyName
             console.log(chart.SharePrices);
             var data = new google.visualization.DataTable();
             data.addColumn('date', 'Date');
@@ -41,7 +40,7 @@
             };
 
             var options = {
-                title: name,
+                title: @Html.Raw(Json.Encode(Model.CompanyName)),
                 legend: 'none',
                 vAxis: { title: 'Price', minValue: 0 },
                 hAxis: { title: 'Date' }
