@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Helpers;
 
 namespace ASX.Web.Models
@@ -6,9 +7,9 @@ namespace ASX.Web.Models
     public class GoogleChartModel
     {
         [Display(Name = "Industry")]
-        public string IndustryGroup { get; set; }
+        public int IndustryGroup { get; set; }
         [Display(Name = "Company")]
-        public string CompanyCode { get; set; }
+        public int CompanyCode { get; set; }
         public GoogleChart GoogleChart { get; set; }
     }
 }

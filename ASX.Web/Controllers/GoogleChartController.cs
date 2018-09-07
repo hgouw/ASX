@@ -15,13 +15,10 @@ namespace ASX.Web.Controllers
             return View();
         }
 
-        private void DropLists(string industryGroup, string company)
+        [HttpPost]
+        public ActionResult Default(GoogleChartModel model)
         {
-            var industryGroups = ASXDbContext.GetIndustryGroups().AsEnumerable().Select((i, index) => new SelectListItem() { Text = i.Group, Value = (index + 1).ToString() }).ToList();
-            ViewBag.IndustryGroupList = new SelectList(industryGroups, "Value", "Text", industryGroup);
-
-            var companies = ASXDbContext.GetWatchLists().AsEnumerable().Select((c, index) => new SelectListItem() { Text = c.Code, Value = (index + 1).ToString() }).ToList();
-            ViewBag.CompanyList = new SelectList(companies, "Value", "Text", company);
+            return View(model);
         }
 
         public ActionResult Display(string code = "CPU", DateTime? from = null, DateTime? to = null)
@@ -54,6 +51,15 @@ namespace ASX.Web.Controllers
                 GoogleChart = GetGoogleChart(code, startDate, endDate)
             };
             return View(model);
+        }
+
+        private void DropLists(int? industryGroup, int? company)
+        {
+            var industryGroups = ASXDbContext.GetIndustryGroups().AsEnumerable().Select((i, index) => new SelectListItem() { Text = i.Group, Value = index.ToString() });
+            ViewBag.IndustryGroupList = new SelectList(industryGroups, "Value", "Text", industryGroup);
+
+            var companies = ASXDbContext.GetWatchLists().AsEnumerable().Select((c, index) => new SelectListItem() { Text = c.Code, Value = index.ToString() });
+            ViewBag.CompanyList = new SelectList(companies, "Value", "Text", company);
         }
 
         private GoogleChart GetGoogleChart(string code, DateTime startDate, DateTime endDate)
