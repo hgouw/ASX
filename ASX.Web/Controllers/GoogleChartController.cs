@@ -18,8 +18,7 @@ namespace ASX.Web.Controllers
         [HttpPost]
         public ActionResult Default(GoogleChartModel model)
         {
-            var companyCode = ASXDbContext.GetWatchLists().ElementAt(model.Company);
-            return RedirectToAction("Display", new { code = companyCode });
+            return RedirectToAction("Display", new { code = ASXDbContext.GetWatchLists().ElementAt(model.Company).ToString() });
         }
 
         public ActionResult Display(string code = "CPU", DateTime? from = null, DateTime? to = null)
@@ -49,6 +48,8 @@ namespace ASX.Web.Controllers
 
             var model = new GoogleChartModel
             {
+                CompanyCode = code,
+                CompanyName = ASXDbContext.GetCompanies().Where(c => c.Code == code).First().ToString(),
                 GoogleChart = GetGoogleChart(code, startDate, endDate)
             };
             return View(model);
