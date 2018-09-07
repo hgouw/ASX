@@ -18,7 +18,8 @@ namespace ASX.Web.Controllers
         [HttpPost]
         public ActionResult Default(GoogleChartModel model)
         {
-            return RedirectToAction("Display", new { code = "XRO" });
+            var companyCode = ASXDbContext.GetWatchLists().ElementAt(model.CompanyCode);
+            return RedirectToAction("Display", new { code = companyCode });
         }
 
         public ActionResult Display(string code = "CPU", DateTime? from = null, DateTime? to = null)
