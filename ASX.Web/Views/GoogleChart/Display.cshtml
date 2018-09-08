@@ -41,7 +41,7 @@
 
             var options = {
                 title: @Html.Raw(Json.Encode(Model.CompanyName)),
-                legend: 'none',
+                legend: { position: 'none'},
                 vAxis: { title: 'Price', minValue: 0 },
                 hAxis: { title: 'Date' }
             };
