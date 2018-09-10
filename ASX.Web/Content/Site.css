@@ -9,6 +9,11 @@
     padding-right: 15px;
 }
 
+img {
+    height: 23px;
+    width: 160px;
+}
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
