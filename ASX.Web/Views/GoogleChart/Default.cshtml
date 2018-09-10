@@ -55,8 +55,7 @@
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
 
-            <p class="alert-error">@ViewBag.AuthorMessage</p>
-            <table style="width: 15%;">
+            <table style="width: 90%;">
                 @*<tr>
                     <td>@Html.LabelFor(model => model.IndustryGroup)</td>
                     <td>@Html.DropDownListFor(model => model.IndustryGroup, ViewBag.IndustryGroupList as SelectList)</td>
@@ -64,11 +63,13 @@
                 </tr>*@
                 <tr>
                     <td>@Html.LabelFor(model => model.Company)</td>
+                </tr>
+                <tr>
                     <td>@Html.DropDownListFor(model => model.Company, ViewBag.CompanyList as SelectList)</td>
                     <td>@Html.ValidationMessageFor(model => model.Company)</td>
                 </tr>
-                <tr></tr>
             </table>
+            <br />
             <p>
                 <input type="submit" value="Display" />
             </p>
