@@ -66,7 +66,7 @@
                     <td>@Html.LabelFor(model => model.Company)</td>
                 </tr>
                 <tr>
-                    <td>@Html.DropDownListFor(model => model.Company, ViewBag.CompanyList as SelectList)</td>
+                    <td>@Html.DropDownListFor(model => model.Company, ViewBag.CompanyList as SelectList, new { style = "width: 80px;" })</td>
                     <td>@Html.ValidationMessageFor(model => model.Company)</td>
                 </tr>
             </table>
