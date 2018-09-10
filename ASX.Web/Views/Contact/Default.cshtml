@@ -8,33 +8,46 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    <div class="editor-field">
-        @Html.LabelFor(model => model.Name, "Name")
-        @Html.EditorFor(model => model.Name)
-        @Html.ValidationMessageFor(model => model.Name)
-    </div>
-    <div class="editor-field">
-        @Html.LabelFor(model => model.Email, "Email")
-        @Html.EditorFor(model => model.Email)
-        @Html.ValidationMessageFor(model => model.Email)
-    </div>
-    <div class="editor-field">
-        @Html.LabelFor(model => model.Phone, "Phone")
-        @Html.EditorFor(model => model.Phone)
-    </div>
-    <div class="editor-field">
-        @Html.LabelFor(model => model.Message, "Message")
-        @Html.TextAreaFor(model => model.Message)
-        @Html.ValidationMessageFor(model => model.Message)
-    </div>
-    <div>
-        @Html.ReCaptcha()
-        @if (TempData["ReCaptchaError"] != null)
-        {
-            <p>@TempData["ReCaptchaError"]</p>
-        }
-    </div>
-    <div class="submit">
+
+    <table style="width: 90%;">
+        <tr>
+            <td>@Html.LabelFor(model => model.Name, "Name")</td>
+        </tr>
+        <tr>
+            <td>@Html.EditorFor(model => model.Name)</td>
+            <td>@Html.ValidationMessageFor(model => model.Name)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Email, "Email")</td>
+        </tr>
+        <tr>
+            <td>@Html.EditorFor(model => model.Email)</td>
+            <td>@Html.ValidationMessageFor(model => model.Email)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Phone, "Phone")</td>
+        </tr>
+        <tr>
+            <td>@Html.EditorFor(model => model.Phone)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Message, "Message")</td>
+        </tr>
+        <tr>
+            <td>@Html.TextAreaFor(model => model.Message)</td>
+            <td>@Html.ValidationMessageFor(model => model.Message)</td>
+        </tr>
+        <tr>
+            <td>
+                @Html.ReCaptcha()
+                @if (TempData["ReCaptchaError"] != null)
+                {
+                    <p>@TempData["ReCaptchaError"]</p>
+                }
+            </td>
+        </tr>
+    </table>
+    <p>
         <input type="submit" value="Submit" />
-    </div>
+    </p>
 }
