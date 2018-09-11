@@ -14,27 +14,27 @@
             <td>@Html.LabelFor(model => model.Name, "Name")</td>
         </tr>
         <tr>
-            <td>@Html.EditorFor(model => model.Name, new { htmlAttributes = new { style = "width:400px" } })</td>
+            <td>@Html.EditorFor(model => model.Name, new { htmlAttributes = new { style = "width:400px; margin-bottom:10px" } })</td>
             <td>@Html.ValidationMessageFor(model => model.Name)</td>
         </tr>
         <tr>
             <td>@Html.LabelFor(model => model.Email, "Email")</td>
         </tr>
         <tr>
-            <td>@Html.EditorFor(model => model.Email, new { htmlAttributes = new { style = "width:400px" } })</td>
+            <td>@Html.EditorFor(model => model.Email, new { htmlAttributes = new { style = "width:400px; margin-bottom:10px" } })</td>
             <td>@Html.ValidationMessageFor(model => model.Email)</td>
         </tr>
         <tr>
             <td>@Html.LabelFor(model => model.Phone, "Phone")</td>
         </tr>
         <tr>
-            <td>@Html.EditorFor(model => model.Phone, new { htmlAttributes = new { style = "width:400px" } })</td>
+            <td>@Html.EditorFor(model => model.Phone, new { htmlAttributes = new { style = "width:400px; margin-bottom:10px" } })</td>
         </tr>
         <tr>
             <td>@Html.LabelFor(model => model.Message, "Message")</td>
         </tr>
         <tr>
-            <td>@Html.TextAreaFor(model => model.Message, new { style = "width:400px; height:150px" })</td>
+            <td>@Html.TextAreaFor(model => model.Message, new { style = "width:400px; height:150px; margin-bottom:10px" })</td>
             <td>@Html.ValidationMessageFor(model => model.Message)</td>
         </tr>
         <tr>
