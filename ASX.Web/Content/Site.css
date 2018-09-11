@@ -41,6 +41,7 @@ textarea {
 .g-recaptcha {
     transform: scale(0.93);
     transform-origin: 0 0;
+    margin-bottom: 10px;
 }
 
 .chart {
