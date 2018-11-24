@@ -517,6 +517,7 @@ MERGE INTO [dbo].[Companies] AS Target USING
   (N'CGS', N'COGSTATE LTD', N'Health Care Equipment & Services'),
   (N'CHK', N'COHIBA MINERALS LIMITED', N'Materials'),
   (N'CKA', N'COKAL LIMITED', N'Materials'),
+  (N'COL', N'COLES GROUP LIMITED', N'Food & Staples Retailing'),
   (N'CL8', N'COLLABORATE CORPORATION LIMITED', N'Software & Services'),
   (N'CLH', N'COLLECTION HOUSE LIMITED', N'Commercial Services & Supplies'),
   (N'CKF', N'COLLINS FOODS LIMITED', N'Consumer Services'),

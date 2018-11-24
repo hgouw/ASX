@@ -517,6 +517,7 @@ INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'COF', N'COFFEY
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'CGS', N'COGSTATE LTD', N'Health Care Equipment & Services')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'CHK', N'COHIBA MINERALS LIMITED', N'Materials')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'CKA', N'COKAL LIMITED', N'Materials')
+INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'COL', N'COLES GROUP LIMITED', N'Food & Staples Retailing')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'CL8', N'COLLABORATE CORPORATION LIMITED', N'Software & Services')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'CLH', N'COLLECTION HOUSE LIMITED', N'Commercial Services & Supplies')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'CKF', N'COLLINS FOODS LIMITED', N'Consumer Services')

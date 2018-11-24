@@ -24,6 +24,7 @@ MERGE INTO [dbo].[WatchLists] AS Target USING
   (N'CBA'),
   (N'CGF'),
   (N'COH'),
+  (N'COL'),
   (N'CPU'),
   (N'CSL'),
   (N'CSR'),
