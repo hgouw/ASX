@@ -510,6 +510,7 @@
 "COGSTATE LTD",CGS,"Health Care Equipment & Services"
 "COHIBA MINERALS LIMITED",CHK,"Materials"
 "COKAL LIMITED",CKA,"Materials"
+"COLES GROUP LIMITED",COL,"Food & Staples Retailing"
 "COLLABORATE CORPORATION LIMITED",CL8,"Software & Services"
 "COLLECTION HOUSE LIMITED",CLH,"Commercial Services & Supplies"
 "COLLINS FOODS LIMITED",CKF,"Consumer Services"
