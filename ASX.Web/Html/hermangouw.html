@@ -1,0 +1,51 @@
+<h2>Contact Me</h2>
+<form action="/Contact" method="post"><input name="__RequestVerificationToken" type="hidden" value="VjYZHQACaUR_gpl9QLmyU0mgJY-m1Daqcwj1v9eIlMZ7gyAAmaPrSph1sTK7pkMM-ZaCvJDqK3ecQAtRoPmzXvW0oZdskx8bW25y-u_3gsY1" />
+    <table style="width: 90%;">
+        <tr>
+            <td><label for="Name">Name</label></td>
+        </tr>
+        <tr>
+            <td><input class="text-box single-line" data-val="true" data-val-required="Name is required" id="Name" name="Name"
+                    style="width:400px; margin-bottom:10px" type="text" value="" /></td>
+            <td><span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span></td>
+        </tr>
+        <tr>
+            <td><label for="Email">Email</label></td>
+        </tr>
+        <tr>
+            <td><input class="text-box single-line" data-val="true" data-val-required="Email is required" id="Email"
+                    name="Email" style="width:400px; margin-bottom:10px" type="text" value="" /></td>
+            <td><span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span></td>
+        </tr>
+        <tr>
+            <td><label for="Phone">Phone</label></td>
+        </tr>
+        <tr>
+            <td><input class="text-box single-line" id="Phone" name="Phone" style="width:400px; margin-bottom:10px"
+                    type="text" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="Message">Message</label></td>
+        </tr>
+        <tr>
+            <td>
+                <textarea cols="20" data-val="true" data-val-required="Message is required" id="Message" name="Message" rows="2" style="width:400px; height:150px; margin-bottom:10px">
+                </textarea>
+            </td>
+            <td>
+                <span class="field-validation-valid" data-valmsg-for="Message" data-valmsg-replace="true"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <script src='https://www.google.com/recaptcha/api.js'></script>
+
+                <div class="g-recaptcha" data-sitekey="6LcHLiYTAAAAAJl3dh2xLuDotEz2lHcvBUMCIgDS"></div>
+
+            </td>
+        </tr>
+    </table>
+    <p>
+        <input type="submit" value="Submit" />
+    </p>
+</form>
