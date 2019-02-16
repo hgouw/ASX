@@ -46,18 +46,18 @@ namespace ASX.Api
 
             var from = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "from", true) == 0).Value;
             var to = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "to", true) == 0).Value;
-            if (from == null) from = "01/01/1997";
-            if (to == null) to = DateTime.Today.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+            if (from == null) from = "01-01-1997";
+            if (to == null) to = DateTime.Today.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture);
 
             DateTime startDate;
-            if (!DateTime.TryParseExact(from, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out startDate))
+            if (!DateTime.TryParseExact(from, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out startDate))
             {
                 var errorMessage = "Invalid from date";
                 log.Error(errorMessage);
                 response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
             }
             DateTime endDate;
-            if (!DateTime.TryParseExact(to, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out endDate))
+            if (!DateTime.TryParseExact(to, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out endDate))
             {
                 var errorMessage = "Invalid to date";
                 log.Error(errorMessage);
