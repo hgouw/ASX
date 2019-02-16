@@ -7,10 +7,8 @@ namespace ASX.Api
     public static class LoadHistoricalData
     {
         [FunctionName("LoadHistoricalData")]
-        public static void Run([TimerTrigger("0 */1 * * * *")]TimerInfo myTimer, TraceWriter log)
+        public static void Run([TimerTrigger("0 18  * * *")]TimerInfo myTimer, TraceWriter log)
         {
-            var url = "/assets/data/week20180615.zip";
-
             if (myTimer.IsPastDue)
             {
                 log.Info("Timer is running late!");
