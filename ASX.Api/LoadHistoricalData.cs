@@ -7,7 +7,7 @@ namespace ASX.Api
     public static class LoadHistoricalData
     {
         [FunctionName("LoadHistoricalData")]
-        public static void Run([TimerTrigger("0 18  * * *")]TimerInfo myTimer, TraceWriter log)
+        public static void Run([TimerTrigger("0 0 18  * * *")]TimerInfo myTimer, TraceWriter log)
         {
             if (myTimer.IsPastDue)
             {
