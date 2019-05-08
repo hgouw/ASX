@@ -7,6 +7,7 @@ MERGE INTO [dbo].[WatchLists] AS Target USING
   (N'ALL'),
   (N'AMP'),
   (N'ANZ'),
+  (N'APT'),
   (N'ASX'),
   (N'AYS'),
   (N'BAL'),
@@ -36,6 +37,7 @@ MERGE INTO [dbo].[WatchLists] AS Target USING
   (N'HVN'),
   (N'IAG'),
   (N'JBH'),
+  (N'KGN'),
   (N'KMD'),
   (N'LNK'),
   (N'LYC'),
@@ -78,7 +80,8 @@ MERGE INTO [dbo].[WatchLists] AS Target USING
   (N'WOW'),
   (N'WPL'),
   (N'WTC'),
-  (N'XRO')
+  (N'XRO'),
+  (N'Z1P')
 )
 AS SOURCE ([Code])
 ON Target.[Code] = Source.[Code]

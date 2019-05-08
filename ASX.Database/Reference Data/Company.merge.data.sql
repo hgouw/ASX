@@ -54,6 +54,7 @@ MERGE INTO [dbo].[Companies] AS Target USING
   (N'AFJ', N'AFFINITY EDUCATION GROUP LIMITED', N'Consumer Services'),
   (N'AFR', N'AFRICAN ENERGY RESOURCES LIMITED', N'Energy'),
   (N'AFT', N'AFT CORPORATION LIMITED', N'Capital Goods'),
+  (N'APT', N'AFTERPAY TOUCH GROUP LIMITED', N'Software & Services'),
   (N'AHA', N'AG FINANCIAL LTD', N'Diversified Financials'),
   (N'AGX', N'AGENIX LIMITED', N'Pharmaceuticals & Biotechnology'),
   (N'AGL', N'AGL ENERGY LIMITED.', N'Utilities'),
@@ -1111,6 +1112,7 @@ MERGE INTO [dbo].[Companies] AS Target USING
   (N'KRM', N'KINGSROSE MINING LIMITED', N'Materials'),
   (N'KSN', N'KINGSTON RESOURCES LIMITED', N'Materials'),
   (N'KME', N'KIP MCGRATH EDUCATION CENTRES LIMITED', N'Consumer Services'),
+  (N'KGN', N'KOGAN.COM LTD', N'Retailing'),
   (N'KFE', N'KOGI IRON LIMITED', N'Materials'),
   (N'KKL', N'KOLLAKORN CORPORATION LIMITED', N'Technology Hardware & Equipment'),
   (N'KKT', N'KONEKT LIMITED', N'Health Care Equipment & Services'),
@@ -2181,6 +2183,7 @@ MERGE INTO [dbo].[Companies] AS Target USING
   (N'ZGL', N'ZICOM GROUP LIMITED', N'Capital Goods'),
   (N'ZIM', N'ZIMPLATS HOLDINGS LIMITED', N'Materials'),
   (N'ZMG', N'ZINGMOBILE GROUP LIMITED', N'Software & Services'),
+  (N'Z1P', N'ZIP CO LIMITED', N'Diversified Financials'),
   (N'ZIP', N'ZIPTEL LIMITED', N'Telecommunication Services'),
   (N'ZYL', N'ZYL LIMITED', N'Materials')
 )
