@@ -50,7 +50,7 @@ namespace ASX.Api
             {
                 last = last.AddDays(7);
                 var filename = "week" + last.ToString(dateFormat) + ".zip";
-                var url = CloudConfigurationManager.GetSetting("HistorialDataUrl") + "/" + filename;
+                var url = CloudConfigurationManager.GetSetting("HistoricalDataUrl") + "/" + filename;
                 if (CheckUrl(url))
                 {
                     if (ProcessBlobContainer(filename, url, log))
