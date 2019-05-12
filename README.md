@@ -22,7 +22,23 @@
 
 7. Generate the script file for the EndOfDays data of the new ASX company using ASX DataLoader
 
+# How to copy the ASX database on SQL Server 2016 or 2017 from on-premise to Azure and vice versa:
 
+1. On the source (on-premise or Azure):
+   a. Right hand click on "ASX"
+   b. Select "Task"
+   c. Click "Export Data-tier application"
+   d. Select "Save to local disk" or "Save to Microsoft Azure"
+
+2. On the destination (on-premise or Azure):
+   a. Right hand click on "Databases"
+   b. Click "Import Data-tier application"
+   c. Select "Import from local disk" or "Import from Windows Azure"
+   d. Specify settings for the new Microsoft Azure SQL Database
+      New database name: ASX
+	  Edition of Microsoft Azure SQL Database: Basic
+	  Maximum database size (GB): 1
+	  Service Objective: Basic
 
 
 
