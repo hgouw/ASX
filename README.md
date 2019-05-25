@@ -14,7 +14,7 @@
    ASX\Docs\MergeCompanies.txt
    ASX\Docs\WatchList.csv
 
-4. Added the new script files to update the Companies, WatchLists and EndOfDays tables with the new ASX company in the folder ASX\Scipts
+4. Added the new script files to update the Companies, WatchLists and EndOfDays tables with the new ASX company in the folder ASX\Scripts
 
 5. Delete all records from the WatchLists and EndOfDays tables
 
