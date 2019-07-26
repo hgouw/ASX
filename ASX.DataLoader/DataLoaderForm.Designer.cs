@@ -36,6 +36,7 @@
             this.menuData = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLoad = new System.Windows.Forms.ToolStripMenuItem();
             this.menuScript = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuVerify = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,6 +97,7 @@
             this.menuData.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuLoad,
             this.menuScript,
+            this.menuVerify,
             this.menuExit});
             this.menuData.Name = "menuData";
             this.menuData.Size = new System.Drawing.Size(43, 20);
@@ -119,6 +121,13 @@
             this.menuScript.Text = "&Script";
             this.menuScript.ToolTipText = "Script";
             this.menuScript.Click += new System.EventHandler(this.Script_Click);
+            // 
+            // menuVerify
+            // 
+            this.menuVerify.Name = "menuVerify";
+            this.menuVerify.Size = new System.Drawing.Size(180, 22);
+            this.menuVerify.Text = "&Verify";
+            this.menuVerify.Click += new System.EventHandler(this.Verify_Click);
             // 
             // statusStrip
             // 
@@ -178,6 +187,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuData;
         private System.Windows.Forms.ToolStripMenuItem menuLoad;
         private System.Windows.Forms.ToolStripMenuItem menuScript;
+        private System.Windows.Forms.ToolStripMenuItem menuVerify;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ToolStripMenuItem menuExit;
     }
