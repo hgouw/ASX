@@ -126,7 +126,15 @@ namespace ASX.DataLoader
 
         private void Verify_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Verifying ...");
+            this.openFileDialog.Filter = "TXT files (*.csv, *.txt)|*.csv;*.txt";
+            this.openFileDialog.Multiselect = false;
+            if (this.openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                this.menuVerify.Enabled = false;
+                var filename = this.openFileDialog.FileNames[0];
+                var lines = File.ReadAllText(filename).Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                this.menuVerify.Enabled = true;
+            }
         }
 
         private void Exit_Click(object sender, EventArgs e)
