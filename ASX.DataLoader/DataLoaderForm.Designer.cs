@@ -37,9 +37,9 @@
             this.menuLoad = new System.Windows.Forms.ToolStripMenuItem();
             this.menuScript = new System.Windows.Forms.ToolStripMenuItem();
             this.menuVerify = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -108,7 +108,7 @@
             this.menuLoad.Image = ((System.Drawing.Image)(resources.GetObject("menuLoad.Image")));
             this.menuLoad.Name = "menuLoad";
             this.menuLoad.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.menuLoad.Size = new System.Drawing.Size(152, 22);
+            this.menuLoad.Size = new System.Drawing.Size(180, 22);
             this.menuLoad.Text = "&Load";
             this.menuLoad.ToolTipText = "Load";
             this.menuLoad.Click += new System.EventHandler(this.Load_Click);
@@ -117,17 +117,29 @@
             // 
             this.menuScript.Name = "menuScript";
             this.menuScript.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.menuScript.Size = new System.Drawing.Size(152, 22);
+            this.menuScript.Size = new System.Drawing.Size(180, 22);
             this.menuScript.Text = "&Script";
             this.menuScript.ToolTipText = "Script";
             this.menuScript.Click += new System.EventHandler(this.Script_Click);
             // 
             // menuVerify
             // 
+            this.menuVerify.Image = ((System.Drawing.Image)(resources.GetObject("menuVerify.Image")));
             this.menuVerify.Name = "menuVerify";
+            this.menuVerify.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.menuVerify.Size = new System.Drawing.Size(180, 22);
             this.menuVerify.Text = "&Verify";
+            this.menuVerify.ToolTipText = "Verify";
             this.menuVerify.Click += new System.EventHandler(this.Verify_Click);
+            // 
+            // menuExit
+            // 
+            this.menuExit.Name = "menuExit";
+            this.menuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.menuExit.Size = new System.Drawing.Size(180, 22);
+            this.menuExit.Text = "E&xit";
+            this.menuExit.ToolTipText = "Exit";
+            this.menuExit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // statusStrip
             // 
@@ -142,15 +154,6 @@
             this.openFileDialog.ReadOnlyChecked = true;
             this.openFileDialog.RestoreDirectory = true;
             this.openFileDialog.ShowReadOnly = true;
-            // 
-            // menuExit
-            // 
-            this.menuExit.Name = "menuExit";
-            this.menuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.menuExit.Size = new System.Drawing.Size(152, 22);
-            this.menuExit.Text = "E&xit";
-            this.menuExit.ToolTipText = "Exit";
-            this.menuExit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // DataLoaderForm
             // 
