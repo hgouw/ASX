@@ -124,6 +124,11 @@ namespace ASX.DataLoader
             }
         }
 
+        private void Verify_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Verifying ...");
+        }
+
         private void Exit_Click(object sender, EventArgs e)
         {
             SaveSettings();
