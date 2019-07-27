@@ -141,34 +141,34 @@ namespace ASX.DataLoader
                     var line = "";
                     var lineNo = 1;
                     DisplayOutput(OutputType.Info, $"Verifying file {filename}");
-                    List<EndOfDay> endOfDays = new List<EndOfDay>();
                     while ((line = file.ReadLine()) != null)
                     {
                         var csv = line.Split(',');
                         try
                         {
-                            var endOfDay = new EndOfDay()
+                            if (_watchLists.Any(w => w.Code == csv[0])) // Check if the EndOfDay belongs to WatchLists
                             {
-                                Code = csv[0],
-                                Open = Decimal.Parse(csv[2]),
-                                Date = DateTime.ParseExact(csv[1], "yyyyMMdd", CultureInfo.InvariantCulture),
-                                High = Decimal.Parse(csv[3]),
-                                Low = Decimal.Parse(csv[4]),
-                                Close = Decimal.Parse(csv[5]),
-                                Volume = Int32.Parse(csv[6])
-                            };
-                            DisplayOutput(OutputType.Debug, $"Successfully parsed line no {lineNo}");
-                            endOfDays.Add(endOfDay);
+                                var endOfDay = new EndOfDay()
+                                {
+                                    Code = csv[0],
+                                    Open = Decimal.Parse(csv[2]),
+                                    Date = DateTime.ParseExact(csv[1], "yyyyMMdd", CultureInfo.InvariantCulture),
+                                    High = Decimal.Parse(csv[3]),
+                                    Low = Decimal.Parse(csv[4]),
+                                    Close = Decimal.Parse(csv[5]),
+                                    Volume = Int32.Parse(csv[6])
+                                };
+                                _endOfDays.Add(endOfDay);
+                                DisplayOutput(OutputType.Debug, $"Successfully parsed line no {lineNo} - {endOfDay.Code}");
+                            }
                         }
                         catch (Exception ex)
                         {
-
-                            DisplayOutput(OutputType.Error, String.Format("Failed to parse line no {0} - {1}", lineNo, ex.Message));
+                            DisplayOutput(OutputType.Error, $"Failed to parse line no {lineNo} - {ex.Message}");
                         }
                         lineNo++;
                     }
                     file.Close();
-                    _endOfDays = endOfDays.Where(a => _watchLists.Any(w => w.Code == a.Code)).OrderBy(w => w.Date).ToList(); // Select the EndOfDays in WatchLists only
                     db.EndOfDays.AddRange(_endOfDays);
                     var msg = await SaveDatabase(db);
                     if (String.IsNullOrEmpty(msg))
