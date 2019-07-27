@@ -136,11 +136,12 @@ namespace ASX.DataLoader
                 this.menuVerify.Enabled = false;
                 using (var db = new ASXDbContext())
                 {
+                    List<EndOfDay> endOfDays = new List<EndOfDay>();
                     var filename = this.openFileDialog.FileNames[0];
                     var file = new StreamReader(filename);
                     var line = "";
                     var lineNo = 1;
-                    DisplayOutput(OutputType.Info, $"Verifying file {filename}");
+                    DisplayOutput(OutputType.Info, $"Verifying the file {filename}");
                     while ((line = file.ReadLine()) != null)
                     {
                         var csv = line.Split(',');
@@ -158,7 +159,7 @@ namespace ASX.DataLoader
                                     Close = Decimal.Parse(csv[5]),
                                     Volume = Int32.Parse(csv[6])
                                 };
-                                _endOfDays.Add(endOfDay);
+                                endOfDays.Add(endOfDay);
                                 DisplayOutput(OutputType.Debug, $"Successfully parsed line no {lineNo} - {endOfDay.Code}");
                             }
                         }
@@ -169,7 +170,7 @@ namespace ASX.DataLoader
                         lineNo++;
                     }
                     file.Close();
-                    db.EndOfDays.AddRange(_endOfDays);
+                    db.EndOfDays.AddRange(endOfDays);
                     var msg = await SaveDatabase(db);
                     if (String.IsNullOrEmpty(msg))
                     {
