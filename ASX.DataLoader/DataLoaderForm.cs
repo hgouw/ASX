@@ -114,6 +114,9 @@ namespace ASX.DataLoader
             this.richTextBox.Text += text + Environment.NewLine;
             switch (type)
             {
+                case OutputType.Debug:
+                    break;
+
                 case OutputType.Error:
                     _logger.Error($"{text}");
                     break;
@@ -124,16 +127,61 @@ namespace ASX.DataLoader
             }
         }
 
-        private void Verify_Click(object sender, EventArgs e)
+        private async void Verify_Click(object sender, EventArgs e)
         {
             this.openFileDialog.Filter = "TXT files (*.csv, *.txt)|*.csv;*.txt";
             this.openFileDialog.Multiselect = false;
             if (this.openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 this.menuVerify.Enabled = false;
-                var filename = this.openFileDialog.FileNames[0];
-                var lines = File.ReadAllText(filename).Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-                this.menuVerify.Enabled = true;
+                using (var db = new ASXDbContext())
+                {
+                    var filename = this.openFileDialog.FileNames[0];
+                    var file = new StreamReader(filename);
+                    var line = "";
+                    var lineNo = 1;
+                    DisplayOutput(OutputType.Info, $"Verifying file {filename}");
+                    List<EndOfDay> endOfDays = new List<EndOfDay>();
+                    while ((line = file.ReadLine()) != null)
+                    {
+                        var csv = line.Split(',');
+                        try
+                        {
+                            var endOfDay = new EndOfDay()
+                            {
+                                Code = csv[0],
+                                Open = Decimal.Parse(csv[2]),
+                                Date = DateTime.ParseExact(csv[1], "yyyyMMdd", CultureInfo.InvariantCulture),
+                                High = Decimal.Parse(csv[3]),
+                                Low = Decimal.Parse(csv[4]),
+                                Close = Decimal.Parse(csv[5]),
+                                Volume = Int32.Parse(csv[6])
+                            };
+                            DisplayOutput(OutputType.Debug, $"Successfully parsed line no {lineNo}");
+                            endOfDays.Add(endOfDay);
+                        }
+                        catch (Exception ex)
+                        {
+
+                            DisplayOutput(OutputType.Error, String.Format("Failed to parse line no {0} - {1}", lineNo, ex.Message));
+                        }
+                        lineNo++;
+                    }
+                    file.Close();
+                    _endOfDays = endOfDays.Where(a => _watchLists.Any(w => w.Code == a.Code)).OrderBy(w => w.Date).ToList(); // Select the EndOfDays in WatchLists only
+                    db.EndOfDays.AddRange(_endOfDays);
+                    var msg = await SaveDatabase(db);
+                    if (String.IsNullOrEmpty(msg))
+                    {
+                        DisplayOutput(OutputType.Info, $"Successfully saved the data from the file {filename}");
+                    }
+                    else
+                    {
+                        DisplayOutput(OutputType.Error, $"Failed to convert the data in - {filename} {msg}");
+                        db.EndOfDays.RemoveRange(_endOfDays);
+                    }
+                    this.menuVerify.Enabled = true;
+                }
             }
         }
 
