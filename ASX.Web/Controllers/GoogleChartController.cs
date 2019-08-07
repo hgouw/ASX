@@ -11,6 +11,8 @@ namespace ASX.Web.Controllers
     {
         public ActionResult Default()
         {
+            ViewBag.LastUpdate = "02/08/19";
+
             DropLists(null, null);
             return View();
         }
@@ -23,6 +25,8 @@ namespace ASX.Web.Controllers
 
         public ActionResult Display(string code = "CPU", DateTime? from = null, DateTime? to = null)
         {
+            ViewBag.LastUpdate = "02/08/19";
+
             DateTime startDate;
             if (from == null)
             {
