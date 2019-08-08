@@ -11,7 +11,11 @@ namespace ASX.Web.Controllers
     {
         public ActionResult Default()
         {
-            ViewBag.LastUpdate = "02/08/19";
+            var endOfDays = ASXDbContext.GetEndOfDays();
+            var watchLists = ASXDbContext.GetWatchLists();
+            var lastUpdate = endOfDays.Where(a => watchLists.Any(w => w.Code == a.Code)).OrderByDescending(w => w.Date).FirstOrDefault();
+
+            ViewBag.LastUpdate = lastUpdate.Date.ToString("dd/MM/yyyy");
 
             DropLists(null, null);
             return View();
@@ -25,7 +29,12 @@ namespace ASX.Web.Controllers
 
         public ActionResult Display(string code = "CPU", DateTime? from = null, DateTime? to = null)
         {
-            ViewBag.LastUpdate = "02/08/19";
+            var endOfDays = ASXDbContext.GetEndOfDays();
+            var watchLists = ASXDbContext.GetWatchLists();
+            var lastUpdate = endOfDays.Where(a => watchLists.Any(w => w.Code == a.Code)).OrderByDescending(w => w.Date).FirstOrDefault();
+
+            ViewBag.LastUpdate = lastUpdate.Date.ToString("dd/MM/yyyy");
+
 
             DateTime startDate;
             if (from == null)
