@@ -11,11 +11,12 @@ namespace ASX.Web.Controllers
     {
         public ActionResult Default()
         {
-            var endOfDays = ASXDbContext.GetEndOfDays();
-            var watchLists = ASXDbContext.GetWatchLists();
-            var lastUpdate = endOfDays.Where(a => watchLists.Any(w => w.Code == a.Code)).OrderByDescending(w => w.Date).FirstOrDefault();
+            //var endOfDays = ASXDbContext.GetEndOfDays();
+            //var watchLists = ASXDbContext.GetWatchLists();
+            //var lastUpdate = endOfDays.Where(a => watchLists.Any(w => w.Code == a.Code)).OrderByDescending(w => w.Date).FirstOrDefault();
+            //ViewBag.LastUpdate = lastUpdate.Date.ToString("dd/MM/yyyy");
 
-            ViewBag.LastUpdate = lastUpdate.Date.ToString("dd/MM/yyyy");
+            ViewBag.LastUpdate = "09/08/2019";
 
             DropLists(null, null);
             return View();
@@ -29,12 +30,12 @@ namespace ASX.Web.Controllers
 
         public ActionResult Display(string code = "CPU", DateTime? from = null, DateTime? to = null)
         {
-            var endOfDays = ASXDbContext.GetEndOfDays();
-            var watchLists = ASXDbContext.GetWatchLists();
-            var lastUpdate = endOfDays.Where(a => watchLists.Any(w => w.Code == a.Code)).OrderByDescending(w => w.Date).FirstOrDefault();
+            //var endOfDays = ASXDbContext.GetEndOfDays();
+            //var watchLists = ASXDbContext.GetWatchLists();
+            //var lastUpdate = endOfDays.Where(a => watchLists.Any(w => w.Code == a.Code)).OrderByDescending(w => w.Date).FirstOrDefault();
+            //ViewBag.LastUpdate = lastUpdate.Date.ToString("dd/MM/yyyy");
 
-            ViewBag.LastUpdate = lastUpdate.Date.ToString("dd/MM/yyyy");
-
+            ViewBag.LastUpdate = "09/08/2019";
 
             DateTime startDate;
             if (from == null)
