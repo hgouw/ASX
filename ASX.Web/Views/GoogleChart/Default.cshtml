@@ -49,6 +49,10 @@
         }
 
         <h2>Stock Charts</h2>
+        <p>
+            Chart data updated as of @ViewBag.LastUpdate
+        </p>
+        <br />
 
         @using (Html.BeginForm())
         {
@@ -72,10 +76,6 @@
             <br />
             <p>
                 <input type="submit" value="Submit" />
-            </p>
-            <br />
-            <p>
-                Chart data updated as of @ViewBag.LastUpdate
             </p>
         }
         <hr />
