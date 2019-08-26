@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -16,7 +17,7 @@ namespace ASX.Web.Controllers
             //var lastUpdate = endOfDays.Where(a => watchLists.Any(w => w.Code == a.Code)).OrderByDescending(w => w.Date).FirstOrDefault();
             //ViewBag.LastUpdate = lastUpdate.Date.ToString("dd/MM/yyyy");
 
-            ViewBag.LastUpdate = "16/08/2019";
+            ViewBag.LastUpdate = ConfigurationManager.AppSettings["LastUpdate"];
 
             DropLists(null, null);
             return View();
@@ -35,7 +36,7 @@ namespace ASX.Web.Controllers
             //var lastUpdate = endOfDays.Where(a => watchLists.Any(w => w.Code == a.Code)).OrderByDescending(w => w.Date).FirstOrDefault();
             //ViewBag.LastUpdate = lastUpdate.Date.ToString("dd/MM/yyyy");
 
-            ViewBag.LastUpdate = "16/08/2019";
+            ViewBag.LastUpdate = ConfigurationManager.AppSettings["LastUpdate"];
 
             DateTime startDate;
             if (from == null)
