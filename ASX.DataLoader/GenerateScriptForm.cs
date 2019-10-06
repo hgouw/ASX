@@ -15,7 +15,7 @@ namespace ASX.DataLoader
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
 
-        private const string _sql = "INSERT INTO [dbo].[EndOfDays] ([Code], [Date], [Open], [High], [Low], [Close], [Volume]) VALUES (N'{0}', CAST(N'{1}' AS DateTime), CAST({2} AS Decimal(8, 3)), CAST({3} AS Decimal(8, 3)), CAST({4} AS Decimal(8, 3)), CAST({5} AS Decimal(8, 3)), {6})";
+        private const string _sql = "INSERT INTO [dbo].[EndOfDays] ([Code], [Date], [Open], [High], [Low], [Close], [Volume]) VALUES (N'{0}', CAST(N'{1}' AS DateTime), CAST({2} AS Decimal(6, 3)), CAST({3} AS Decimal(6, 3)), CAST({4} AS Decimal(6, 3)), CAST({5} AS Decimal(6, 3)), {6})";
         private const string _filename = "AzureSQL_EndOfDays.sql";
 
         IList<EndOfDay> _endOfDays = null;
