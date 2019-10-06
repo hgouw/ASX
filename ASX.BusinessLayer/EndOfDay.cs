@@ -25,7 +25,7 @@ namespace ASX.BusinessLayer
         public virtual decimal High { get; set; }
         public virtual decimal Low { get; set; }
         public virtual decimal Close { get; set; }
-        public virtual long Volume { get; set; }
+        public virtual int Volume { get; set; }
 
         public virtual Company Company { get; set; }
 
