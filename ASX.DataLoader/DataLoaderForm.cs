@@ -67,7 +67,7 @@ namespace ASX.DataLoader
                             High = Decimal.Parse(x[3]),
                             Low = Decimal.Parse(x[4]),
                             Close = Decimal.Parse(x[5]),
-                            Volume = Int32.Parse(x[6])
+                            Volume = Int64.Parse(x[6])
                         });
                         _endOfDays = endOfDays.Where(a => _watchLists.Any(w => w.Code == a.Code)).OrderBy(w => w.Date).ToList(); // Select the EndOfDays in WatchLists only
                         db.EndOfDays.AddRange(_endOfDays);
@@ -157,7 +157,7 @@ namespace ASX.DataLoader
                                     High = Decimal.Parse(csv[3]),
                                     Low = Decimal.Parse(csv[4]),
                                     Close = Decimal.Parse(csv[5]),
-                                    Volume = Int32.Parse(csv[6])
+                                    Volume = Int64.Parse(csv[6])
                                 };
                                 endOfDays.Add(endOfDay);
                                 DisplayOutput(OutputType.Debug, $"Successfully parsed line no {lineNo} - {endOfDay.Code}");
