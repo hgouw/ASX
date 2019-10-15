@@ -88,6 +88,7 @@ MERGE INTO [dbo].[WatchLists] AS Target USING
   (N'WOW'),
   (N'WPL'),
   (N'WTC'),
+  (N'XAO'),
   (N'XRO'),
   (N'Z1P')
 )

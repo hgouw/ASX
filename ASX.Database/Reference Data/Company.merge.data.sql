@@ -2155,6 +2155,7 @@ MERGE INTO [dbo].[Companies] AS Target USING
   (N'WNS', N'WORLD.NET SERVICES LIMITED', N'Software & Services'),
   (N'WOR', N'WORLEYPARSONS LIMITED', N'Energy'),
   (N'WPG', N'WPG RESOURCES LTD', N'Materials'),
+  (N'XAO', N'ALL ORDINARIES INDEX', N'Not Applic'),
   (N'XAM', N'XANADU MINES LTD', N'Materials'),
   (N'XRO', N'XERO LIMITED', N'Software & Services'),
   (N'XXL', N'XIAOXIAO EDUCATION LIMITED', N'Consumer Services'),

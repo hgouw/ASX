@@ -2155,6 +2155,7 @@ INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'WTR', N'WORLD 
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'WNS', N'WORLD.NET SERVICES LIMITED', N'Software & Services')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'WOR', N'WORLEYPARSONS LIMITED', N'Energy')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'WPG', N'WPG RESOURCES LTD', N'Materials')
+INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'XAO', N'ALL ORDINARIES INDEX', N'Not Applic')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'XAM', N'XANADU MINES LTD', N'Materials')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'XRO', N'XERO LIMITED', N'Software & Services')
 INSERT INTO [dbo].[Companies] ([Code], [Name], [Group]) VALUES (N'XXL', N'XIAOXIAO EDUCATION LIMITED', N'Consumer Services')
