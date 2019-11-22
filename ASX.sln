@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ASX.Database", "ASX.Database\ASX.Database.sqlproj", "{A5C10271-6F68-4620-9E82-5AAAEA44E93A}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASX.Web", "ASX.Web\ASX.Web.csproj", "{A58B3733-0CDB-4045-9B79-1B1321D0E7B3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASX.Api", "ASX.Api\ASX.Api.csproj", "{8F7792A3-9CF6-4914-AC26-1400CA71BAC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASX.Batch", "ASX.Batch\ASX.Batch.csproj", "{767CF82F-9B41-489B-B868-F887B68AAC48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{8F7792A3-9CF6-4914-AC26-1400CA71BAC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F7792A3-9CF6-4914-AC26-1400CA71BAC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F7792A3-9CF6-4914-AC26-1400CA71BAC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{767CF82F-9B41-489B-B868-F887B68AAC48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{767CF82F-9B41-489B-B868-F887B68AAC48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{767CF82F-9B41-489B-B868-F887B68AAC48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{767CF82F-9B41-489B-B868-F887B68AAC48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
