@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ASX.Batch": {
+      "commandName": "Project",
+      "commandLineArgs": "host start --port 5860 --pause-on-error"
+    }
+  }
+}
