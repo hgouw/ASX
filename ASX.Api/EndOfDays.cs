@@ -45,19 +45,22 @@ namespace ASX.Api
             }
 
             var from = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "from", true) == 0).Value;
+            if (from == null) from = "01/01/1997";
+
             var to = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "to", true) == 0).Value;
-            if (from == null) from = "01-01-1997";
-            if (to == null) to = DateTime.Today.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture);
+            if (to == null) to = DateTime.Today.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
 
             DateTime startDate;
-            if (!DateTime.TryParseExact(from, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out startDate))
+            if (!DateTime.TryParseExact(from, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out startDate) &&
+                !DateTime.TryParseExact(from, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out startDate))
             {
                 var errorMessage = "Invalid from date";
                 log.Error(errorMessage);
                 response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
             }
             DateTime endDate;
-            if (!DateTime.TryParseExact(to, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out endDate))
+            if (!DateTime.TryParseExact(to, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out endDate) &&
+                !DateTime.TryParseExact(to, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out endDate))
             {
                 var errorMessage = "Invalid to date";
                 log.Error(errorMessage);
@@ -74,7 +77,16 @@ namespace ASX.Api
                         var endOfDays = db.EndOfDays.Where(d => d.Code == code && d.Date >= startDate.Date && d.Date <= endDate.Date)
                                                     .Select(o => new { Code = o.Code, Name = o.Company.Name, Date = o.Date, Last = o.Close, Volume = o.Volume })
                                                     .ToList();
-                        response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(endOfDays), Encoding.UTF8, "application/json") };
+                        if (endOfDays.Count == 0)
+                        {
+                            var errorMessage = "No data found";
+                            log.Error(errorMessage);
+                            response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
+                        }
+                        else
+                        {
+                            response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(endOfDays), Encoding.UTF8, "application/json") };
+                        }
                     }
                     log.Info($"Returned EndOfDays request for {code}");
                 }
