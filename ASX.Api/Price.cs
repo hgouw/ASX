@@ -23,7 +23,7 @@ namespace ASX.Api
         {
             log.Info("Received Price request");
 
-            DateTime result = new DateTime();
+            DateTime onDate = new DateTime();
             dynamic endOfDay = null;
             HttpResponseMessage response = null;
 
@@ -49,8 +49,8 @@ namespace ASX.Api
                 {
                     var date = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "date", true) == 0).Value;
                     if (date != null &&
-                        !DateTime.TryParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out result) &&
-                        !DateTime.TryParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
+                        !DateTime.TryParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out onDate) &&
+                        !DateTime.TryParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out onDate))
                     {
                         var errorMessage = "Invalid date";
                         log.Error(errorMessage);
@@ -66,7 +66,7 @@ namespace ASX.Api
                     log.Info("Processed Price request");
                     using (ASXDbContext db = new ASXDbContext())
                     {
-                        if (result == default(DateTime))
+                        if (onDate == default(DateTime))
                         {
                             endOfDay = db.EndOfDays.Where(d => d.Code == code).OrderByDescending(e => e.Date)
                                                    .Select(o => new { Code = o.Code, Name = o.Company.Name, Date = o.Date, Last = o.Close, Volume = o.Volume })
@@ -74,7 +74,7 @@ namespace ASX.Api
                         }
                         else
                         {
-                            endOfDay = db.EndOfDays.Where(d => d.Code == code && d.Date == result.Date)
+                            endOfDay = db.EndOfDays.Where(d => d.Code == code && d.Date == onDate.Date)
                                                    .Select(o => new { Code = o.Code, Name = o.Company.Name, Date = o.Date, Last = o.Close, Volume = o.Volume })
                                                    .FirstOrDefault();
                         }
