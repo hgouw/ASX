@@ -48,7 +48,9 @@ namespace ASX.Api
                 if (response == null)
                 {
                     var date = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "date", true) == 0).Value;
-                    if (date != null && !DateTime.TryParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
+                    if (date != null &&
+                        !DateTime.TryParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out result) &&
+                        !DateTime.TryParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
                     {
                         var errorMessage = "Invalid date";
                         log.Error(errorMessage);
@@ -78,7 +80,7 @@ namespace ASX.Api
                         }
                         if (endOfDay == null)
                         {
-                            var errorMessage = "No data available for the given date";
+                            var errorMessage = "No data on the given date";
                             log.Error(errorMessage);
                             response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
                         }
