@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -22,6 +23,8 @@ namespace ASX.Api
         {
             log.Info("Received Price request");
 
+            DateTime result = new DateTime();
+            dynamic endOfDay = null;
             HttpResponseMessage response = null;
 
             if (code == null)
@@ -41,6 +44,17 @@ namespace ASX.Api
                         response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
                     }
                 }
+
+                if (response == null)
+                {
+                    var date = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "date", true) == 0).Value;
+                    if (date != null && !DateTime.TryParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out result))
+                    {
+                        var errorMessage = "Invalid date";
+                        log.Error(errorMessage);
+                        response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
+                    }
+                }
             }
 
             if (response == null)
@@ -50,10 +64,28 @@ namespace ASX.Api
                     log.Info("Processed Price request");
                     using (ASXDbContext db = new ASXDbContext())
                     {
-                        var endOfDay = db.EndOfDays.Where(d => d.Code == code).OrderByDescending(e => e.Date)
+                        if (result == default(DateTime))
+                        {
+                            endOfDay = db.EndOfDays.Where(d => d.Code == code).OrderByDescending(e => e.Date)
                                                    .Select(o => new { Code = o.Code, Name = o.Company.Name, Date = o.Date, Last = o.Close, Volume = o.Volume })
                                                    .FirstOrDefault();
-                        response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(endOfDay), Encoding.UTF8, "application/json") };
+                        }
+                        else
+                        {
+                            endOfDay = db.EndOfDays.Where(d => d.Code == code && d.Date == result.Date)
+                                                   .Select(o => new { Code = o.Code, Name = o.Company.Name, Date = o.Date, Last = o.Close, Volume = o.Volume })
+                                                   .FirstOrDefault();
+                        }
+                        if (endOfDay == null)
+                        {
+                            var errorMessage = "No data available for the given date";
+                            log.Error(errorMessage);
+                            response = req.CreateErrorResponse(HttpStatusCode.BadRequest, errorMessage);
+                        }
+                        else
+                        {
+                            response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(JsonConvert.SerializeObject(endOfDay), Encoding.UTF8, "application/json") };
+                        }
                     }
                     log.Info($"Returned Price request for {code}");
                 }
