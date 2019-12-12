@@ -48,9 +48,7 @@ namespace ASX.Api
                 if (response == null)
                 {
                     var date = req.GetQueryNameValuePairs().FirstOrDefault(q => string.Compare(q.Key, "date", true) == 0).Value;
-                    if (date != null &&
-                        !DateTime.TryParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out onDate) &&
-                        !DateTime.TryParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out onDate))
+                    if (date != null && !DateTime.TryParse(date, CultureInfo.GetCultureInfo("en-AU"), DateTimeStyles.None, out onDate))
                     {
                         var errorMessage = "Invalid date";
                         log.Error(errorMessage);
