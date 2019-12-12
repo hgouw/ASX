@@ -21,11 +21,8 @@ namespace ASX.Web
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             var value = bindingContext.ValueProvider.GetValue(bindingContext.ModelName);
-            if (value == null) return value;
-
-            var result = new DateTime();
-            DateTime.TryParse(value.AttemptedValue, CultureInfo.GetCultureInfo("en-AU"), DateTimeStyles.None, out result);
-            return result;
+            if (value == null) return null; // DateTime has null value
+            return value.ConvertTo(typeof(DateTime?), CultureInfo.GetCultureInfo("en-AU")); // Convert DateTime to en-AU
         }
     }
 }
