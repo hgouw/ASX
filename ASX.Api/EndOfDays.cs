@@ -71,7 +71,7 @@ namespace ASX.Api
             {
                 try
                 {
-                    log.Info("Processed EndOfDays request for {code}");
+                    log.Info($"Processed EndOfDays request for {code}");
                     using (ASXDbContext db = new ASXDbContext())
                     {
                         var endOfDays = db.EndOfDays.Where(d => d.Code == code && d.Date >= startDate.Date && d.Date <= endDate.Date)

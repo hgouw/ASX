@@ -61,7 +61,7 @@ namespace ASX.Api
             {
                 try
                 {
-                    log.Info("Processed Price request for {code}");
+                    log.Info($"Processed Price request for {code}");
                     using (ASXDbContext db = new ASXDbContext())
                     {
                         if (onDate == default(DateTime))
