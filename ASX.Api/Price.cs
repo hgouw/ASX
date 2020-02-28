@@ -21,7 +21,7 @@ namespace ASX.Api
             string code,
             TraceWriter log)
         {
-            log.Info("Received Price request");
+            log.Info($"Received Price request for {code}");
 
             DateTime onDate = new DateTime();
             dynamic endOfDay = null;
@@ -61,7 +61,7 @@ namespace ASX.Api
             {
                 try
                 {
-                    log.Info("Processed Price request");
+                    log.Info("Processed Price request for {code}");
                     using (ASXDbContext db = new ASXDbContext())
                     {
                         if (onDate == default(DateTime))
@@ -93,7 +93,7 @@ namespace ASX.Api
                 {
                     log.Error(ex.Message, ex);
                     response = req.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
-                    log.Info($"Unsuccessfully Processed Price request");
+                    log.Info($"Unsuccessfully Processed Price request for {code}");
                 }
             }
 

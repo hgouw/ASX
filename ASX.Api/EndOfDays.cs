@@ -21,7 +21,7 @@ namespace ASX.Api
             string code,
             TraceWriter log)
         {
-            log.Info("Received EndOfDays request");
+            log.Info($"Received EndOfDays request for {code}");
 
             HttpResponseMessage response = null;
 
@@ -71,7 +71,7 @@ namespace ASX.Api
             {
                 try
                 {
-                    log.Info("Processed EndOfDays request");
+                    log.Info("Processed EndOfDays request for {code}");
                     using (ASXDbContext db = new ASXDbContext())
                     {
                         var endOfDays = db.EndOfDays.Where(d => d.Code == code && d.Date >= startDate.Date && d.Date <= endDate.Date)
@@ -94,7 +94,7 @@ namespace ASX.Api
                 {
                     log.Error(ex.Message, ex);
                     response = req.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
-                    log.Info($"Unsuccessfully Processed EndOfDays request");
+                    log.Info($"Unsuccessfully Processed EndOfDays request for {code}");
                 }
             }
 
