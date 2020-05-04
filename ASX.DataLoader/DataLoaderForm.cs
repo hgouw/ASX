@@ -14,7 +14,7 @@ namespace ASX.DataLoader
 
     public partial class DataLoaderForm : Form
     {
-        private static Logger _logger = LogManager.GetCurrentClassLogger();
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         IList<EndOfDay> _endOfDays = null;
         IList<WatchList> _watchLists = null;
