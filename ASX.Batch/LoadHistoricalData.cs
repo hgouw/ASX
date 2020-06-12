@@ -28,8 +28,8 @@ namespace ASX.Batch
         // https://en.wikipedia.org/wiki/Cron
         // https://codehollow.com/2017/02/azure-functions-time-trigger-cron-cheat-sheet/
         // http://www.openjs.com/scripts/jslibrary/demos/crontab.php
-        // "0 30 9  * * *" - every day at 9.30AM
         // "0 0  6  * * *" - every day at 6AM
+        // "0 30 6  * * *" - every day at 6.30AM
         // "0 0 18  * * *" - every day at 6PM
         // "0 0 */6 * * *" - every 6 hours
         // "0 0 * * * *"   - every hour
@@ -38,11 +38,11 @@ namespace ASX.Batch
         // "*/5 * * * * *" - every 5 seconds
         public static void Run([TimerTrigger("0 0 18  * * *")]TimerInfo myTimer, TraceWriter log)
         {
+            log.Info($"C# Timer trigger function executed at {DateTime.Now}");
             if (myTimer.IsPastDue)
             {
                 log.Info("Timer is running late!");
             }
-            log.Info($"C# Timer trigger function executed at {DateTime.Now}");
 
             var dateFormat = CloudConfigurationManager.GetSetting("DateFormat");
             var last = DateTime.ParseExact(CheckBlobContainer(log), dateFormat, CultureInfo.InvariantCulture);
@@ -85,22 +85,23 @@ namespace ASX.Batch
         }
         private static string CheckBlobContainer(TraceWriter log)
         {
-            var text = "";
+            var last = "";
 
             try
             {
                 var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("AzureWebJobsStorage"));
                 var blobClient = storageAccount.CreateCloudBlobClient();
-                var blobContainer = blobClient.GetContainerReference(CloudConfigurationManager.GetSetting("ContainerName"));
-                var lastBlockBlob = blobContainer.GetBlockBlobReference(CloudConfigurationManager.GetSetting("BlockBlob"));
-                text = lastBlockBlob.DownloadText();
+                var blobContainer = blobClient.GetContainerReference(CloudConfigurationManager.GetSetting("LastContainerName"));
+                blobContainer.CreateIfNotExists();
+                var blockBlob = blobContainer.GetBlockBlobReference(CloudConfigurationManager.GetSetting("LastBlockBlob"));
+                last = blockBlob.DownloadText();
             }
             catch (Exception ex)
             {
                 log.Info($"Error in CheckBlobContainer - {ex.Message}");
             }
 
-            return text;
+            return last;
         }
 
         private static bool ProcessBlobContainer(string filename, string url, TraceWriter log)
@@ -109,10 +110,10 @@ namespace ASX.Batch
             {
                 var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("AzureWebJobsStorage"));
                 var blobClient = storageAccount.CreateCloudBlobClient();
-                var blobContainer = blobClient.GetContainerReference(CloudConfigurationManager.GetSetting("ContainerName"));
+                var blobContainer = blobClient.GetContainerReference(CloudConfigurationManager.GetSetting("ZipContainerName"));
                 blobContainer.CreateIfNotExists();
-                var zipBlockBlob = blobContainer.GetBlockBlobReference(filename);
-                zipBlockBlob.StartCopy(new Uri(url), null, null, null);
+                var blockBlob = blobContainer.GetBlockBlobReference(filename);
+                blockBlob.StartCopy(new Uri(url), null, null, null);
             }
             catch (Exception ex)
             {
@@ -129,10 +130,10 @@ namespace ASX.Batch
             {
                 var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("AzureWebJobsStorage"));
                 var blobClient = storageAccount.CreateCloudBlobClient();
-                var blobContainer = blobClient.GetContainerReference(CloudConfigurationManager.GetSetting("ContainerName"));
+                var blobContainer = blobClient.GetContainerReference(CloudConfigurationManager.GetSetting("LastContainerName"));
                 blobContainer.CreateIfNotExists();
-                var lastBlockBlob = blobContainer.GetBlockBlobReference(CloudConfigurationManager.GetSetting("BlockBlob"));
-                lastBlockBlob.UploadText(text);
+                var blockBlob = blobContainer.GetBlockBlobReference(CloudConfigurationManager.GetSetting("LastBlockBlob"));
+                blockBlob.UploadText(text);
             }
             catch (Exception ex)
             {
