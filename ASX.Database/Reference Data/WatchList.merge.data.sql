@@ -1,5 +1,4 @@
-﻿
--- Reference Data for WatchLists
+﻿-- Reference Data for WatchLists
 MERGE INTO [dbo].[WatchLists] AS Target USING
 (VALUES
   (N'A2M'),
