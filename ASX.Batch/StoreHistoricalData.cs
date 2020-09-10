@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using ASX.BusinessLayer;
 using ASX.DataAccess;
 
-namespace ASX.Api
+namespace ASX.Batch
 {
     // 1. Check the file dropped in blob container (asx-text)
     // 2. If it is a txt file then load the txt file to database

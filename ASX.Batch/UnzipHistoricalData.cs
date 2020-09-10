@@ -8,7 +8,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ASX.Api
+namespace ASX.Batch
 {
     // 1. Check the file dropped in blob container (asx-zip)
     // 2. If it is a zip file then unzip the zip file to blob container (asx-text)
