@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using ASX.BusinessLayer;
 using ASX.DataAccess;
 
@@ -21,7 +20,6 @@ namespace ASX.Batch
         public static void Run([BlobTrigger("asx-text/{name}", Connection = "AzureWebJobsStorage")]Stream myBlob, string name, TraceWriter log)
         {
             log.Info($"C# Blob trigger function executed at {DateTime.Now} to process blob {name} of {myBlob.Length} bytes");
-
             try
             {
                 if (name.Split('.').Last().ToLower() == "txt")

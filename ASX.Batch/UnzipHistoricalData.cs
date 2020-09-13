@@ -18,7 +18,6 @@ namespace ASX.Batch
         public static async Task Run([BlobTrigger("asx-zip/{name}", Connection = "AzureWebJobsStorage")]Stream myBlob, string name, TraceWriter log)
         {
             log.Info($"C# Blob trigger function executed at {DateTime.Now} to process blob {name} of {myBlob.Length} bytes");
-
             try
             {
                 if (name.Split('.').Last().ToLower() == "zip")
