@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASX.Web", "ASX.Web\ASX.Web.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASX.Api", "ASX.Api\ASX.Api.csproj", "{8F7792A3-9CF6-4914-AC26-1400CA71BAC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASX.Batch", "ASX.Batch\ASX.Batch.csproj", "{767CF82F-9B41-489B-B868-F887B68AAC48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASX.Batch", "ASX.Batch\ASX.Batch.csproj", "{767CF82F-9B41-489B-B868-F887B68AAC48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
