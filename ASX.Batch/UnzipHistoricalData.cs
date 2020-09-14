@@ -45,11 +45,12 @@ namespace ASX.Batch
                             }
                         }
                     }
+                    log.Info($"Successfully unzipping the historical data file {name} at {DateTime.Now}");
                 }
             }
             catch (Exception ex)
             {
-                log.Info($"Unable to unzip the file {name} at {DateTime.Now} - {ex.Message}");
+                log.Info($"Unable to unzip the historical data file {name} at {DateTime.Now} - {ex.Message}");
             }
         }
     }
