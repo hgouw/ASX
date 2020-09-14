@@ -14,9 +14,9 @@ namespace ASX.Batch
 {
     // 1. Check the file dropped in blob container (asx-text)
     // 2. If it is a txt file then load the txt file to database
-    public static class StoreHistoricalData
+    public static class LoadHistoricalData
     {
-        [FunctionName("StoreHistoricalData")]
+        [FunctionName("LoadHistoricalData")]
         public static void Run([BlobTrigger("asx-text/{name}", Connection = "AzureWebJobsStorage")]Stream myBlob, string name, TraceWriter log)
         {
             log.Info($"C# Blob trigger function executed at {DateTime.Now} to process blob {name} of {myBlob.Length} bytes");
@@ -26,7 +26,7 @@ namespace ASX.Batch
                 {
                     log.Info($"Loading the historical data file {name} at {DateTime.Now}");
 
-                    LoadTextFile(name, log);
+                    LoadEndOfDayFile(name, log);
                 }
             }
             catch (Exception ex)
@@ -35,7 +35,7 @@ namespace ASX.Batch
             }
         }
 
-        private static bool LoadTextFile(string filename, TraceWriter log)
+        private static bool LoadEndOfDayFile(string filename, TraceWriter log)
         {
             try
             {
