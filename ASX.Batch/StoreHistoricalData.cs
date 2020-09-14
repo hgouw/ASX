@@ -24,14 +24,14 @@ namespace ASX.Batch
             {
                 if (name.Split('.').Last().ToLower() == "txt")
                 {
-                    log.Info($"Storing file {name} at {DateTime.Now}");
+                    log.Info($"Loading the historical data file {name} at {DateTime.Now}");
 
                     LoadTextFile(name, log);
                 }
             }
             catch (Exception ex)
             {
-                log.Info($"Unable to store the file {name} at {DateTime.Now} - {ex.Message}");
+                log.Info($"Unable to load the historical data file {name} at {DateTime.Now} - {ex.Message}");
             }
         }
 
@@ -60,12 +60,13 @@ namespace ASX.Batch
                     IList<WatchList> _watchLists = ASXDbContext.GetWatchLists();
                     IList<EndOfDay> _endOfDays = endOfDays.Where(a => _watchLists.Any(w => w.Code == a.Code)).OrderBy(w => w.Date).ToList(); // Select the EndOfDays in WatchLists only
                     db.EndOfDays.AddRange(_endOfDays);
+                    log.Info($"Successfully loading the end of days at {DateTime.Now}");
                     SaveDatabase(db, log);
                 }
             }
             catch (Exception ex)
             {
-                log.Info($"Unable to load the textfile {filename} at {DateTime.Now} - {ex.Message}");
+                log.Info($"Unable to load the end of days at {DateTime.Now} - {ex.Message}");
                 return false;
             }
 
@@ -77,7 +78,7 @@ namespace ASX.Batch
             try
             {
                 db.SaveChanges();
-                log.Info($"Successfully saving database at {DateTime.Now}");
+                log.Info($"Successfully saving the database at {DateTime.Now}");
             }
             catch (Exception ex)
             {
