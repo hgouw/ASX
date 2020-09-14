@@ -22,9 +22,9 @@ namespace ASX.Batch
     // 5. If the latest zip file is not available then send message
     // Note: log files 
 
-    public static class LoadHistoricalData
+    public static class DownloadHistoricalData
     {
-        [FunctionName("LoadHistoricalData")]
+        [FunctionName("DownloadHistoricalData")]
         // https://en.wikipedia.org/wiki/Cron
         // https://codehollow.com/2017/02/azure-functions-time-trigger-cron-cheat-sheet/
         // http://www.openjs.com/scripts/jslibrary/demos/crontab.php
@@ -56,12 +56,12 @@ namespace ASX.Batch
                     if (ProcessBlobContainer(filename, url, log))
                     {
                         UpdateBlobContainer(last.ToString(dateFormat), log);
-                        log.Info($"Successfully processed the file {url} at {DateTime.Now}");
+                        log.Info($"Successfully downloading the historical data file {url} at {DateTime.Now}");
                     }
                 }
                 else
                 {
-                    log.Info($"Unable to locate the file {url} at {DateTime.Now}");
+                    log.Info($"Unable to locate the historical data file {url} at {DateTime.Now}");
                 }
             }
         }
