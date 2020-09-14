@@ -22,18 +22,18 @@ namespace ASX.Batch
             {
                 if (name.Split('.').Last().ToLower() == "txt")
                 {
-                    log.Info($"Updating index file {name} at {DateTime.Now}");
+                    log.Info($"Loading the index file {name} at {DateTime.Now}");
 
-                    LoadTextFile(name, log);
+                    LoadIndexFile(name, log);
                 }
             }
             catch (Exception ex)
             {
-                log.Info($"Unable to update the index file {name} at {DateTime.Now} - {ex.Message}");
+                log.Info($"Unable to load the index file {name} at {DateTime.Now} - {ex.Message}");
             }
         }
 
-        private static bool LoadTextFile(string filename, TraceWriter log)
+        private static bool LoadIndexFile(string filename, TraceWriter log)
         {
             try
             {
@@ -52,13 +52,13 @@ namespace ASX.Batch
                         var volume = Int64.Parse(index[6]);
                         db.EndOfDays.First(e => (e.Code == code) && (e.Date == date)).Volume = volume;
                     }
-                    log.Info($"Successfully updating indices at {DateTime.Now}");
+                    log.Info($"Successfully updating the indices at {DateTime.Now}");
                     UpdateDatabase(db, log);
                 }
             }
             catch (Exception ex)
             {
-                log.Info($"Unable to load the index textfile {filename} at {DateTime.Now} - {ex.Message}");
+                log.Info($"Unable to update the indices at {DateTime.Now} - {ex.Message}");
                 return false;
             }
 
@@ -70,7 +70,7 @@ namespace ASX.Batch
             try
             {
                 db.SaveChanges();
-                log.Info($"Successfully updating database at {DateTime.Now}");
+                log.Info($"Successfully updating the database at {DateTime.Now}");
             }
             catch (Exception ex)
             {
