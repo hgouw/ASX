@@ -1,20 +1,2 @@
 {
-  "IsEncrypted": false,
-  "logging": {
-    "fileLoggingMode": "always"
-  },
-  "Values": {
-    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=hgouwapi;AccountKey=2bmJe5gAyuBFmFh9eMdNS09kvS1NxNL7l6/0i7srpndJ9/oY8bkkpPiTx9qwj11YAlE1BKYIithp8BREKL6BSw==;EndpointSuffix=core.windows.net"
-  },
-  "ConnectionStrings": {
-    "ASXDbContext": {
-      "ConnectionString": "Data Source=LNGSYDL-600244\\SQLEXPRESS;Initial Catalog=ASX;Integrated Security=True",
-      "ProviderName": "System.Data.SqlClient"
-    }
-  }
 }
-
-// Function Apps - Connection Strings
-// ASXDbContext - Server=tcp:hgouw.database.windows.net,1433;Database=ASX;User ID=hgouw@hgouw;Password=9k2fh0OIy?cZ;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-// ASXDbContext - Server=tcp:hgouwtest.database.windows.net,1433;Initial Catalog=ASX;Persist Security Info=False;User ID=hgouw@hgouw;Password=9k2fh0OIy?cZ;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-// ProviderName - System.Data.SqlClient
