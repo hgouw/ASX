@@ -35,10 +35,10 @@
    b. Click "Import Data-tier application"  
    c. Select "Import from local disk" or "Import from Windows Azure"  
    d. Specify settings for the new Microsoft Azure SQL Database  
-   &nbsp; &nbsp;New database name: ASX  
-	  Edition of Microsoft Azure SQL Database: Basic  
-	  Maximum database size (GB): 1  
-	  Service Objective: Basic
+   &nbsp; &nbsp; New database name: ASX  
+   &nbsp; &nbsp; Edition of Microsoft Azure SQL Database: Basic  
+   &nbsp; &nbsp; Maximum database size (GB): 1  
+   &nbsp; &nbsp; Service Objective: Basic
 
 
 
