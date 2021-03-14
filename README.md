@@ -46,7 +46,7 @@
 
 2. Make sure to set the Database Setting ASXDbContext
 
-# How to change SendGrid credentials
+# How to change the SendGrid credentials
 
 1. To change the password, goto sendgrid.com, click Sign In, click Forgot your password?
 
