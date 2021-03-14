@@ -46,7 +46,11 @@
 
 2. Make sure to set the Database Setting ASXDbContext
 
+# How to change SendGrid credentials
 
+1. To change the password, goto sendgrid.com, click Sign In, click Forgot your password?
+
+2. To change the API Keys, goto Settings/API Keys, delete API Key(s), click Create API Key
 
 
 
