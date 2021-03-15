@@ -46,6 +46,10 @@
 
 2. Make sure to set the Database Setting ASXDbContext
 
+# How to use the SendGrid APIs
+
+1. To send email using SendGrid, refer to https://sendgrid.com/docs/for-developers/sending-email/v3-csharp-code-example
+
 # How to change the SendGrid credentials
 
 1. To change the password, goto sendgrid.com, click Sign In, click Forgot your password?
