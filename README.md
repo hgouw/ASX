@@ -46,6 +46,10 @@
 
 2. Make sure to set the Database Setting ASXDbContext
 
+# How to use reCAPTCHA:
+
+1. Refer to https://developers.google.com/recaptcha/docs/display
+
 # How to use the SendGrid APIs
 
 1. To send email using SendGrid, refer to https://sendgrid.com/docs/for-developers/sending-email/v3-csharp-code-example
