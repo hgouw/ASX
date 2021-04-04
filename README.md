@@ -1,4 +1,4 @@
-# How to add a new ASX company:
+# How to add a new ASX company
 
 1. Download the latest ASXListedCompanies.csv from https://www.asx.com.au/asx/research/listedCompanies.do for the details of the company
 
@@ -22,7 +22,7 @@
 
 7. Generate the script file for the EndOfDays data of the new ASX company using ASX DataLoader
 
-# How to copy the ASX database on SQL Server 2016 or 2017 from on-premise to Azure and vice versa:
+# How to copy the ASX database on SQL Server 2016 or 2017 from on-premise to Azure and vice versa
 
 1. On the source (on-premise or Azure):  
    a. Right hand click on "ASX"  
@@ -40,13 +40,13 @@
    &nbsp; &nbsp; Maximum database size (GB): 1  
    &nbsp; &nbsp; Service Objective: Basic
 
-# How to publish ASX.Web to Azure App Service using Visual Studio:
+# How to publish ASX.Web to Azure App Service using Visual Studio
 
 1. Refer to https://docs.microsoft.com/en-us/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019
 
 2. Make sure to set the Database Setting ASXDbContext
 
-# How to use reCAPTCHA:
+# How to use reCAPTCHA
 
 1. Refer to https://developers.google.com/recaptcha/docs/display
 
@@ -59,8 +59,3 @@
 1. To change the password, goto sendgrid.com, click Sign In, click Forgot your password?
 
 2. To change the API Keys, goto Settings/API Keys, delete API Key(s), click Create API Key
-
-
-
-
-
