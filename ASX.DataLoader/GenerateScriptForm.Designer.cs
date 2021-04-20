@@ -88,6 +88,7 @@
             this.Controls.Add(this.dtpEnd);
             this.Controls.Add(this.btnGenerate);
             this.Name = "GenerateScriptForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generate Script";
             this.ResumeLayout(false);
             this.PerformLayout();
