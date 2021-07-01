@@ -40,7 +40,7 @@
    &nbsp; &nbsp; Maximum database size (GB): 1  
    &nbsp; &nbsp; Service Objective: Basic
 
-# How to publish ASX.Web to Azure App Service using Visual Studio
+# How to publish ASX.Web to Azure App Service (using Microsoft Visual Studio)
 
 1. Refer to https://docs.microsoft.com/en-us/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019
 
