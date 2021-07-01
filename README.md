@@ -22,7 +22,7 @@
 
 7. Generate the script file for the EndOfDays data of the new ASX company using ASX DataLoader
 
-# How to copy the ASX database on SQL Server 2016 or 2017 from on-premise to Azure and vice versa
+# How to copy the ASX database on SQL Server 2016 or 2017 from on-premise to Azure and vice versa (using Microsoft SQL Server Management Studio)
 
 1. On the source (on-premise or Azure):  
    a. Right hand click on "ASX"  
